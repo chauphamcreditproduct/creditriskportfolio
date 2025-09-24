@@ -8,8 +8,8 @@ const ContactSection = () => {
     {
       icon: <Mail className="w-6 h-6" />,
       title: 'Email',
-      value: 'shreyamanibu@gmail.com',
-      action: () => window.open('mailto:shreyamanibu@gmail.com'),
+      value: 'chauminhphamvn@gmail.com',
+      action: () => window.open('mailto:chauminhphamvn@gmail.com'),
       description: 'Best for professional inquiries'
     },
     {

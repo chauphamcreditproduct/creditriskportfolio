@@ -7,7 +7,7 @@ const HeroSection = () => {
   const [currentRole, setCurrentRole] = useState(0);
   
   const roles = [
-    "Applied Business Analytics Student",
+    "Credit Risk Analyst Student",
     "Data Storyteller",
     "Community Builder",
     "Recovering Chaos Gremlin"
