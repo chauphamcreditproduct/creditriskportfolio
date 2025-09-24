@@ -43,7 +43,7 @@ const Navigation = ({ darkMode, toggleDarkMode }: NavigationProps) => {
           {/* Logo */}
           <div className="flex-shrink-0">
             <span className="text-xl font-manrope font-bold gradient-text">
-              Shreya Mani
+              Chloe Pham
             </span>
           </div>
 

@@ -26,7 +26,7 @@ const PortfolioContent = () => {
 
 const Index = () => {
   return (
-    <ThemeProvider defaultTheme="light" storageKey="shreya-portfolio-theme">
+    <ThemeProvider defaultTheme="light" storageKey="chloe-portfolio-theme">
       <PortfolioContent />
     </ThemeProvider>
   );

@@ -41,7 +41,7 @@ const HeroSection = () => {
           <div className="space-y-4">
             <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-manrope font-bold leading-tight">
               <span className="block text-foreground">Hi, I'm</span>
-              <span className="block gradient-text">Shreya Mani</span>
+              <span className="block gradient-text">Chloe Pham</span>
             </h1>
             
             {/* Dynamic role */}
