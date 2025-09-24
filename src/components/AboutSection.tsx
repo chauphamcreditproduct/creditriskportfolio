@@ -8,10 +8,10 @@ const AboutSection = () => {
     { name: 'GitHub', icon: Code2 },
     { name: 'Python', icon: Code2 },
     { name: 'SQL', icon: Database },
-    { name: 'Tableau', icon: BarChart3 },
-    { name: 'Power BI', icon: BarChart3 },
-    { name: 'R', icon: Code2 },
-    { name: 'Java', icon: Code2 }
+    { name: 'dbt', icon: Database },
+    { name: 'Snowflake', icon: Database },
+    { name: 'Google Cloud', icon: Database },
+    { name: 'Tableau', icon: BarChart3 }
   ];
 
   const timeline = [
@@ -104,25 +104,36 @@ const AboutSection = () => {
               </p>
               
               {/* Continuous Scrolling Skills */}
-              <div className="overflow-hidden relative py-8">
+              <div className="overflow-hidden relative py-4">
                 <div className="flex animate-scroll-continuous whitespace-nowrap">
                   {/* First set */}
                   {technicalSkills.map((skill, index) => (
-                    <div key={`first-${index}`} className="flex items-center mx-6 sm:mx-8 flex-shrink-0">
-                      <div className="flex items-center space-x-3 px-4 py-2 rounded-full bg-card border border-border/40 hover:border-accent/30 transition-all duration-300">
-                        <skill.icon className="h-5 w-5 sm:h-6 sm:w-6 text-accent" />
-                        <span className="text-sm sm:text-base font-medium text-foreground">
+                    <div key={`first-${index}`} className="flex items-center mx-2 flex-shrink-0">
+                      <div className="flex items-center space-x-2 px-3 py-1.5 rounded-full bg-muted/50 border border-border/20 text-sm font-medium">
+                        <skill.icon className="h-4 w-4 text-foreground" />
+                        <span className="text-foreground">
                           {skill.name}
                         </span>
                       </div>
                     </div>
                   ))}
-                  {/* Duplicate set for seamless loop */}
+                  {/* Second set for seamless loop */}
                   {technicalSkills.map((skill, index) => (
-                    <div key={`second-${index}`} className="flex items-center mx-6 sm:mx-8 flex-shrink-0">
-                      <div className="flex items-center space-x-3 px-4 py-2 rounded-full bg-card border border-border/40 hover:border-accent/30 transition-all duration-300">
-                        <skill.icon className="h-5 w-5 sm:h-6 sm:w-6 text-accent" />
-                        <span className="text-sm sm:text-base font-medium text-foreground">
+                    <div key={`second-${index}`} className="flex items-center mx-2 flex-shrink-0">
+                      <div className="flex items-center space-x-2 px-3 py-1.5 rounded-full bg-muted/50 border border-border/20 text-sm font-medium">
+                        <skill.icon className="h-4 w-4 text-foreground" />
+                        <span className="text-foreground">
+                          {skill.name}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                  {/* Third set for extra smoothness */}
+                  {technicalSkills.map((skill, index) => (
+                    <div key={`third-${index}`} className="flex items-center mx-2 flex-shrink-0">
+                      <div className="flex items-center space-x-2 px-3 py-1.5 rounded-full bg-muted/50 border border-border/20 text-sm font-medium">
+                        <skill.icon className="h-4 w-4 text-foreground" />
+                        <span className="text-foreground">
                           {skill.name}
                         </span>
                       </div>

@@ -205,10 +205,10 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(-33.33%);
   }
 }
 
 .animate-scroll-continuous {
-  animation: scrollContinuous 30s linear infinite;
+  animation: scrollContinuous 20s linear infinite;
 }
