@@ -1,0 +1,165 @@
+import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Code2, Database, BarChart3, Brain, Lightbulb, Users } from 'lucide-react';
+
+const AboutSection = () => {
+  const skills = [
+    { category: 'Programming', icon: Code2, items: ['Python', 'R', 'SQL', 'Java'] },
+    { category: 'Analytics', icon: BarChart3, items: ['Tableau', 'Power BI', 'Excel', 'Quarto'] },
+    { category: 'Data Science', icon: Database, items: ['Statistical Modeling', 'Predictive Analytics', 'Machine Learning'] },
+    { category: 'Soft Skills', icon: Brain, items: ['Data Storytelling', 'Leadership', 'Problem Solving'] }
+  ];
+
+  const timeline = [
+    {
+      period: '2024 - Present',
+      title: 'MS Applied Business Analytics',
+      organization: 'Boston University',
+      description: 'Diving deep into the intersection of business strategy and data science, with a focus on deriving actionable insights from complex datasets.',
+      type: 'education'
+    },
+    {
+      period: '2023 - 2024',
+      title: 'Instrumentation Engineer',
+      organization: 'Worley India',
+      description: 'Worked on complex engineering projects, developing my analytical thinking and problem-solving skills that now fuel my data science journey.',
+      type: 'work'
+    },
+    {
+      period: '2024 - Present',  
+      title: 'Budget & Invoice Analyst',
+      organization: 'BU West Campus Dining',
+      description: 'Managing financial data analysis and budget forecasting while balancing graduate studies.',
+      type: 'work'
+    },
+    {
+      period: '2022 - 2023',
+      title: 'Projects Intern',
+      organization: 'Schneider Electric',
+      description: 'Gained hands-on experience in project management and technical analysis in the energy sector.',
+      type: 'work'
+    },
+    {
+      period: '2020 - 2024',
+      title: 'B.Tech Instrumentation Engineering',
+      organization: 'RAIT (Ramrao Adik Institute of Technology)',
+      description: 'Built a strong foundation in engineering principles, mathematical modeling, and systems thinking.',
+      type: 'education'
+    }
+  ];
+
+  return (
+    <section id="about" className="section-padding bg-background">
+      <div className="container-custom">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-manrope font-bold mb-6">
+            About <span className="gradient-text">Me</span>
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            An engineer-turned-analyst on a mission to make data accessible, actionable, and a little less intimidating. 
+            Currently navigating grad school, building communities, and discovering that Python and I are actually pretty good friends.
+          </p>
+        </div>
+
+        <div className="grid gap-8 lg:grid-cols-2 lg:gap-16 items-start">
+          {/* Left column - Personal story */}
+          <div className="space-y-6 sm:space-y-8 animate-fade-in">
+            <Card className="p-6 sm:p-8 hover-lift">
+              <CardContent className="p-0">
+                <div className="flex items-center mb-4 sm:mb-6">
+                  <Lightbulb className="h-6 w-6 sm:h-8 sm:w-8 text-accent mr-3 sm:mr-4 flex-shrink-0" />
+                  <h3 className="text-xl sm:text-2xl font-manrope font-semibold">My Story</h3>
+                </div>
+                <div className="space-y-3 sm:space-y-4 text-muted-foreground leading-relaxed text-sm sm:text-base">
+                  <p>
+                    I started out in Instrumentation Engineering, geeking out over precision and figuring out how to make complex systems run without falling apart. At some point between debugging circuits and getting lost in data patterns, I realized I was way more excited about the stories numbers could tell than the machines themselves.
+                  </p>
+                  <p>
+                    Now I'm at Boston University diving into Business Analytics, basically taking messy data and shaping it into something that actually makes sense (and sometimes even decisions). Feels like engineering with a storytelling upgrade.
+                  </p>
+                  <p>
+                    When I'm not buried in Python code or convincing Tableau to cooperate, I'm usually organizing events, bringing people together, or trying to keep my plants alive like they're my sidekicks.
+                  </p>
+                  <p>
+                    I honestly believe curiosity makes the best insights, teamwork makes the best solutions, and the best projects always come with a chaotic playlist and coffee that tastes questionable but still does the job.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Skills grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+              {skills.map((skill, index) => (
+                <Card key={index} className="p-4 sm:p-6 hover-lift">
+                  <CardContent className="p-0">
+                    <div className="flex items-center mb-3 sm:mb-4">
+                      <skill.icon className="h-5 w-5 sm:h-6 sm:w-6 text-accent mr-2 sm:mr-3 flex-shrink-0" />
+                      <h4 className="font-manrope font-semibold text-sm sm:text-base">{skill.category}</h4>
+                    </div>
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                      {skill.items.map((item, idx) => (
+                        <Badge key={idx} variant="secondary" className="text-xs">
+                          {item}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* Right column - Timeline */}
+          <div className="animate-slide-up">
+            <div className="flex items-center mb-6 sm:mb-8">
+              <Users className="h-6 w-6 sm:h-8 sm:w-8 text-accent mr-3 sm:mr-4 flex-shrink-0" />
+              <h3 className="text-xl sm:text-2xl font-manrope font-semibold">My Journey</h3>
+            </div>
+            
+            <div className="relative">
+              {/* Timeline line */}
+              <div className="absolute left-4 sm:left-6 top-0 bottom-0 w-0.5 bg-accent/30"></div>
+              
+              <div className="space-y-6 sm:space-y-8">
+                {timeline.map((item, index) => (
+                  <div key={index} className="relative flex items-start">
+                    {/* Timeline dot */}
+                    <div className={`absolute left-2.5 sm:left-4 w-3 h-3 sm:w-4 sm:h-4 rounded-full border-2 sm:border-4 ${
+                      item.type === 'education' 
+                        ? 'bg-accent border-accent/30' 
+                        : 'bg-primary border-primary/30'
+                    }`}></div>
+                    
+                    {/* Content */}
+                    <div className="ml-8 sm:ml-12 w-full">
+                      <Card className="p-4 sm:p-6 hover-lift">
+                        <CardContent className="p-0">
+                          <div className="mb-2">
+                            <Badge variant="outline" className="text-xs mb-2">
+                              {item.period}
+                            </Badge>
+                          </div>
+                          <h4 className="font-manrope font-semibold text-base sm:text-lg mb-1">
+                            {item.title}
+                          </h4>
+                          <p className="text-accent font-medium mb-2 sm:mb-3 text-sm sm:text-base">
+                            {item.organization}
+                          </p>
+                          <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
+                            {item.description}
+                          </p>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default AboutSection;
