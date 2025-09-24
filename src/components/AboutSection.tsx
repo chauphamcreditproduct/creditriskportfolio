@@ -103,18 +103,32 @@ const AboutSection = () => {
                 Always evolving as I explore new tools and keep pace with industry best practices!
               </p>
               
-              {/* Skills Icons */}
-              <div className="flex flex-wrap justify-center gap-6 sm:gap-8 pt-6">
-                {technicalSkills.map((skill, index) => (
-                  <div key={index} className="flex flex-col items-center space-y-2 group">
-                    <div className="p-3 sm:p-4 rounded-lg bg-card border border-border/40 hover:border-accent/30 hover:shadow-lg transition-all duration-300 group-hover:scale-105">
-                      <skill.icon className="h-6 w-6 sm:h-8 sm:w-8 text-muted-foreground group-hover:text-accent transition-colors duration-300" />
+              {/* Continuous Scrolling Skills */}
+              <div className="overflow-hidden relative py-8">
+                <div className="flex animate-scroll-continuous whitespace-nowrap">
+                  {/* First set */}
+                  {technicalSkills.map((skill, index) => (
+                    <div key={`first-${index}`} className="flex items-center mx-6 sm:mx-8 flex-shrink-0">
+                      <div className="flex items-center space-x-3 px-4 py-2 rounded-full bg-card border border-border/40 hover:border-accent/30 transition-all duration-300">
+                        <skill.icon className="h-5 w-5 sm:h-6 sm:w-6 text-accent" />
+                        <span className="text-sm sm:text-base font-medium text-foreground">
+                          {skill.name}
+                        </span>
+                      </div>
                     </div>
-                    <span className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors duration-300">
-                      {skill.name}
-                    </span>
-                  </div>
-                ))}
+                  ))}
+                  {/* Duplicate set for seamless loop */}
+                  {technicalSkills.map((skill, index) => (
+                    <div key={`second-${index}`} className="flex items-center mx-6 sm:mx-8 flex-shrink-0">
+                      <div className="flex items-center space-x-3 px-4 py-2 rounded-full bg-card border border-border/40 hover:border-accent/30 transition-all duration-300">
+                        <skill.icon className="h-5 w-5 sm:h-6 sm:w-6 text-accent" />
+                        <span className="text-sm sm:text-base font-medium text-foreground">
+                          {skill.name}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

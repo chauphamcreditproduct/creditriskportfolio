@@ -199,3 +199,16 @@
     transform: scale(1);
   }
 }
+
+@keyframes scrollContinuous {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-continuous {
+  animation: scrollContinuous 30s linear infinite;
+}
