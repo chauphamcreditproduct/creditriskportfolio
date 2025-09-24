@@ -3,11 +3,15 @@ import { Badge } from '@/components/ui/badge';
 import { Code2, Database, BarChart3, Brain, Lightbulb, Users } from 'lucide-react';
 
 const AboutSection = () => {
-  const skills = [
-    { category: 'Programming', icon: Code2, items: ['Python', 'R', 'SQL', 'Java'] },
-    { category: 'Analytics', icon: BarChart3, items: ['Tableau', 'Power BI', 'Excel', 'Quarto'] },
-    { category: 'Data Science', icon: Database, items: ['Statistical Modeling', 'Predictive Analytics', 'Machine Learning'] },
-    { category: 'Soft Skills', icon: Brain, items: ['Data Storytelling', 'Leadership', 'Problem Solving'] }
+  const technicalSkills = [
+    { name: 'MS Excel', icon: BarChart3 },
+    { name: 'GitHub', icon: Code2 },
+    { name: 'Python', icon: Code2 },
+    { name: 'SQL', icon: Database },
+    { name: 'Tableau', icon: BarChart3 },
+    { name: 'Power BI', icon: BarChart3 },
+    { name: 'R', icon: Code2 },
+    { name: 'Java', icon: Code2 }
   ];
 
   const timeline = [
@@ -87,25 +91,31 @@ const AboutSection = () => {
               </CardContent>
             </Card>
 
-            {/* Skills grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-              {skills.map((skill, index) => (
-                <Card key={index} className="p-4 sm:p-6 hover-lift">
-                  <CardContent className="p-0">
-                    <div className="flex items-center mb-3 sm:mb-4">
-                      <skill.icon className="h-5 w-5 sm:h-6 sm:w-6 text-accent mr-2 sm:mr-3 flex-shrink-0" />
-                      <h4 className="font-manrope font-semibold text-sm sm:text-base">{skill.category}</h4>
+            {/* Technical Expertise */}
+            <div className="text-center space-y-6">
+              <h3 className="text-3xl sm:text-4xl font-manrope font-bold">
+                Technical <span className="gradient-text">Expertise</span>
+              </h3>
+              <p className="text-lg text-muted-foreground">
+                My toolkit for building scalable data systems
+              </p>
+              <p className="text-base text-muted-foreground">
+                Always evolving as I explore new tools and keep pace with industry best practices!
+              </p>
+              
+              {/* Skills Icons */}
+              <div className="flex flex-wrap justify-center gap-6 sm:gap-8 pt-6">
+                {technicalSkills.map((skill, index) => (
+                  <div key={index} className="flex flex-col items-center space-y-2 group">
+                    <div className="p-3 sm:p-4 rounded-lg bg-card border border-border/40 hover:border-accent/30 hover:shadow-lg transition-all duration-300 group-hover:scale-105">
+                      <skill.icon className="h-6 w-6 sm:h-8 sm:w-8 text-muted-foreground group-hover:text-accent transition-colors duration-300" />
                     </div>
-                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                      {skill.items.map((item, idx) => (
-                        <Badge key={idx} variant="secondary" className="text-xs">
-                          {item}
-                        </Badge>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+                    <span className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors duration-300">
+                      {skill.name}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
