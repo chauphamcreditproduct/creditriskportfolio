@@ -10,6 +10,9 @@ import { ThemeProvider, useTheme } from '@/components/ThemeProvider';
 const PortfolioContent = () => {
   const { isDark, toggleTheme } = useTheme();
 
+  console.log('PortfolioContent rendering...');
+  console.log('About to render all sections');
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navigation darkMode={isDark} toggleDarkMode={toggleTheme} />
