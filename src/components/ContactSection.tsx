@@ -48,7 +48,7 @@ const ContactSection = () => {
         </div>
 
         {/* Contact Methods Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12 sm:mb-16">
+        <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mb-12 sm:mb-16 max-w-4xl mx-auto">
           {contactMethods.map((method, index) => (
             <Card 
               key={index}
