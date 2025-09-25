@@ -1,4 +1,4 @@
-import { Mail, Github, Linkedin, Code, MapPin, Phone, ExternalLink } from 'lucide-react';
+import { Mail, Github, Linkedin, MapPin, Phone, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -15,23 +15,16 @@ const ContactSection = () => {
     {
       icon: <Linkedin className="w-6 h-6" />,
       title: 'LinkedIn',
-      value: 'linkedin.com/in/talkingshreya',
-      action: () => window.open('https://linkedin.com/in/talkingshreya', '_blank'),
+      value: 'linkedin.com/in/chau-pham-credit-product',
+      action: () => window.open('https://www.linkedin.com/in/chau-pham-credit-product/', '_blank'),
       description: 'Professional networking & updates'
     },
     {
       icon: <Github className="w-6 h-6" />,
       title: 'GitHub',
-      value: 'github.com/ShreyaSolves',
-      action: () => window.open('https://github.com/ShreyaSolves', '_blank'),
+      value: 'github.com/chauphamcreditproduct',
+      action: () => window.open('https://github.com/chauphamcreditproduct', '_blank'),
       description: 'Check out my code & projects'
-    },
-    {
-      icon: <Code className="w-6 h-6" />,
-      title: 'LeetCode',
-      value: 'leetcode.com/u/Shreyasolves',
-      action: () => window.open('https://leetcode.com/u/Shreyasolves/', '_blank'),
-      description: 'Coding challenges & solutions'
     }
   ];
 
