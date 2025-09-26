@@ -1,25 +1,38 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Code2, Database, BarChart3, Brain, Lightbulb, Users, Cloud, Workflow } from 'lucide-react';
+import { Code2, Database, BarChart3, Brain, Lightbulb, Users, Cloud, Workflow, Server } from 'lucide-react';
 import pythonLogo from '@/assets/logos/python-logo.svg';
 import githubLogo from '@/assets/logos/github-logo.png';
 import gcpLogo from '@/assets/logos/gcp-logo.svg';
 import sqlLogo from '@/assets/logos/sql-logo.svg';
 import prefectLogo from '@/assets/logos/prefect-logo.png';
 import tableauLogo from '@/assets/logos/tableau-logo.png';
+import excelLogo from '@/assets/logos/excel-logo.svg';
+import sasLogo from '@/assets/logos/sas-logo.png';
+import powerbiLogo from '@/assets/logos/powerbi-logo.svg';
+import sapLogo from '@/assets/logos/sap-logo.svg';
+import vbaLogo from '@/assets/logos/vba-logo.png';
+import dbtLogo from '@/assets/logos/dbt-logo.svg';
+import snowflakeLogo from '@/assets/logos/snowflake-logo.svg';
+import airflowLogo from '@/assets/logos/airflow-logo.svg';
 
 const AboutSection = () => {
   const technicalSkills = [
-    { name: 'MS Excel', icon: BarChart3, isLogo: false, src: null },
+    { name: 'MS Excel', icon: null, isLogo: true, src: excelLogo },
     { name: 'GitHub', icon: null, isLogo: true, src: githubLogo },
     { name: 'Python', icon: null, isLogo: true, src: pythonLogo },
     { name: 'SQL', icon: null, isLogo: true, src: sqlLogo },
-    { name: 'dbt', icon: Code2, isLogo: false, src: null },
-    { name: 'Snowflake', icon: Cloud, isLogo: false, src: null },
+    { name: 'SAS', icon: null, isLogo: true, src: sasLogo },
+    { name: 'Tableau', icon: null, isLogo: true, src: tableauLogo },
+    { name: 'VBA', icon: null, isLogo: true, src: vbaLogo },
+    { name: 'Power BI', icon: null, isLogo: true, src: powerbiLogo },
+    { name: 'ERP', icon: Server, isLogo: false, src: null },
+    { name: 'SAP', icon: null, isLogo: true, src: sapLogo },
+    { name: 'dbt', icon: null, isLogo: true, src: dbtLogo },
+    { name: 'Snowflake', icon: null, isLogo: true, src: snowflakeLogo },
     { name: 'Google Cloud', icon: null, isLogo: true, src: gcpLogo },
-    { name: 'Airflow', icon: Workflow, isLogo: false, src: null },
-    { name: 'Prefect', icon: null, isLogo: true, src: prefectLogo },
-    { name: 'Tableau', icon: null, isLogo: true, src: tableauLogo }
+    { name: 'Airflow', icon: null, isLogo: true, src: airflowLogo },
+    { name: 'Prefect', icon: null, isLogo: true, src: prefectLogo }
   ];
 
   const timeline = [
