@@ -35,6 +35,10 @@ const AboutSection = () => {
     { name: 'Prefect', icon: null, isLogo: true, src: prefectLogo }
   ];
 
+  // Debug log to check if all skills are being processed
+  console.log('Technical skills count:', technicalSkills.length);
+  console.log('All skills:', technicalSkills.map(skill => skill.name));
+
   const timeline = [
     {
       period: '2024 - Present',
@@ -126,17 +130,25 @@ const AboutSection = () => {
               
               {/* Continuous Scrolling Skills */}
               <div className="overflow-hidden relative py-4">
-                <div className="flex animate-scroll-continuous whitespace-nowrap">
+                <div className="flex animate-scroll-continuous whitespace-nowrap min-w-full">
                   {/* First set */}
                   {technicalSkills.map((skill, index) => (
-                    <div key={`first-${index}`} className="flex items-center mx-2 flex-shrink-0">
-                      <div className="flex items-center space-x-2 px-3 py-1.5 rounded-full bg-muted/50 border border-border/20 text-sm font-medium">
+                    <div key={`first-${index}`} className="flex items-center mx-3 flex-shrink-0">
+                      <div className="flex items-center space-x-2 px-4 py-2 rounded-full bg-muted/50 border border-border/20 text-sm font-medium min-w-fit">
                         {skill.isLogo && skill.src ? (
-                          <img src={skill.src} alt={`${skill.name} logo`} className="h-4 w-4 object-contain" />
+                          <img 
+                            src={skill.src} 
+                            alt={`${skill.name} logo`} 
+                            className="h-5 w-5 object-contain" 
+                            onError={(e) => {
+                              console.log(`Failed to load image for ${skill.name}`);
+                              e.currentTarget.style.display = 'none';
+                            }}
+                          />
                         ) : skill.icon ? (
-                          <skill.icon className="h-4 w-4 text-foreground" />
+                          <skill.icon className="h-5 w-5 text-foreground" />
                         ) : null}
-                        <span className="text-foreground">
+                        <span className="text-foreground whitespace-nowrap">
                           {skill.name}
                         </span>
                       </div>
@@ -144,29 +156,22 @@ const AboutSection = () => {
                   ))}
                   {/* Second set for seamless loop */}
                   {technicalSkills.map((skill, index) => (
-                    <div key={`second-${index}`} className="flex items-center mx-2 flex-shrink-0">
-                      <div className="flex items-center space-x-2 px-3 py-1.5 rounded-full bg-muted/50 border border-border/20 text-sm font-medium">
+                    <div key={`second-${index}`} className="flex items-center mx-3 flex-shrink-0">
+                      <div className="flex items-center space-x-2 px-4 py-2 rounded-full bg-muted/50 border border-border/20 text-sm font-medium min-w-fit">
                         {skill.isLogo && skill.src ? (
-                          <img src={skill.src} alt={`${skill.name} logo`} className="h-4 w-4 object-contain" />
+                          <img 
+                            src={skill.src} 
+                            alt={`${skill.name} logo`} 
+                            className="h-5 w-5 object-contain" 
+                            onError={(e) => {
+                              console.log(`Failed to load image for ${skill.name} (second set)`);
+                              e.currentTarget.style.display = 'none';
+                            }}
+                          />
                         ) : skill.icon ? (
-                          <skill.icon className="h-4 w-4 text-foreground" />
+                          <skill.icon className="h-5 w-5 text-foreground" />
                         ) : null}
-                        <span className="text-foreground">
-                          {skill.name}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-                  {/* Third set for extra smoothness */}
-                  {technicalSkills.map((skill, index) => (
-                    <div key={`third-${index}`} className="flex items-center mx-2 flex-shrink-0">
-                      <div className="flex items-center space-x-2 px-3 py-1.5 rounded-full bg-muted/50 border border-border/20 text-sm font-medium">
-                        {skill.isLogo && skill.src ? (
-                          <img src={skill.src} alt={`${skill.name} logo`} className="h-4 w-4 object-contain" />
-                        ) : skill.icon ? (
-                          <skill.icon className="h-4 w-4 text-foreground" />
-                        ) : null}
-                        <span className="text-foreground">
+                        <span className="text-foreground whitespace-nowrap">
                           {skill.name}
                         </span>
                       </div>
