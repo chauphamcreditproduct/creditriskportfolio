@@ -1,17 +1,25 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Code2, Database, BarChart3, Brain, Lightbulb, Users } from 'lucide-react';
+import { Code2, Database, BarChart3, Brain, Lightbulb, Users, Cloud, Workflow } from 'lucide-react';
+import pythonLogo from '@/assets/logos/python-logo.svg';
+import githubLogo from '@/assets/logos/github-logo.png';
+import gcpLogo from '@/assets/logos/gcp-logo.svg';
+import sqlLogo from '@/assets/logos/sql-logo.svg';
+import prefectLogo from '@/assets/logos/prefect-logo.png';
+import tableauLogo from '@/assets/logos/tableau-logo.png';
 
 const AboutSection = () => {
   const technicalSkills = [
-    { name: 'MS Excel', icon: BarChart3 },
-    { name: 'GitHub', icon: Code2 },
-    { name: 'Python', icon: Code2 },
-    { name: 'SQL', icon: Database },
-    { name: 'dbt', icon: Database },
-    { name: 'Snowflake', icon: Database },
-    { name: 'Google Cloud', icon: Database },
-    { name: 'Tableau', icon: BarChart3 }
+    { name: 'MS Excel', icon: BarChart3, isLogo: false, src: null },
+    { name: 'GitHub', icon: null, isLogo: true, src: githubLogo },
+    { name: 'Python', icon: null, isLogo: true, src: pythonLogo },
+    { name: 'SQL', icon: null, isLogo: true, src: sqlLogo },
+    { name: 'dbt', icon: Code2, isLogo: false, src: null },
+    { name: 'Snowflake', icon: Cloud, isLogo: false, src: null },
+    { name: 'Google Cloud', icon: null, isLogo: true, src: gcpLogo },
+    { name: 'Airflow', icon: Workflow, isLogo: false, src: null },
+    { name: 'Prefect', icon: null, isLogo: true, src: prefectLogo },
+    { name: 'Tableau', icon: null, isLogo: true, src: tableauLogo }
   ];
 
   const timeline = [
@@ -110,7 +118,11 @@ const AboutSection = () => {
                   {technicalSkills.map((skill, index) => (
                     <div key={`first-${index}`} className="flex items-center mx-2 flex-shrink-0">
                       <div className="flex items-center space-x-2 px-3 py-1.5 rounded-full bg-muted/50 border border-border/20 text-sm font-medium">
-                        <skill.icon className="h-4 w-4 text-foreground" />
+                        {skill.isLogo && skill.src ? (
+                          <img src={skill.src} alt={`${skill.name} logo`} className="h-4 w-4 object-contain" />
+                        ) : skill.icon ? (
+                          <skill.icon className="h-4 w-4 text-foreground" />
+                        ) : null}
                         <span className="text-foreground">
                           {skill.name}
                         </span>
@@ -121,7 +133,11 @@ const AboutSection = () => {
                   {technicalSkills.map((skill, index) => (
                     <div key={`second-${index}`} className="flex items-center mx-2 flex-shrink-0">
                       <div className="flex items-center space-x-2 px-3 py-1.5 rounded-full bg-muted/50 border border-border/20 text-sm font-medium">
-                        <skill.icon className="h-4 w-4 text-foreground" />
+                        {skill.isLogo && skill.src ? (
+                          <img src={skill.src} alt={`${skill.name} logo`} className="h-4 w-4 object-contain" />
+                        ) : skill.icon ? (
+                          <skill.icon className="h-4 w-4 text-foreground" />
+                        ) : null}
                         <span className="text-foreground">
                           {skill.name}
                         </span>
@@ -132,7 +148,11 @@ const AboutSection = () => {
                   {technicalSkills.map((skill, index) => (
                     <div key={`third-${index}`} className="flex items-center mx-2 flex-shrink-0">
                       <div className="flex items-center space-x-2 px-3 py-1.5 rounded-full bg-muted/50 border border-border/20 text-sm font-medium">
-                        <skill.icon className="h-4 w-4 text-foreground" />
+                        {skill.isLogo && skill.src ? (
+                          <img src={skill.src} alt={`${skill.name} logo`} className="h-4 w-4 object-contain" />
+                        ) : skill.icon ? (
+                          <skill.icon className="h-4 w-4 text-foreground" />
+                        ) : null}
                         <span className="text-foreground">
                           {skill.name}
                         </span>
