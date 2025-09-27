@@ -130,7 +130,7 @@ const AboutSection = () => {
               
               {/* Continuous Scrolling Skills */}
               <div className="overflow-hidden relative py-4">
-                <div className="flex animate-scroll-continuous whitespace-nowrap min-w-full">
+                <div className="flex animate-scroll-continuous whitespace-nowrap w-max">
                   {/* First set */}
                   {technicalSkills.map((skill, index) => (
                     <div key={`first-${index}`} className="flex items-center mx-3 flex-shrink-0">
