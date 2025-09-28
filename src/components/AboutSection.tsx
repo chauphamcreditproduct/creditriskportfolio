@@ -5,16 +5,12 @@ import pythonLogo from '@/assets/logos/python-logo.svg';
 import githubLogo from '@/assets/logos/github-logo.png';
 import gcpLogo from '@/assets/logos/gcp-logo.svg';
 import sqlLogo from '@/assets/logos/sql-logo.svg';
-import prefectLogo from '@/assets/logos/prefect-logo.png';
 import tableauLogo from '@/assets/logos/tableau-logo.png';
 import excelLogo from '@/assets/logos/excel-logo.svg';
 import sasLogo from '@/assets/logos/sas-logo.png';
 import powerbiLogo from '@/assets/logos/powerbi-logo.svg';
 import sapLogo from '@/assets/logos/sap-logo.svg';
 import vbaLogo from '@/assets/logos/vba-logo.png';
-import dbtLogo from '@/assets/logos/dbt-logo.svg';
-import snowflakeLogo from '@/assets/logos/snowflake-logo.svg';
-import airflowLogo from '@/assets/logos/airflow-logo.svg';
 
 const AboutSection = () => {
   const technicalSkills = [
@@ -28,11 +24,7 @@ const AboutSection = () => {
     { name: 'Power BI', icon: null, isLogo: true, src: powerbiLogo },
     { name: 'ERP', icon: Server, isLogo: false, src: null },
     { name: 'SAP', icon: null, isLogo: true, src: sapLogo },
-    { name: 'dbt', icon: null, isLogo: true, src: dbtLogo },
-    { name: 'Snowflake', icon: null, isLogo: true, src: snowflakeLogo },
-    { name: 'Google Cloud', icon: null, isLogo: true, src: gcpLogo },
-    { name: 'Airflow', icon: null, isLogo: true, src: airflowLogo },
-    { name: 'Prefect', icon: null, isLogo: true, src: prefectLogo }
+    { name: 'Google Cloud', icon: null, isLogo: true, src: gcpLogo }
   ];
 
   // Debug log to check if all skills are being processed
@@ -41,40 +33,40 @@ const AboutSection = () => {
 
   const timeline = [
     {
-      period: '2024 - Present',
-      title: 'MS Applied Business Analytics',
-      organization: 'Boston University',
+      period: '2023 - 2027',
+      title: 'Bachelor of Science Mathematics and Data Analytics',
+      organization: 'Dickinson College',
       description: 'Diving deep into the intersection of business strategy and data science, with a focus on deriving actionable insights from complex datasets.',
       type: 'education'
     },
     {
-      period: '2023 - 2024',
-      title: 'Instrumentation Engineer',
-      organization: 'Worley India',
+      period: '06/2024 - 08/2024',
+      title: 'Credit Risk Analyst Intern',
+      organization: 'Asia Commercial Joint Stock Bank (ACB)',
       description: 'Worked on complex engineering projects, developing my analytical thinking and problem-solving skills that now fuel my data science journey.',
       type: 'work'
     },
     {
-      period: '2024 - Present',  
-      title: 'Budget & Invoice Analyst',
-      organization: 'BU West Campus Dining',
-      description: 'Managing financial data analysis and budget forecasting while balancing graduate studies.',
-      type: 'work'
-    },
-    {
-      period: '2022 - 2023',
-      title: 'Projects Intern',
-      organization: 'Schneider Electric',
+      period: '01/2024 - 04/2024',
+      title: 'SAP Business Analyst',
+      organization: 'FPT Information Systems',
       description: 'Gained hands-on experience in project management and technical analysis in the energy sector.',
       type: 'work'
     },
     {
-      period: '2020 - 2024',
-      title: 'B.Tech Instrumentation Engineering',
-      organization: 'RAIT (Ramrao Adik Institute of Technology)',
+      period: '06/2025 - 08/2025',
+      title: 'Research Collaborator',
+      organization: 'Dickinson College',
       description: 'Built a strong foundation in engineering principles, mathematical modeling, and systems thinking.',
-      type: 'education'
-    }
+      type: 'work'
+    },
+    {
+      period: '09/2025 - Present',
+      title: 'Research Assistant',
+      organization: 'Dickinson College',
+      description: 'Built a strong foundation in engineering principles, mathematical modeling, and systems thinking.',
+      type: 'work'
+    },
   ];
 
   return (
