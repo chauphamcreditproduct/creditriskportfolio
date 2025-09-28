@@ -10,7 +10,6 @@ const HeroSection = () => {
     "Credit Risk Analyst Student",
     "Data Storyteller",
     "Community Builder",
-    "Recovering Chaos Gremlin"
   ];
 
   useEffect(() => {
@@ -58,7 +57,7 @@ const HeroSection = () => {
               Making data dance and stories shine ✨
             </p>
             <p className="text-base sm:text-lg text-muted-foreground leading-relaxed text-center">
-              MS Business Analytics student at Boston University with Instrumentation Engineering background 
+              Bachelor of Science Mathematics and Data Analytics at Dickinson College with Instrumentation Engineering background 
               and experience at Worley & Schneider Electric. Proficient in Python, R, SQL, and Power BI, 
               transforming complex datasets into actionable business insights.
             </p>
@@ -68,12 +67,12 @@ const HeroSection = () => {
           <div className="flex flex-wrap justify-center gap-2 sm:gap-3 px-4">
             <Badge variant="outline" className="px-3 sm:px-4 py-2 text-xs sm:text-sm border-accent/30 text-accent">
               <GraduationCap className="w-3 sm:w-4 h-3 sm:h-4 mr-1 sm:mr-2" />
-              <span className="hidden sm:inline">MS Applied Business Analytics</span>
-              <span className="sm:hidden">MS Analytics</span>
+              <span className="hidden sm:inline">Bachelor of Science Mathematics and Data Analytics</span>
+              <span className="sm:hidden">Bachelor of Science Mathematics and Data Analytics</span>
             </Badge>
             <Badge variant="outline" className="px-3 sm:px-4 py-2 text-xs sm:text-sm border-accent/30 text-accent">
               <MapPin className="w-3 sm:w-4 h-3 sm:h-4 mr-1 sm:mr-2" />
-              Boston, MA
+              Carlisle, PA
             </Badge>
           </div>
 
@@ -83,7 +82,7 @@ const HeroSection = () => {
               variant="outline"
               size="icon"
               className="hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300 hover-lift w-10 h-10 sm:w-12 sm:h-12"
-              onClick={() => window.open('mailto:shreyamanibu@gmail.com')}
+              onClick={() => window.open('mailto:chauminhphamvn@gmail.com')}
             >
               <Mail className="h-4 w-4 sm:h-5 sm:w-5" />
             </Button>
@@ -91,7 +90,7 @@ const HeroSection = () => {
               variant="outline"
               size="icon"
               className="hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300 hover-lift w-10 h-10 sm:w-12 sm:h-12"
-              onClick={() => window.open('https://github.com/ShreyaSolves', '_blank')}
+              onClick={() => window.open('https://github.com/chauphamcreditproduct', '_blank')}
             >
               <Github className="h-4 w-4 sm:h-5 sm:w-5" />
             </Button>
@@ -99,17 +98,9 @@ const HeroSection = () => {
               variant="outline"
               size="icon"
               className="hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300 hover-lift w-10 h-10 sm:w-12 sm:h-12"
-              onClick={() => window.open('https://linkedin.com/in/talkingshreya', '_blank')}
+              onClick={() => window.open('https://www.linkedin.com/in/chau-pham-credit-product/a', '_blank')}
             >
               <Linkedin className="h-4 w-4 sm:h-5 sm:w-5" />
-            </Button>
-            <Button
-              variant="outline"
-              size="icon"
-              className="hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300 hover-lift w-10 h-10 sm:w-12 sm:h-12"
-              onClick={() => window.open('https://leetcode.com/u/Shreyasolves/', '_blank')}
-            >
-              <Code className="h-4 w-4 sm:h-5 sm:w-5" />
             </Button>
           </div>
 

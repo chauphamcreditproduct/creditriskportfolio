@@ -30,11 +30,11 @@ const ProjectsSection = () => {
   const [filteredProjects, setFilteredProjects] = useState<Project[]>([]);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-  // Real projects from Shreya's GitHub
+  // Real projects from Chloe's GitHub
   const projects: Project[] = [
     {
       id: '1',
-      title: 'Loan Default Prediction Model',
+      title: 'Corporate Credit & Liquidity Assessment – Olin Corporation',
       description: 'Machine learning model to predict loan defaults for financial institutions',
       longDescription: 'This project leverages machine learning to predict loan defaults, helping financial institutions minimize risk and improve credit allocation. By analyzing historical applicant and loan data, the model classifies borrowers as likely defaulters or non-defaulters while identifying key factors associated with default risk. The study also compares model performance to determine which approach best balances accuracy and recall, with a focus on reliably detecting true defaulters.',
       category: 'Machine Learning',
@@ -55,7 +55,7 @@ const ProjectsSection = () => {
     },
     {
       id: '2',
-      title: 'InvestEasy',
+      title: 'Dynamic Credit Limit Model for SMB',
       description: 'House price prediction app for investors using Kaggle data',
       longDescription: 'Python application for real estate investors to predict house prices using machine learning models. Built with scikit-learn and integrated with Tableau for comprehensive market insights, inspired by Zillow and Airbnb pricing strategies.',
       category: 'Machine Learning',
@@ -76,7 +76,7 @@ const ProjectsSection = () => {
     },
     {
       id: '3',
-      title: 'NYC Real Estate Analytics',
+      title: 'New-To-Credit Underwriting Model & Strategy',
       description: 'Comprehensive analysis of NYC real estate transaction data',
       longDescription: 'In-depth analysis of New York City real estate market using advanced R programming and statistical methods. This MET AD 571 project explores market trends, pricing patterns, and investment opportunities across NYC boroughs.',
       category: 'Analytics',
@@ -97,7 +97,7 @@ const ProjectsSection = () => {
     },
     {
       id: '4',
-      title: 'Customer Segmentation & Clustering',
+      title: 'Walmart Sales Forecasting & Holiday Impact Analysis',
       description: 'Water rides segmentation using advanced clustering techniques',
       longDescription: 'Implementation of unsupervised learning algorithms to segment water rides and identify customer preferences, leading to targeted marketing strategies.',
       category: 'Machine Learning',
@@ -116,48 +116,6 @@ const ProjectsSection = () => {
       date: '2024',
       stars: 1
     },
-    {
-      id: '5',
-      title: 'Time Series Analysis',
-      description: 'Ralph Lauren stock price forecasting with ARIMA models',
-      longDescription: 'Comprehensive time series analysis of Ralph Lauren Corporation stock prices, implementing ARIMA models for financial forecasting and trend analysis.',
-      category: 'Finance',
-      technologies: ['Python', 'ARIMA', 'Statsmodels', 'Time Series', 'Financial Analysis'],
-      githubUrl: 'https://github.com/ShreyaSolves/Time-Series-Analysis',
-      slideUrl: 'https://docs.google.com/presentation/d/example-slides',
-      notebookUrl: 'https://colab.research.google.com/drive/example-notebook',
-      imageUrl: '/api/placeholder/400/250',
-      icon: <TrendingUp className="w-6 h-6" />,
-      highlights: [
-        'ARIMA model implementation',
-        'Seasonal decomposition',
-        'Forecast accuracy metrics',
-        'Financial trend analysis'
-      ],
-      date: '2024',
-      stars: 1
-    },
-    {
-      id: '6',
-      title: 'Statistical Hypothesis Testing',
-      description: 'Customer spending analysis by membership tier using statistical tests',
-      longDescription: 'Rigorous statistical analysis exploring relationships between membership tiers, customer spending patterns, and visit frequencies using various hypothesis testing methods.',
-      category: 'Statistics',
-      technologies: ['Python', 'Scipy', 'Statsmodels', 'Pandas', 'Statistical Tests'],
-      githubUrl: 'https://github.com/ShreyaSolves/Hypothesis-Testing',
-      slideUrl: 'https://docs.google.com/presentation/d/example-slides',
-      notebookUrl: 'https://colab.research.google.com/drive/example-notebook',
-      imageUrl: '/api/placeholder/400/250',
-      icon: <TestTube className="w-6 h-6" />,
-      highlights: [
-        'A/B testing framework',
-        'Chi-square tests',
-        'ANOVA analysis',
-        'Statistical significance validation'
-      ],
-      date: '2024',
-      stars: 1
-    }
   ];
 
   const categories = [
