@@ -3,7 +3,6 @@ import Navigation from '@/components/Navigation';
 import HeroSection from '@/components/HeroSection';
 import AboutSection from '@/components/AboutSection';
 import ProjectsSection from '@/components/ProjectsSection';
-import LeadershipSection from '@/components/LeadershipSection';
 import ContactSection from '@/components/ContactSection';
 import { ThemeProvider, useTheme } from '@/components/ThemeProvider';
 
@@ -20,7 +19,6 @@ const PortfolioContent = () => {
         <HeroSection />
         <AboutSection />
         <ProjectsSection />
-        <LeadershipSection />
         <ContactSection />
       </main>
     </div>
