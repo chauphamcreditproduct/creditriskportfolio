@@ -40,7 +40,7 @@ const ProjectsSection = () => {
       category: 'Machine Learning',
       technologies: ['Python', 'Scikit-learn', 'Pandas', 'Matplotlib', 'Seaborn'],
       githubUrl: 'https://github.com/ShreyaSolves/loan-default-prediction',
-      slideUrl: 'https://docs.google.com/presentation/d/example-slides',
+      slideUrl: 'https://docs.google.com/presentation/d/17yg0-Xe2phUerTs52copVvn8EUKRxgQ2GTYkD29UKE0/edit?usp=sharing',
       notebookUrl: 'https://nbviewer.org/github/chauphamcreditproduct/NTC_Consumer_Credit/blob/a2099b821a5dc64002686e0bf12b8d9f02d045b1/NTC_Consumer_Credit.ipynb',
       imageUrl: '/api/placeholder/400/250',
       icon: <TrendingUp className="w-6 h-6" />,
@@ -482,7 +482,7 @@ const ProjectsSection = () => {
               Interested in collaborating?
             </h3>
             <p className="text-lg text-muted-foreground">
-              These projects represent my journey in data analytics and business intelligence. 
+              These projects represent my journey in credit risk and data analysis. 
               Let's discuss how we can turn your data challenges into growth opportunities.
             </p>
             <Button 
