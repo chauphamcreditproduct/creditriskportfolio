@@ -30,7 +30,7 @@ const ProjectsSection = () => {
   const [filteredProjects, setFilteredProjects] = useState<Project[]>([]);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-  // Real projects from Chloe's GitHub
+  // Real projects from Shreya's GitHub
   const projects: Project[] = [
     {
       id: '1',
@@ -41,7 +41,7 @@ const ProjectsSection = () => {
       technologies: ['Python', 'Scikit-learn', 'Pandas', 'Matplotlib', 'Seaborn'],
       githubUrl: 'https://github.com/ShreyaSolves/loan-default-prediction',
       slideUrl: 'https://docs.google.com/presentation/d/example-slides',
-      notebookUrl: 'https://colab.research.google.com/drive/example-notebook',
+      notebookUrl: 'https://nbviewer.org/github/chauphamcreditproduct/NTC_Consumer_Credit/blob/a2099b821a5dc64002686e0bf12b8d9f02d045b1/NTC_Consumer_Credit.ipynb',
       imageUrl: '/api/placeholder/400/250',
       icon: <TrendingUp className="w-6 h-6" />,
       highlights: [
@@ -50,70 +50,70 @@ const ProjectsSection = () => {
         'Model comparison and validation',
         'Financial impact analysis'
       ],
-      date: '2024',
+      date: '05/2025',
       stars: 0
     },
     {
       id: '2',
       title: 'Dynamic Credit Limit Model for SMB',
-      description: 'House price prediction app for investors using Kaggle data',
-      longDescription: 'Python application for real estate investors to predict house prices using machine learning models. Built with scikit-learn and integrated with Tableau for comprehensive market insights, inspired by Zillow and Airbnb pricing strategies.',
-      category: 'Machine Learning',
-      technologies: ['Python', 'Scikit-learn', 'Tableau', 'JavaScript', 'Data Analysis'],
-      githubUrl: 'https://github.com/ShreyaSolves/InvestEasy',
+      description: 'Dynamic credit limit optimization system for small businesses using machine learning to automate risk-adjusted lending decisions.',
+      longDescription: 'End-to-end machine learning solution for dynamic credit line management in small business lending. This project implements a dual-model approach combining XGBoost classification and regression to automatically determine when and how much to adjust credit limits, enabling fintech-style adaptive financing while optimizing risk and capital allocation.',
+      category: 'FinTech & Risk Analytics',
+      technologies: ["Python", "Classification & Regression", "XGBoostRegressor"],
+      githubUrl: 'https://github.com/chauphamcreditproduct/SMB_Dynamic_Credit_Line',
       slideUrl: 'https://docs.google.com/presentation/d/example-slides',
-      notebookUrl: 'https://colab.research.google.com/drive/example-notebook',
+      notebookUrl: 'https://nbviewer.org/github/chauphamcreditproduct/SMB_Dynamic_Credit_Line/blob/main/SMB_Dynamic_Credit_Line.ipynb',
       imageUrl: '/api/placeholder/400/250',
       icon: <TrendingUp className="w-6 h-6" />,
       highlights: [
-        'Real estate price prediction models',
-        'Interactive Tableau dashboards',
-        'Market trend analysis',
-        'Dynamic pricing insights'
+        "Dual-model ML pipeline: classification for adjustment timing + regression for credit amount",
+        "Real-time credit line optimization for 20%+ monthly adjusting businesses", 
+        "Domain-driven feature engineering (bank balances, collateral types, industry segments)",
+        "Production-ready framework inspired by Brex/Ramp for dynamic SMB underwriting"
       ],
-      date: '2024',
+      date: '03/2025',
       stars: 0
     },
     {
       id: '3',
       title: 'New-To-Credit Underwriting Model & Strategy',
-      description: 'Comprehensive analysis of NYC real estate transaction data',
-      longDescription: 'In-depth analysis of New York City real estate market using advanced R programming and statistical methods. This MET AD 571 project explores market trends, pricing patterns, and investment opportunities across NYC boroughs.',
-      category: 'Analytics',
-      technologies: ['R', 'Statistical Analysis', 'Data Visualization', 'Market Research'],
-      githubUrl: 'https://github.com/ShreyaSolves/NYC-Real-Estate-Analytics-Project',
+      description: 'Predictive modeling and risk strategy for assessing creditworthiness of new-to-credit customers using machine learning.',
+      longDescription: 'Comprehensive credit risk modeling for New-To-Credit (NTC) customers using Python and machine learning. This project develops a high-precision underwriting strategy to predict charge-off likelihood, enabling financial institutions to expand credit access while proactively managing risk through advanced data analysis and model optimization.',
+      category: 'Risk Analytics & Machine Learning',
+      technologies: ["Python", "Random Forest", "XGBoost"],
+      githubUrl: 'https://github.com/chauphamcreditproduct/NTC_Consumer_Credit',
       slideUrl: 'https://docs.google.com/presentation/d/example-slides',
-      notebookUrl: 'https://colab.research.google.com/drive/example-notebook',
+      notebookUrl: 'https://nbviewer.org/github/chauphamcreditproduct/NTC_Consumer_Credit/blob/a2099b821a5dc64002686e0bf12b8d9f02d045b1/NTC_Consumer_Credit.ipynb',
       imageUrl: '/api/placeholder/400/250',
       icon: <BarChart3 className="w-6 h-6" />,
       highlights: [
-        'Borough-wise market analysis',
-        'Price trend forecasting',
-        'Investment opportunity mapping',
-        'Statistical modeling in R'
-      ],
-      date: '2024',
+      "High-precision underwriting model for customers with no credit history",
+      "Strategic threshold optimization (0.7) to prioritize precision over recall",
+      "Comprehensive EDA and feature engineering (e.g., FICO_Imputed)",
+      "Model comparison demonstrating Random Forest's superiority for precision-driven tasks"
+  ],
+      date: '01/2025',
       stars: 0
     },
     {
       id: '4',
       title: 'Walmart Sales Forecasting & Holiday Impact Analysis',
-      description: 'Water rides segmentation using advanced clustering techniques',
-      longDescription: 'Implementation of unsupervised learning algorithms to segment water rides and identify customer preferences, leading to targeted marketing strategies.',
-      category: 'Machine Learning',
-      technologies: ['Python', 'Scikit-learn', 'K-means', 'Hierarchical Clustering', 'PCA'],
-      githubUrl: 'https://github.com/ShreyaSolves/Segmentation-and-Clustering',
+      description: 'Time series analysis of Walmart holiday sales patterns using autoregressive modeling to quantify seasonal impacts and optimize retail strategy.',
+      longDescription: "Comprehensive retail analytics project examining Walmart's weekly sales data to quantify holiday effects and seasonal patterns. Using autoregressive (AR) modeling and statistical analysis, this research identifies significant sales spikes during key holidays like Black Friday and Christmas, providing data-driven insights for inventory planning, staffing optimization, and promotional strategies across 45 stores.",
+      category: 'Retail Analytics & Time Series Forecasting',
+      technologies: ["Python", "AR Modeling", "Pandas", "Statistical Analysis", "Seaborn"],
+      githubUrl: 'https://github.com/chauphamcreditproduct/Explore_Walmart_Sales_applying_Time_Series_Model',
       slideUrl: 'https://docs.google.com/presentation/d/example-slides',
-      notebookUrl: 'https://colab.research.google.com/drive/example-notebook',
+      notebookUrl: 'https://nbviewer.org/github/chauphamcreditproduct/Explore_Walmart_Sales_applying_Time_Series_Model/blob/main/Explore_Walmart_Sales_applying_Time_Series_Model.ipynb',
       imageUrl: '/api/placeholder/400/250',
       icon: <Users className="w-6 h-6" />,
       highlights: [
-        'K-means clustering implementation',
-        'Customer persona development',
-        'Feature engineering',
-        'Cluster validation metrics'
-      ],
-      date: '2024',
+      "Quantified holiday impact: 40%+ sales lift during Christmas, 33% for Black Friday",
+      "Autoregressive model with 4 lags capturing monthly seasonal patterns",
+      "Statistical significance testing for all major holiday periods (p<0.001)",
+      "Actionable retail insights for inventory optimization and promotional planning"
+  ],
+      date: '03/2025',
       stars: 1
     },
   ];
@@ -187,34 +187,44 @@ const ProjectsSection = () => {
               Slide Deck
             </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
-            {/* Slide Preview */}
-            <div className="aspect-video bg-muted rounded-lg flex items-center justify-center border-2 border-dashed border-border">
-              <div className="text-center space-y-2">
-                {project.icon}
-                <h3 className="font-semibold text-lg">{project.title}</h3>
-                <p className="text-sm text-muted-foreground">Presentation Slides</p>
+          <CardContent className="p-0">
+            {/* Embedded Slide Preview */}
+            {project.slideUrl ? (
+              <div>
+                <iframe
+                  src={project.slideUrl.replace('/edit', '/embed')}
+                  className="w-full h-[500px] border-0"
+                  allowFullScreen
+                />
+                {/* Action Buttons */}
+                <div className="flex gap-3 p-4 bg-gradient-to-r from-accent-light to-secondary border-t">
+                  <Button
+                    variant="outline"
+                    className="flex-1 border-accent/30 hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300 group"
+                    onClick={() => window.open(project.slideUrl, '_blank')}
+                  >
+                    <FileText className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
+                    Open Slides
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="flex-1 border-accent/30 hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300 group"
+                    onClick={() => window.open(project.slideUrl?.replace('/edit', '/export/pdf'), '_blank')}
+                  >
+                    <Download className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
+                    Download PDF
+                  </Button>
+                </div>
               </div>
-            </div>
-            
-            {/* Slide Actions */}
-            <div className="flex gap-2">
-              <Button
-                className="flex-1 bg-primary hover:bg-primary/90"
-                onClick={() => project.slideUrl && window.open(project.slideUrl, '_blank')}
-              >
-                <ExternalLink className="w-4 h-4 mr-2" />
-                Open Slides
-              </Button>
-              <Button
-                variant="outline"
-                className="flex-1"
-                onClick={() => project.slideUrl && window.open(project.slideUrl, '_blank')}
-              >
-                <Download className="w-4 h-4 mr-2" />
-                Download PDF
-              </Button>
-            </div>
+            ) : (
+              <div className="aspect-video bg-muted rounded-lg flex items-center justify-center border-2 border-dashed border-border m-4">
+                <div className="text-center space-y-2">
+                  {project.icon}
+                  <h3 className="font-semibold text-lg">{project.title}</h3>
+                  <p className="text-sm text-muted-foreground">Presentation Slides</p>
+                </div>
+              </div>
+            )}
           </CardContent>
         </Card>
 
@@ -226,49 +236,61 @@ const ProjectsSection = () => {
               Colab Notebook
             </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
-            {/* Notebook Preview */}
-            <div className="aspect-video bg-muted rounded-lg p-4 border">
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-6 h-6 bg-orange-500 rounded flex items-center justify-center">
-                  <span className="text-white text-xs font-bold">J</span>
+          <CardContent className="p-0">
+            {/* Embedded Notebook Preview */}
+            {project.notebookUrl ? (
+              <div>
+                <iframe
+                  src={project.notebookUrl.includes('nbviewer.org') 
+                    ? project.notebookUrl 
+                    : project.notebookUrl.replace('https://github.com/', 'https://nbviewer.org/github/')}
+                  className="w-full h-[500px] border-0"
+                  allowFullScreen
+                />
+                {/* Action Buttons */}
+                <div className="flex gap-3 p-4 bg-gradient-to-r from-accent-light to-secondary border-t">
+                  <Button
+                    variant="outline"
+                    className="flex-1 border-accent/30 hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300 group"
+                    onClick={() => window.open(project.githubUrl, '_blank')}
+                  >
+                    <Github className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
+                    View on GitHub
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="flex-1 border-accent/30 hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300 group"
+                    onClick={() => window.open(project.notebookUrl, '_blank')}
+                  >
+                    <Eye className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
+                    Static HTML
+                  </Button>
                 </div>
-                <span className="text-sm font-medium">jupyter nbviewer</span>
               </div>
-              <div className="space-y-2">
-                <h4 className="font-semibold">{project.title}</h4>
-                <div className="space-y-1">
-                  <div className="text-sm font-medium">Problem Definition</div>
-                  <div className="text-sm font-medium">The Context:</div>
-                  <div className="text-xs text-muted-foreground">
-                    {project.highlights[0]}
+            ) : (
+              <div className="aspect-video bg-muted rounded-lg p-4 border m-4">
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="w-6 h-6 bg-orange-500 rounded flex items-center justify-center">
+                    <span className="text-white text-xs font-bold">J</span>
                   </div>
-                  <div className="text-sm font-medium">The objective:</div>
-                  <div className="text-xs text-muted-foreground">
-                    {project.highlights[1]}
+                  <span className="text-sm font-medium">jupyter nbviewer</span>
+                </div>
+                <div className="space-y-2">
+                  <h4 className="font-semibold">{project.title}</h4>
+                  <div className="space-y-1">
+                    <div className="text-sm font-medium">Problem Definition</div>
+                    <div className="text-sm font-medium">The Context:</div>
+                    <div className="text-xs text-muted-foreground">
+                      {project.highlights[0]}
+                    </div>
+                    <div className="text-sm font-medium">The objective:</div>
+                    <div className="text-xs text-muted-foreground">
+                      {project.highlights[1]}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            
-            {/* Notebook Actions */}
-            <div className="flex gap-2">
-              <Button
-                className="flex-1 bg-primary hover:bg-primary/90"
-                onClick={() => project.githubUrl && window.open(project.githubUrl, '_blank')}
-              >
-                <Github className="w-4 h-4 mr-2" />
-                View on GitHub
-              </Button>
-              <Button
-                variant="outline"
-                className="flex-1"
-                onClick={() => project.notebookUrl && window.open(project.notebookUrl, '_blank')}
-              >
-                <Eye className="w-4 h-4 mr-2" />
-                Static HTML Notebook
-              </Button>
-            </div>
+            )}
           </CardContent>
         </Card>
       </div>
