@@ -57,8 +57,8 @@ const HeroSection = () => {
               Making data dance and stories shine ✨
             </p>
             <p className="text-base sm:text-lg text-muted-foreground leading-relaxed text-center">
-              Bachelor of Science Mathematics and Data Analytics at Dickinson College with Instrumentation Engineering background 
-              and experience at Worley & Schneider Electric. Proficient in Python, R, SQL, and Power BI, 
+              Bachelor of Science Mathematics and Data Analytics at Dickinson College with Credit Risk background 
+              and experience at Worley & Schneider Electric. Proficient in Python, R, SQL, Power BI, and Tableau
               transforming complex datasets into actionable business insights.
             </p>
           </div>

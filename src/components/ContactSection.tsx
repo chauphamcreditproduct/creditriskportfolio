@@ -99,7 +99,7 @@ const ContactSection = () => {
             <p className="text-base sm:text-lg text-muted-foreground leading-relaxed px-4">
               Currently pursuing Bachelor of Science Mathematics and Data Analytics at Dickinson College and 
               always excited to discuss new opportunities, collaborations, and innovative projects 
-              in data science and analytics.
+              in credit risk and data analytics.
             </p>
           </div>
 
