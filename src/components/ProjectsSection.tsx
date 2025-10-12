@@ -5,6 +5,14 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import klarnaLogo from '@/assets/logos/klarna-logo.png';
+import affirmLogo from '@/assets/logos/affirm-logo.png';
+import stripeLogo from '@/assets/logos/stripe-logo.svg';
+import rampLogo from '@/assets/logos/ramp-logo.png';
+import brexLogo from '@/assets/logos/brex-logo.png';
+import chimeLogo from '@/assets/logos/chime-logo.png';
+import amexLogo from '@/assets/logos/amex-logo.svg';
+import jpmorganLogo from '@/assets/logos/jpmorgan-logo.svg';
 
 interface Project {
   id: string;
@@ -22,6 +30,7 @@ interface Project {
   highlights: string[];
   date: string;
   stars: number;
+  companyLogos?: { name: string; src: string }[];
 }
 
 const ProjectsSection = () => {
@@ -72,7 +81,13 @@ const ProjectsSection = () => {
         "Production-ready framework inspired by Brex/Ramp for dynamic SMB underwriting"
       ],
       date: '03/2025',
-      stars: 0
+      stars: 0,
+      companyLogos: [
+        { name: 'American Express', src: amexLogo },
+        { name: 'JPMorgan', src: jpmorganLogo },
+        { name: 'Brex', src: brexLogo },
+        { name: 'Ramp', src: rampLogo }
+      ]
     },
     {
       id: '3',
@@ -93,7 +108,13 @@ const ProjectsSection = () => {
       "Model comparison demonstrating Random Forest's superiority for precision-driven tasks"
   ],
       date: '01/2025',
-      stars: 0
+      stars: 0,
+      companyLogos: [
+        { name: 'Klarna', src: klarnaLogo },
+        { name: 'Affirm', src: affirmLogo },
+        { name: 'Stripe', src: stripeLogo },
+        { name: 'Chime', src: chimeLogo }
+      ]
     },
     {
       id: '4',
@@ -412,6 +433,28 @@ const ProjectsSection = () => {
                   </CardHeader>
 
                   <CardContent className="space-y-4">
+                    {/* Company Logos */}
+                    {project.companyLogos && project.companyLogos.length > 0 && (
+                      <div className="pb-3 border-b border-border/30">
+                        <p className="text-xs text-muted-foreground mb-2 font-medium">Companies Inspired By:</p>
+                        <div className="flex flex-wrap gap-3 items-center">
+                          {project.companyLogos.map((company) => (
+                            <div 
+                              key={company.name} 
+                              className="h-6 flex items-center grayscale hover:grayscale-0 transition-all duration-300"
+                              title={company.name}
+                            >
+                              <img 
+                                src={company.src} 
+                                alt={`${company.name} logo`} 
+                                className="h-full w-auto object-contain"
+                              />
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
                     {/* Technologies */}
                     <div className="flex flex-wrap gap-1">
                       {project.technologies.slice(0, 3).map((tech) => (
