@@ -9,6 +9,8 @@ import sasLogo from '@/assets/logos/sas-logo.png';
 import powerbiLogo from '@/assets/logos/powerbi-logo.svg';
 import sapLogo from '@/assets/logos/sap-logo.svg';
 import vbaLogo from '@/assets/logos/vba-logo.png';
+import rLogo from '@/assets/logos/r-logo.svg';
+import javaLogo from '@/assets/logos/java-logo.svg';
 
 const AboutSection = () => {
   const professionalSkills = [
@@ -22,8 +24,8 @@ const AboutSection = () => {
 
   const technicalSkills = [
     { name: 'Python', icon: null, isLogo: true, src: pythonLogo },
-    { name: 'R', icon: Code2, isLogo: false, src: null },
-    { name: 'Java', icon: Code2, isLogo: false, src: null },
+    { name: 'R', icon: null, isLogo: true, src: rLogo },
+    { name: 'Java', icon: null, isLogo: true, src: javaLogo },
     { name: 'SAS', icon: null, isLogo: true, src: sasLogo },
     { name: 'SQL', icon: null, isLogo: true, src: sqlLogo },
     { name: 'Excel', icon: null, isLogo: true, src: excelLogo },
