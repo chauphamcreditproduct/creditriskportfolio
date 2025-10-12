@@ -88,6 +88,106 @@ const AboutSection = () => {
           </p>
         </div>
 
+        {/* Professional Skills */}
+        <div className="text-center space-y-6 mb-12">
+          <h3 className="text-3xl sm:text-4xl font-manrope font-bold">
+            Professional <span className="gradient-text">Skills</span>
+          </h3>
+          <p className="text-lg text-muted-foreground">
+            My domain expertise in financial risk management
+          </p>
+          
+          {/* Continuous Scrolling Skills */}
+          <div className="overflow-hidden relative py-4">
+            <div className="flex animate-scroll-continuous whitespace-nowrap w-max">
+              {/* First set */}
+              {professionalSkills.map((skill, index) => (
+                <div key={`prof-first-${index}`} className="flex items-center mx-3 flex-shrink-0">
+                  <div className="flex items-center space-x-2 px-4 py-2 rounded-full bg-muted/50 border border-border/20 text-sm font-medium min-w-fit">
+                    <skill.icon className="h-5 w-5 text-accent" />
+                    <span className="text-foreground whitespace-nowrap">
+                      {skill.name}
+                    </span>
+                  </div>
+                </div>
+              ))}
+              {/* Second set for seamless loop */}
+              {professionalSkills.map((skill, index) => (
+                <div key={`prof-second-${index}`} className="flex items-center mx-3 flex-shrink-0">
+                  <div className="flex items-center space-x-2 px-4 py-2 rounded-full bg-muted/50 border border-border/20 text-sm font-medium min-w-fit">
+                    <skill.icon className="h-5 w-5 text-accent" />
+                    <span className="text-foreground whitespace-nowrap">
+                      {skill.name}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Technical Expertise */}
+        <div className="text-center space-y-6 mb-16">
+          <h3 className="text-3xl sm:text-4xl font-manrope font-bold">
+            Technical <span className="gradient-text">Expertise</span>
+          </h3>
+          <p className="text-lg text-muted-foreground">
+            My technical toolkit for data analytics and machine learning
+          </p>
+          
+          {/* Continuous Scrolling Skills */}
+          <div className="overflow-hidden relative py-4">
+            <div className="flex animate-scroll-continuous whitespace-nowrap w-max">
+              {/* First set */}
+              {technicalSkills.map((skill, index) => (
+                <div key={`first-${index}`} className="flex items-center mx-3 flex-shrink-0">
+                  <div className="flex items-center space-x-2 px-4 py-2 rounded-full bg-muted/50 border border-border/20 text-sm font-medium min-w-fit">
+                    {skill.isLogo && skill.src ? (
+                      <img 
+                        src={skill.src} 
+                        alt={`${skill.name} logo`} 
+                        className="h-5 w-5 object-contain" 
+                        onError={(e) => {
+                          console.log(`Failed to load image for ${skill.name}`);
+                          e.currentTarget.style.display = 'none';
+                        }}
+                      />
+                    ) : skill.icon ? (
+                      <skill.icon className="h-5 w-5 text-foreground" />
+                    ) : null}
+                    <span className="text-foreground whitespace-nowrap">
+                      {skill.name}
+                    </span>
+                  </div>
+                </div>
+              ))}
+              {/* Second set for seamless loop */}
+              {technicalSkills.map((skill, index) => (
+                <div key={`second-${index}`} className="flex items-center mx-3 flex-shrink-0">
+                  <div className="flex items-center space-x-2 px-4 py-2 rounded-full bg-muted/50 border border-border/20 text-sm font-medium min-w-fit">
+                    {skill.isLogo && skill.src ? (
+                      <img 
+                        src={skill.src} 
+                        alt={`${skill.name} logo`} 
+                        className="h-5 w-5 object-contain" 
+                        onError={(e) => {
+                          console.log(`Failed to load image for ${skill.name} (second set)`);
+                          e.currentTarget.style.display = 'none';
+                        }}
+                      />
+                    ) : skill.icon ? (
+                      <skill.icon className="h-5 w-5 text-foreground" />
+                    ) : null}
+                    <span className="text-foreground whitespace-nowrap">
+                      {skill.name}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-16 items-start">
           {/* Left column - Personal story */}
           <div className="space-y-6 sm:space-y-8 animate-fade-in">
@@ -113,106 +213,6 @@ const AboutSection = () => {
                 </div>
               </CardContent>
             </Card>
-
-            {/* Professional Skills */}
-            <div className="text-center space-y-6">
-              <h3 className="text-3xl sm:text-4xl font-manrope font-bold">
-                Professional <span className="gradient-text">Skills</span>
-              </h3>
-              <p className="text-lg text-muted-foreground">
-                My domain expertise in financial risk management
-              </p>
-              
-              {/* Continuous Scrolling Skills */}
-              <div className="overflow-hidden relative py-4">
-                <div className="flex animate-scroll-continuous whitespace-nowrap w-max">
-                  {/* First set */}
-                  {professionalSkills.map((skill, index) => (
-                    <div key={`prof-first-${index}`} className="flex items-center mx-3 flex-shrink-0">
-                      <div className="flex items-center space-x-2 px-4 py-2 rounded-full bg-muted/50 border border-border/20 text-sm font-medium min-w-fit">
-                        <skill.icon className="h-5 w-5 text-accent" />
-                        <span className="text-foreground whitespace-nowrap">
-                          {skill.name}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-                  {/* Second set for seamless loop */}
-                  {professionalSkills.map((skill, index) => (
-                    <div key={`prof-second-${index}`} className="flex items-center mx-3 flex-shrink-0">
-                      <div className="flex items-center space-x-2 px-4 py-2 rounded-full bg-muted/50 border border-border/20 text-sm font-medium min-w-fit">
-                        <skill.icon className="h-5 w-5 text-accent" />
-                        <span className="text-foreground whitespace-nowrap">
-                          {skill.name}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Technical Expertise */}
-            <div className="text-center space-y-6">
-              <h3 className="text-3xl sm:text-4xl font-manrope font-bold">
-                Technical <span className="gradient-text">Expertise</span>
-              </h3>
-              <p className="text-lg text-muted-foreground">
-                My technical toolkit for data analytics and machine learning
-              </p>
-              
-              {/* Continuous Scrolling Skills */}
-              <div className="overflow-hidden relative py-4">
-                <div className="flex animate-scroll-continuous whitespace-nowrap w-max">
-                  {/* First set */}
-                  {technicalSkills.map((skill, index) => (
-                    <div key={`first-${index}`} className="flex items-center mx-3 flex-shrink-0">
-                      <div className="flex items-center space-x-2 px-4 py-2 rounded-full bg-muted/50 border border-border/20 text-sm font-medium min-w-fit">
-                        {skill.isLogo && skill.src ? (
-                          <img 
-                            src={skill.src} 
-                            alt={`${skill.name} logo`} 
-                            className="h-5 w-5 object-contain" 
-                            onError={(e) => {
-                              console.log(`Failed to load image for ${skill.name}`);
-                              e.currentTarget.style.display = 'none';
-                            }}
-                          />
-                        ) : skill.icon ? (
-                          <skill.icon className="h-5 w-5 text-foreground" />
-                        ) : null}
-                        <span className="text-foreground whitespace-nowrap">
-                          {skill.name}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-                  {/* Second set for seamless loop */}
-                  {technicalSkills.map((skill, index) => (
-                    <div key={`second-${index}`} className="flex items-center mx-3 flex-shrink-0">
-                      <div className="flex items-center space-x-2 px-4 py-2 rounded-full bg-muted/50 border border-border/20 text-sm font-medium min-w-fit">
-                        {skill.isLogo && skill.src ? (
-                          <img 
-                            src={skill.src} 
-                            alt={`${skill.name} logo`} 
-                            className="h-5 w-5 object-contain" 
-                            onError={(e) => {
-                              console.log(`Failed to load image for ${skill.name} (second set)`);
-                              e.currentTarget.style.display = 'none';
-                            }}
-                          />
-                        ) : skill.icon ? (
-                          <skill.icon className="h-5 w-5 text-foreground" />
-                        ) : null}
-                        <span className="text-foreground whitespace-nowrap">
-                          {skill.name}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Right column - Timeline */}
