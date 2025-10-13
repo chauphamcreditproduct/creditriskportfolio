@@ -433,24 +433,41 @@ const ProjectsSection = () => {
                   </CardHeader>
 
                   <CardContent className="space-y-4">
-                    {/* Company Logos */}
+                    {/* Company Logos with Scroll Animation */}
                     {project.companyLogos && project.companyLogos.length > 0 && (
-                      <div className="pb-3 border-b border-border/30">
+                      <div className="pb-3 border-b border-border/30 overflow-hidden">
                         <p className="text-xs text-muted-foreground mb-2 font-medium">Companies Inspired By:</p>
-                        <div className="flex flex-wrap gap-3 items-center">
-                          {project.companyLogos.map((company) => (
-                            <div 
-                              key={company.name} 
-                              className="h-6 flex items-center grayscale hover:grayscale-0 transition-all duration-300"
-                              title={company.name}
-                            >
-                              <img 
-                                src={company.src} 
-                                alt={`${company.name} logo`} 
-                                className="h-full w-auto object-contain"
-                              />
-                            </div>
-                          ))}
+                        <div className="relative">
+                          <div className="flex gap-6 items-center animate-scroll-logos">
+                            {/* First set of logos */}
+                            {project.companyLogos.map((company, idx) => (
+                              <div 
+                                key={`${company.name}-${idx}`}
+                                className="h-6 flex items-center flex-shrink-0 grayscale hover:grayscale-0 hover:pause-animation transition-all duration-300"
+                                title={company.name}
+                              >
+                                <img 
+                                  src={company.src} 
+                                  alt={`${company.name} logo`} 
+                                  className="h-full w-auto object-contain"
+                                />
+                              </div>
+                            ))}
+                            {/* Duplicate set for seamless loop */}
+                            {project.companyLogos.map((company, idx) => (
+                              <div 
+                                key={`${company.name}-dup-${idx}`}
+                                className="h-6 flex items-center flex-shrink-0 grayscale hover:grayscale-0 hover:pause-animation transition-all duration-300"
+                                title={company.name}
+                              >
+                                <img 
+                                  src={company.src} 
+                                  alt={`${company.name} logo`} 
+                                  className="h-full w-auto object-contain"
+                                />
+                              </div>
+                            ))}
+                          </div>
                         </div>
                       </div>
                     )}

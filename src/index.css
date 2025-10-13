@@ -209,6 +209,23 @@
   }
 }
 
+@keyframes scrollLogos {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 .animate-scroll-continuous {
   animation: scrollContinuous 20s linear infinite;
+}
+
+.animate-scroll-logos {
+  animation: scrollLogos 15s linear infinite;
+}
+
+.animate-scroll-logos:hover {
+  animation-play-state: paused;
 }
