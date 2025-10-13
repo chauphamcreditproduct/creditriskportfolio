@@ -356,10 +356,34 @@ const ProjectsSection = () => {
         {/* Header */}
         <div className="text-center space-y-6 mb-16 animate-fade-in">
           <div className="space-y-4">
-            <Badge variant="outline" className="px-4 py-2 text-sm border-accent/30 text-accent">
-              <Code2 className="w-4 h-4 mr-2" />
-              Portfolio Projects
-            </Badge>
+            {/* Badge with Scrolling Logos */}
+            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full border border-accent/30 bg-accent-light/50">
+              <Code2 className="w-5 h-5 text-accent flex-shrink-0" />
+              <span className="text-sm font-medium text-accent whitespace-nowrap">FinTech & Risk Analytics</span>
+              <div className="w-px h-6 bg-accent/30"></div>
+              <div className="overflow-hidden max-w-md">
+                <div className="flex gap-4 items-center animate-scroll-logos">
+                  {/* First set */}
+                  {[klarnaLogo, affirmLogo, stripeLogo, rampLogo, brexLogo, chimeLogo, amexLogo, jpmorganLogo].map((logo, idx) => (
+                    <img 
+                      key={idx}
+                      src={logo} 
+                      alt="Company logo" 
+                      className="h-4 w-auto object-contain flex-shrink-0 opacity-70"
+                    />
+                  ))}
+                  {/* Duplicate set for seamless loop */}
+                  {[klarnaLogo, affirmLogo, stripeLogo, rampLogo, brexLogo, chimeLogo, amexLogo, jpmorganLogo].map((logo, idx) => (
+                    <img 
+                      key={`dup-${idx}`}
+                      src={logo} 
+                      alt="Company logo" 
+                      className="h-4 w-auto object-contain flex-shrink-0 opacity-70"
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-manrope font-bold">
               <span className="block text-foreground">Data Stories</span>
               <span className="block gradient-text">That Drive Decisions</span>
@@ -433,41 +457,24 @@ const ProjectsSection = () => {
                   </CardHeader>
 
                   <CardContent className="space-y-4">
-                    {/* Company Logos with Scroll Animation */}
+                    {/* Company Logos */}
                     {project.companyLogos && project.companyLogos.length > 0 && (
-                      <div className="pb-3 border-b border-border/30 overflow-hidden">
+                      <div className="pb-3 border-b border-border/30">
                         <p className="text-xs text-muted-foreground mb-2 font-medium">Companies Inspired By:</p>
-                        <div className="relative">
-                          <div className="flex gap-6 items-center animate-scroll-logos">
-                            {/* First set of logos */}
-                            {project.companyLogos.map((company, idx) => (
-                              <div 
-                                key={`${company.name}-${idx}`}
-                                className="h-6 flex items-center flex-shrink-0 grayscale hover:grayscale-0 hover:pause-animation transition-all duration-300"
-                                title={company.name}
-                              >
-                                <img 
-                                  src={company.src} 
-                                  alt={`${company.name} logo`} 
-                                  className="h-full w-auto object-contain"
-                                />
-                              </div>
-                            ))}
-                            {/* Duplicate set for seamless loop */}
-                            {project.companyLogos.map((company, idx) => (
-                              <div 
-                                key={`${company.name}-dup-${idx}`}
-                                className="h-6 flex items-center flex-shrink-0 grayscale hover:grayscale-0 hover:pause-animation transition-all duration-300"
-                                title={company.name}
-                              >
-                                <img 
-                                  src={company.src} 
-                                  alt={`${company.name} logo`} 
-                                  className="h-full w-auto object-contain"
-                                />
-                              </div>
-                            ))}
-                          </div>
+                        <div className="flex flex-wrap gap-3 items-center">
+                          {project.companyLogos.map((company) => (
+                            <div 
+                              key={company.name} 
+                              className="h-6 flex items-center grayscale hover:grayscale-0 transition-all duration-300"
+                              title={company.name}
+                            >
+                              <img 
+                                src={company.src} 
+                                alt={`${company.name} logo`} 
+                                className="h-full w-auto object-contain"
+                              />
+                            </div>
+                          ))}
                         </div>
                       </div>
                     )}
