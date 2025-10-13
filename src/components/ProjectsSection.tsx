@@ -411,15 +411,53 @@ const ProjectsSection = () => {
                   onClick={() => setSelectedProject(project)}
                 >
                   {/* Project Image */}
-                  <div className="aspect-video bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center relative overflow-hidden">
+                  <div className="aspect-video bg-gradient-to-br from-primary/10 to-accent/10 flex flex-col items-center justify-center relative overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20"></div>
-                    <div className="relative z-10 text-center space-y-2">
-                      <div className="p-3 rounded-full bg-background/80 backdrop-blur-sm inline-flex">
-                        {project.icon}
+                    <div className="relative z-10 text-center space-y-3 w-full px-4">
+                      <div className="flex items-center justify-center gap-3">
+                        <div className="p-3 rounded-full bg-background/80 backdrop-blur-sm inline-flex">
+                          {project.icon}
+                        </div>
+                        <Badge variant="secondary" className="bg-background/80 backdrop-blur-sm">
+                          {project.category}
+                        </Badge>
                       </div>
-                      <Badge variant="secondary" className="bg-background/80 backdrop-blur-sm">
-                        {project.category}
-                      </Badge>
+                      
+                      {/* Scrolling Company Logos */}
+                      {project.companyLogos && project.companyLogos.length > 0 && (
+                        <div className="w-full overflow-hidden py-2">
+                          <div className="flex gap-6 items-center animate-scroll-logos">
+                            {/* First set */}
+                            {project.companyLogos.map((company, idx) => (
+                              <div 
+                                key={idx} 
+                                className="h-5 flex items-center flex-shrink-0 opacity-80 hover:opacity-100 transition-opacity duration-300"
+                                title={company.name}
+                              >
+                                <img 
+                                  src={company.src} 
+                                  alt={`${company.name} logo`} 
+                                  className="h-full w-auto object-contain filter brightness-0 invert"
+                                />
+                              </div>
+                            ))}
+                            {/* Duplicate set for seamless loop */}
+                            {project.companyLogos.map((company, idx) => (
+                              <div 
+                                key={`dup-${idx}`} 
+                                className="h-5 flex items-center flex-shrink-0 opacity-80 hover:opacity-100 transition-opacity duration-300"
+                                title={company.name}
+                              >
+                                <img 
+                                  src={company.src} 
+                                  alt={`${company.name} logo`} 
+                                  className="h-full w-auto object-contain filter brightness-0 invert"
+                                />
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
 
@@ -433,44 +471,6 @@ const ProjectsSection = () => {
                   </CardHeader>
 
                   <CardContent className="space-y-4">
-                    {/* Company Logos */}
-                    {project.companyLogos && project.companyLogos.length > 0 && (
-                      <div className="pb-3 border-b border-border/30 bg-accent-light/30 rounded-lg p-3">
-                        <p className="text-xs text-muted-foreground mb-2 font-medium">Companies Inspired By:</p>
-                        <div className="overflow-hidden">
-                          <div className="flex gap-4 items-center animate-scroll-logos hover:[animation-play-state:paused]">
-                            {/* First set */}
-                            {project.companyLogos.map((company, idx) => (
-                              <div 
-                                key={idx} 
-                                className="h-6 flex items-center flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300"
-                                title={company.name}
-                              >
-                                <img 
-                                  src={company.src} 
-                                  alt={`${company.name} logo`} 
-                                  className="h-full w-auto object-contain"
-                                />
-                              </div>
-                            ))}
-                            {/* Duplicate set for seamless loop */}
-                            {project.companyLogos.map((company, idx) => (
-                              <div 
-                                key={`dup-${idx}`} 
-                                className="h-6 flex items-center flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300"
-                                title={company.name}
-                              >
-                                <img 
-                                  src={company.src} 
-                                  alt={`${company.name} logo`} 
-                                  className="h-full w-auto object-contain"
-                                />
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    )}
 
                     {/* Technologies */}
                     <div className="flex flex-wrap gap-1">
