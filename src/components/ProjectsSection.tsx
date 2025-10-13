@@ -425,19 +425,19 @@ const ProjectsSection = () => {
                       
                       {/* Scrolling Company Logos */}
                       {project.companyLogos && project.companyLogos.length > 0 && (
-                        <div className="w-full overflow-hidden py-2">
-                          <div className="flex gap-6 items-center animate-scroll-logos">
+                        <div className="w-full overflow-hidden py-3 px-4 bg-white/95 backdrop-blur-sm rounded-lg shadow-sm">
+                          <div className="flex gap-8 items-center animate-scroll-logos">
                             {/* First set */}
                             {project.companyLogos.map((company, idx) => (
                               <div 
                                 key={idx} 
-                                className="h-5 flex items-center flex-shrink-0 opacity-80 hover:opacity-100 transition-opacity duration-300"
+                                className="h-8 flex items-center flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300"
                                 title={company.name}
                               >
                                 <img 
                                   src={company.src} 
                                   alt={`${company.name} logo`} 
-                                  className="h-full w-auto object-contain filter brightness-0 invert"
+                                  className="h-full w-auto object-contain"
                                 />
                               </div>
                             ))}
@@ -445,13 +445,13 @@ const ProjectsSection = () => {
                             {project.companyLogos.map((company, idx) => (
                               <div 
                                 key={`dup-${idx}`} 
-                                className="h-5 flex items-center flex-shrink-0 opacity-80 hover:opacity-100 transition-opacity duration-300"
+                                className="h-8 flex items-center flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300"
                                 title={company.name}
                               >
                                 <img 
                                   src={company.src} 
                                   alt={`${company.name} logo`} 
-                                  className="h-full w-auto object-contain filter brightness-0 invert"
+                                  className="h-full w-auto object-contain"
                                 />
                               </div>
                             ))}
