@@ -13,6 +13,12 @@ import brexLogo from '@/assets/logos/brex-logo.png';
 import chimeLogo from '@/assets/logos/chime-logo.png';
 import amexLogo from '@/assets/logos/amex-logo.svg';
 import jpmorganLogo from '@/assets/logos/jpmorgan-logo.svg';
+import citiLogo from '@/assets/logos/citi-logo.svg';
+import bofaLogo from '@/assets/logos/bofa-logo.svg';
+import wellsfargoLogo from '@/assets/logos/wellsfargo-logo.svg';
+import walmartLogo from '@/assets/logos/walmart-logo.svg';
+import targetLogo from '@/assets/logos/target-logo.svg';
+import costcoLogo from '@/assets/logos/costco-logo.svg';
 
 interface Project {
   id: string;
@@ -46,7 +52,7 @@ const ProjectsSection = () => {
       title: 'Corporate Credit & Liquidity Assessment – Olin Corporation',
       description: 'Machine learning model to predict loan defaults for financial institutions',
       longDescription: 'This project leverages machine learning to predict loan defaults, helping financial institutions minimize risk and improve credit allocation. By analyzing historical applicant and loan data, the model classifies borrowers as likely defaulters or non-defaulters while identifying key factors associated with default risk. The study also compares model performance to determine which approach best balances accuracy and recall, with a focus on reliably detecting true defaulters.',
-      category: 'Machine Learning',
+      category: 'Corporate Finance & Risk Analytics',
       technologies: ['Python', 'Scikit-learn', 'Pandas', 'Matplotlib', 'Seaborn'],
       githubUrl: 'https://github.com/ShreyaSolves/loan-default-prediction',
       slideUrl: 'https://docs.google.com/presentation/d/17yg0-Xe2phUerTs52copVvn8EUKRxgQ2GTYkD29UKE0/edit?usp=sharing',
@@ -60,7 +66,13 @@ const ProjectsSection = () => {
         'Financial impact analysis'
       ],
       date: '05/2025',
-      stars: 0
+      stars: 0,
+      companyLogos: [
+        { name: 'JPMorgan', src: jpmorganLogo },
+        { name: 'Bank of America', src: bofaLogo },
+        { name: 'Citibank', src: citiLogo },
+        { name: 'Wells Fargo', src: wellsfargoLogo }
+      ]
     },
     {
       id: '2',
@@ -83,8 +95,11 @@ const ProjectsSection = () => {
       date: '03/2025',
       stars: 0,
       companyLogos: [
-        { name: 'American Express', src: amexLogo },
         { name: 'JPMorgan', src: jpmorganLogo },
+        { name: 'Citibank', src: citiLogo },
+        { name: 'Bank of America', src: bofaLogo },
+        { name: 'Wells Fargo', src: wellsfargoLogo },
+        { name: 'American Express', src: amexLogo },
         { name: 'Brex', src: brexLogo },
         { name: 'Ramp', src: rampLogo }
       ]
@@ -113,7 +128,9 @@ const ProjectsSection = () => {
         { name: 'Klarna', src: klarnaLogo },
         { name: 'Affirm', src: affirmLogo },
         { name: 'Stripe', src: stripeLogo },
-        { name: 'Chime', src: chimeLogo }
+        { name: 'Chime', src: chimeLogo },
+        { name: 'Ramp', src: rampLogo },
+        { name: 'Brex', src: brexLogo }
       ]
     },
     {
@@ -135,7 +152,12 @@ const ProjectsSection = () => {
       "Actionable retail insights for inventory optimization and promotional planning"
   ],
       date: '03/2025',
-      stars: 1
+      stars: 1,
+      companyLogos: [
+        { name: 'Walmart', src: walmartLogo },
+        { name: 'Target', src: targetLogo },
+        { name: 'Costco', src: costcoLogo }
+      ]
     },
   ];
 
@@ -413,25 +435,30 @@ const ProjectsSection = () => {
                   {/* Project Image */}
                   <div className="aspect-video bg-gradient-to-br from-primary/10 to-accent/10 flex flex-col items-center justify-center relative overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20"></div>
-                    <div className="relative z-10 text-center space-y-3 w-full px-4">
-                      <div className="flex items-center justify-center gap-3">
-                        <div className="p-3 rounded-full bg-background/80 backdrop-blur-sm inline-flex">
-                          {project.icon}
-                        </div>
-                        <Badge variant="secondary" className="bg-background/80 backdrop-blur-sm">
+                    <div className="relative z-10 text-center space-y-4 w-full px-4 py-4">
+                      {/* Category Badge at Top */}
+                      <div className="flex justify-center">
+                        <Badge variant="secondary" className="bg-background/90 backdrop-blur-sm text-sm px-4 py-1.5 font-semibold">
                           {project.category}
                         </Badge>
                       </div>
                       
+                      {/* Icon */}
+                      <div className="flex justify-center">
+                        <div className="p-3 rounded-full bg-background/80 backdrop-blur-sm inline-flex">
+                          {project.icon}
+                        </div>
+                      </div>
+                      
                       {/* Scrolling Company Logos */}
                       {project.companyLogos && project.companyLogos.length > 0 && (
-                        <div className="w-full overflow-hidden py-3 px-4 bg-white/95 backdrop-blur-sm rounded-lg shadow-sm">
-                          <div className="flex gap-8 items-center animate-scroll-logos">
+                        <div className="w-full overflow-hidden py-4 px-4 bg-white/95 backdrop-blur-sm rounded-lg shadow-sm">
+                          <div className="flex gap-10 items-center animate-scroll-logos">
                             {/* First set */}
                             {project.companyLogos.map((company, idx) => (
                               <div 
                                 key={idx} 
-                                className="h-8 flex items-center flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300"
+                                className="h-12 flex items-center flex-shrink-0 transition-all duration-300 hover:scale-110"
                                 title={company.name}
                               >
                                 <img 
@@ -445,7 +472,7 @@ const ProjectsSection = () => {
                             {project.companyLogos.map((company, idx) => (
                               <div 
                                 key={`dup-${idx}`} 
-                                className="h-8 flex items-center flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300"
+                                className="h-12 flex items-center flex-shrink-0 transition-all duration-300 hover:scale-110"
                                 title={company.name}
                               >
                                 <img 

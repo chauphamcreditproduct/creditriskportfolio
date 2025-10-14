@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 80">
+  <defs>
+    <style>.cls-1{fill:#005daa;}.cls-2{fill:#e31837;}</style>
+  </defs>
+  <rect class="cls-1" x="0" y="0" width="300" height="80" rx="4"/>
+  <path class="cls-2" d="M20,25h15c8,0,12,3,12,10s-4,10-12,10h-8v15h-7zm7,15h7c3,0,5-1,5-5s-2-5-5-5h-7z"/>
+  <text class="cls-2" x="55" y="55" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#ffffff">COSTCO</text>
+</svg>
