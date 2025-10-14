@@ -112,7 +112,7 @@ const ProjectsSection = () => {
       category: 'Risk Analytics & Machine Learning',
       technologies: ["Python", "Random Forest", "XGBoost"],
       githubUrl: 'https://github.com/chauphamcreditproduct/NTC_Consumer_Credit',
-      slideUrl: 'https://docs.google.com/presentation/d/1WP4TzNuZo9e-T7iFaD_uvheiKdRLKqkuFbag2q7w-_s/edit?slide=id.g251d7e345cc_0_0#slide=id.g251d7e345cc_0_0',
+      slideUrl: 'https://docs.google.com/presentation/d/1WP4TzNuZo9e-T7iFaD_uvheiKdRLKqkuFbag2q7w-_s/edit?slide=id.g251939f03a9_0_0#slide=id.g251939f03a9_0_0',
       notebookUrl: 'https://colab.research.google.com/github/chauphamcreditproduct/NTC_Consumer_Credit/blob/main/NTC_Consumer_Credit.ipynb',
       imageUrl: '/api/placeholder/400/250',
       icon: <BarChart3 className="w-6 h-6" />,
