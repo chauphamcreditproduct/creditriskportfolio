@@ -7,8 +7,10 @@ const HeroSection = () => {
   const [currentRole, setCurrentRole] = useState(0);
   
   const roles = [
-    "Credit Risk Analyst Student",
+    "Credit Risk Modeler",
     "Data Storyteller",
+    "Quantitative Problem-Solver",
+    "Python & SQL Enthusiast",
     "Community Builder",
   ];
 
@@ -54,12 +56,13 @@ const HeroSection = () => {
           {/* Tagline */}
           <div className="max-w-3xl mx-auto space-y-4 px-4">
             <p className="text-lg sm:text-xl md:text-2xl font-medium text-foreground text-center">
-              Making data dance and stories shine ✨
+              Transforming Complex Data into Strategic Credit Insights✨
             </p>
             <p className="text-base sm:text-lg text-muted-foreground leading-relaxed text-center">
-              Bachelor of Science Mathematics and Data Analytics at Dickinson College with Credit Risk background 
-              and experience at Worley & Schneider Electric. Proficient in Python, R, SQL, Power BI, and Tableau
-              transforming complex datasets into actionable business insights.
+              Bachelor of Science in Mathematics & Data Analytics at Dickinson College with specialized expertise in 
+              credit risk management, backed by hands-on experience at Asia Commercial Bank (ACB) and FPT Information Systems. 
+              Proficient in Python, SAS, SQL, Power BI, and Tableau for developing predictive models and translating intricate 
+              datasets into actionable business insights.
             </p>
           </div>
 

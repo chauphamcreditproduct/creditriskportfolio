@@ -42,7 +42,7 @@ const ContactSection = () => {
             <span className="block gradient-text">Collaborate?</span>
           </h2>
           <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4">
-            Whether you want to discuss data analytics, explore collaboration opportunities, 
+            Whether you want to discuss credit risk, data analytics, explore collaboration opportunities, 
             or just chat about the latest in machine learning - I'd love to hear from you!
           </p>
         </div>

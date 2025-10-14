@@ -44,35 +44,35 @@ const AboutSection = () => {
       period: '2023 - 2027',
       title: 'Bachelor of Science Mathematics and Data Analytics',
       organization: 'Dickinson College',
-      description: 'Diving deep into the intersection of business strategy and data science, with a focus on deriving actionable insights from complex datasets.',
+      description: 'Specializing in financial forecasting, risk mitigation, and quantitative modeling—bridging advanced analytics with practical business applications to drive data-informed decisions.',
       type: 'education'
     },
     {
       period: '06/2024 - 08/2024',
       title: 'Credit Risk Analyst Intern',
       organization: 'Asia Commercial Joint Stock Bank (ACB)',
-      description: 'Worked on complex engineering projects, developing my analytical thinking and problem-solving skills that now fuel my data science journey.',
+      description: 'Applied advanced analytical modeling to assess credit portfolio risk and inform strategic lending decisions.',
       type: 'work'
     },
     {
       period: '01/2024 - 04/2024',
       title: 'SAP Business Analyst',
       organization: 'FPT Information Systems',
-      description: 'Gained hands-on experience in project management and technical analysis in the energy sector.',
+      description: 'Developed integrated SAP analytics solutions that streamlined financial operations and enhanced data-driven decision-making.',
       type: 'work'
     },
     {
       period: '06/2025 - 08/2025',
       title: 'Research Collaborator',
       organization: 'Dickinson College',
-      description: 'Built a strong foundation in engineering principles, mathematical modeling, and systems thinking.',
+      description: 'Designed and implemented custom web crawling techniques to collect and structure a dataset of ~1 million social media posts, enabling quantitative analysis of cultural discourse on Chinese astrology platforms.',
       type: 'work'
     },
     {
       period: '09/2025 - Present',
       title: 'Research Assistant',
       organization: 'Dickinson College',
-      description: 'Built a strong foundation in engineering principles, mathematical modeling, and systems thinking.',
+      description: 'Continuing the "Mapping Contemporary Chinese Astrology" project by advancing from data collection to computational analysis. Applying NLP, sentiment analysis, and statistical modeling to a dataset of ~1 million social media posts to identify thematic patterns and cultural trends in Chinese astrology discourse.',
       type: 'work'
     },
   ];
@@ -85,8 +85,8 @@ const AboutSection = () => {
             About <span className="gradient-text">Me</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            An engineer-turned-analyst on a mission to make data accessible, actionable, and a little less intimidating. 
-            Currently navigating grad school, building communities, and discovering that Python and I are actually pretty good friends.
+            A credit risk specialist with engineering precision—making complex data accessible, interpretable, and instrumental in shaping business strategy. 
+            Currently expanding expertise in machine learning applications for financial forecasting while building inclusive data communities.
           </p>
         </div>
 
@@ -201,16 +201,16 @@ const AboutSection = () => {
                 </div>
                 <div className="space-y-3 sm:space-y-4 text-muted-foreground leading-relaxed text-sm sm:text-base">
                   <p>
-                    I started out in Instrumentation Engineering, geeking out over precision and figuring out how to make complex systems run without falling apart. At some point between debugging circuits and getting lost in data patterns, I realized I was way more excited about the stories numbers could tell than the machines themselves.
+                    I started out in Mathematics, geeking out over precision and figuring out how complex formulas could explain the world. At some point between solving equations and analyzing data patterns, I realized I was way more excited about the stories numbers could tell about people's financial lives than the abstract theories themselves.
                   </p>
                   <p>
-                    Now I'm at Boston University diving into Business Analytics, basically taking messy data and shaping it into something that actually makes sense (and sometimes even decisions). Feels like engineering with a storytelling upgrade.
+                    My passion found its purpose during my first internship at a bank in Vietnam, where I saw firsthand how lending strategies are built. I was drawn to the high-stakes puzzle of credit risk—the challenge of using data to balance opportunity for the borrower with responsibility for the lender. This led me to dive into risk management and data science, using tools like Python and machine learning to tackle this real-world problem.
                   </p>
                   <p>
-                    When I'm not buried in Python code or convincing Tableau to cooperate, I'm usually organizing events, bringing people together, or trying to keep my plants alive like they're my sidekicks.
+                    Now, I'm building credit risk models, from New-to-Credit scorecards for non-traditional customers to dynamic limit systems for small businesses. It feels like applied mathematics with a human impact upgrade. My projects are grounded in the realities of underwriting—asking the ultimate question, "Will this person default?" and using everything from traditional bureau data to alternative cash flow signals to find a responsible answer.
                   </p>
                   <p>
-                    I honestly believe curiosity makes the best insights, teamwork makes the best solutions, and the best projects always come with a chaotic playlist and coffee that tastes questionable but still does the job.
+                    I honestly believe curiosity makes the best insights and teamwork makes the best solutions. This mindset extends from my work into my personal passions, where I find a similar blend of precision and creativity. I apply the same focus needed to tune a machine learning model to baking—treating ingredients as my variables and the perfect cake as the optimal output. Balancing this with the mental escape of films and the physical challenge of the gym keeps me energized and consistently brings a fresh perspective back to my analytical work.
                   </p>
                 </div>
               </CardContent>
