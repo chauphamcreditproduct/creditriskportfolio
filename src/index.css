@@ -8,56 +8,56 @@
 
 @layer base {
   :root {
-    /* Core Palette - Fresh Mint Theme */
-    --background: 150 40% 92%;
-    --foreground: 160 50% 20%;
+    /* Core Palette - Chime-Inspired Theme */
+    --background: 0 0% 98%;
+    --foreground: 165 100% 12%;
 
-    --card: 150 35% 97%;
-    --card-foreground: 160 50% 20%;
+    --card: 0 0% 100%;
+    --card-foreground: 165 100% 12%;
 
-    --popover: 150 35% 97%;
-    --popover-foreground: 160 50% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 165 100% 12%;
 
-    /* Primary Brand - Deep Teal */
-    --primary: 160 50% 30%;
-    --primary-foreground: 150 35% 97%;
-    --primary-hover: 160 50% 25%;
+    /* Primary Brand - Dark Forest Green */
+    --primary: 165 100% 15%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 165 100% 12%;
 
-    /* Secondary - Soft Mint */
-    --secondary: 150 30% 90%;
-    --secondary-foreground: 160 50% 30%;
+    /* Secondary - Light Mint Background */
+    --secondary: 155 40% 92%;
+    --secondary-foreground: 165 100% 15%;
 
     /* Muted Tones */
-    --muted: 150 25% 88%;
-    --muted-foreground: 155 20% 45%;
+    --muted: 155 25% 94%;
+    --muted-foreground: 165 30% 40%;
 
-    /* Accent - Vibrant Mint */
-    --accent: 155 50% 55%;
-    --accent-foreground: 160 50% 20%;
-    --accent-light: 150 45% 88%;
+    /* Accent - Bright Neon Mint (điểm nhấn chính) */
+    --accent: 155 100% 45%;
+    --accent-foreground: 165 100% 12%;
+    --accent-light: 155 100% 92%;
 
     /* Status Colors */
     --destructive: 0 70% 55%;
     --destructive-foreground: 0 0% 98%;
 
-    --success: 142 70% 45%;
+    --success: 142 100% 40%;
     --success-foreground: 0 0% 98%;
 
     /* UI Elements */
-    --border: 155 20% 82%;
-    --input: 150 25% 90%;
-    --ring: 160 50% 30%;
+    --border: 155 20% 85%;
+    --input: 155 15% 92%;
+    --ring: 155 100% 45%;
 
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(160, 50%, 30%), hsl(155, 50%, 40%));
-    --gradient-accent: linear-gradient(135deg, hsl(155, 50%, 55%), hsl(150, 45%, 65%));
-    --gradient-subtle: linear-gradient(180deg, hsl(150, 40%, 92%), hsl(150, 35%, 88%));
+    --gradient-primary: linear-gradient(135deg, hsl(165, 100%, 15%), hsl(160, 100%, 20%));
+    --gradient-accent: linear-gradient(135deg, hsl(155, 100%, 45%), hsl(150, 100%, 50%));
+    --gradient-subtle: linear-gradient(180deg, hsl(0, 0%, 98%), hsl(155, 30%, 96%));
 
     /* Shadows */
-    --shadow-sm: 0 1px 3px 0 hsl(160 50% 20% / 0.1);
-    --shadow-md: 0 4px 6px -1px hsl(160 50% 20% / 0.1);
-    --shadow-lg: 0 10px 15px -3px hsl(160 50% 20% / 0.1);
-    --shadow-glow: 0 0 20px hsl(155 50% 55% / 0.3);
+    --shadow-sm: 0 1px 3px 0 hsl(165 100% 12% / 0.08);
+    --shadow-md: 0 4px 6px -1px hsl(165 100% 12% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(165 100% 12% / 0.12);
+    --shadow-glow: 0 0 30px hsl(155 100% 45% / 0.4);
 
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -67,44 +67,44 @@
   }
 
   .dark {
-    /* Dark Mode Palette - Mint Theme */
-    --background: 160 30% 10%;
-    --foreground: 150 20% 90%;
+    /* Dark Mode Palette - Chime-Inspired */
+    --background: 165 50% 8%;
+    --foreground: 155 100% 90%;
 
-    --card: 160 30% 12%;
-    --card-foreground: 150 20% 90%;
+    --card: 165 50% 10%;
+    --card-foreground: 155 100% 90%;
 
-    --popover: 160 30% 12%;
-    --popover-foreground: 150 20% 90%;
+    --popover: 165 50% 10%;
+    --popover-foreground: 155 100% 90%;
 
-    --primary: 155 50% 55%;
-    --primary-foreground: 160 30% 10%;
-    --primary-hover: 155 50% 50%;
+    --primary: 155 100% 45%;
+    --primary-foreground: 165 100% 8%;
+    --primary-hover: 155 100% 40%;
 
-    --secondary: 160 20% 18%;
-    --secondary-foreground: 150 20% 90%;
+    --secondary: 165 40% 16%;
+    --secondary-foreground: 155 100% 90%;
 
-    --muted: 160 20% 16%;
-    --muted-foreground: 150 15% 60%;
+    --muted: 165 30% 18%;
+    --muted-foreground: 155 40% 70%;
 
-    --accent: 155 50% 55%;
-    --accent-foreground: 160 30% 10%;
-    --accent-light: 155 45% 22%;
+    --accent: 155 100% 45%;
+    --accent-foreground: 165 100% 8%;
+    --accent-light: 165 60% 20%;
 
-    --success: 142 70% 50%;
-    --success-foreground: 160 30% 10%;
+    --success: 142 100% 45%;
+    --success-foreground: 165 50% 8%;
 
     --destructive: 0 70% 60%;
     --destructive-foreground: 0 0% 95%;
 
-    --border: 160 20% 25%;
-    --input: 160 20% 18%;
-    --ring: 155 50% 55%;
+    --border: 165 30% 22%;
+    --input: 165 30% 18%;
+    --ring: 155 100% 45%;
 
     /* Dark Mode Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(160, 30%, 12%), hsl(155, 30%, 18%));
-    --gradient-accent: linear-gradient(135deg, hsl(155, 50%, 55%), hsl(150, 45%, 60%));
-    --gradient-subtle: linear-gradient(180deg, hsl(160, 30%, 10%), hsl(160, 25%, 14%));
+    --gradient-primary: linear-gradient(135deg, hsl(165, 50%, 8%), hsl(165, 50%, 14%));
+    --gradient-accent: linear-gradient(135deg, hsl(155, 100%, 45%), hsl(150, 100%, 50%));
+    --gradient-subtle: linear-gradient(180deg, hsl(165, 50%, 8%), hsl(165, 40%, 12%));
   }
 }
 
@@ -155,7 +155,7 @@
   }
 
   .gradient-text {
-    @apply bg-gradient-to-r from-accent to-red-400 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent;
   }
 
   .section-padding {
