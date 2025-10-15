@@ -19,6 +19,8 @@ import wellsfargoLogo from '@/assets/logos/wellsfargo-logo.svg';
 import walmartLogo from '@/assets/logos/walmart-logo.svg';
 import targetLogo from '@/assets/logos/target-logo.svg';
 import costcoLogo from '@/assets/logos/costco-logo.svg';
+import olinLogo from '@/assets/logos/olin-logo.svg';
+import oilGasImage from '@/assets/images/oil-gas.jpg';
 
 interface Project {
   id: string;
@@ -68,10 +70,8 @@ const ProjectsSection = () => {
       date: '05/2025',
       stars: 0,
       companyLogos: [
-        { name: 'JPMorgan', src: jpmorganLogo },
-        { name: 'Bank of America', src: bofaLogo },
-        { name: 'Citibank', src: citiLogo },
-        { name: 'Wells Fargo', src: wellsfargoLogo }
+        { name: 'Olin Corporation', src: olinLogo },
+        { name: 'Oil & Gas Industry', src: oilGasImage }
       ]
     },
     {
@@ -99,9 +99,7 @@ const ProjectsSection = () => {
         { name: 'Citibank', src: citiLogo },
         { name: 'Bank of America', src: bofaLogo },
         { name: 'Wells Fargo', src: wellsfargoLogo },
-        { name: 'American Express', src: amexLogo },
-        { name: 'Brex', src: brexLogo },
-        { name: 'Ramp', src: rampLogo }
+        { name: 'American Express', src: amexLogo }
       ]
     },
     {
@@ -154,9 +152,7 @@ const ProjectsSection = () => {
       date: '03/2025',
       stars: 1,
       companyLogos: [
-        { name: 'Walmart', src: walmartLogo },
-        { name: 'Target', src: targetLogo },
-        { name: 'Costco', src: costcoLogo }
+        { name: 'Walmart', src: walmartLogo }
       ]
     },
   ];
@@ -435,36 +431,23 @@ const ProjectsSection = () => {
                   {/* Project Image */}
                   <div className="aspect-video bg-gradient-to-br from-primary/10 to-accent/10 flex flex-col items-center justify-center relative overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20"></div>
-                    <div className="relative z-10 text-center space-y-4 w-full px-4 py-4">
-                      {/* Category Badge at Top */}
-                      <div className="flex justify-center">
-                        <Badge variant="secondary" className="bg-background/90 backdrop-blur-sm text-sm px-4 py-1.5 font-semibold">
-                          {project.category}
-                        </Badge>
-                      </div>
-                      
-                      {/* Icon */}
-                      <div className="flex justify-center">
-                        <div className="p-3 rounded-full bg-background/80 backdrop-blur-sm inline-flex">
-                          {project.icon}
-                        </div>
-                      </div>
+                    <div className="relative z-10 w-full h-full flex items-center justify-center px-4 py-4">
                       
                       {/* Scrolling Company Logos */}
                       {project.companyLogos && project.companyLogos.length > 0 && (
-                        <div className="w-full overflow-hidden py-4 px-4 bg-white/95 backdrop-blur-sm rounded-lg shadow-sm">
-                          <div className="flex gap-10 items-center animate-scroll-logos">
+                        <div className="w-full h-full flex items-center justify-center px-8 py-8 bg-white/95 backdrop-blur-sm rounded-lg shadow-sm overflow-hidden">
+                          <div className="flex gap-16 items-center justify-center animate-scroll-logos w-full">
                             {/* First set */}
                             {project.companyLogos.map((company, idx) => (
                               <div 
                                 key={idx} 
-                                className="h-12 flex items-center flex-shrink-0 transition-all duration-300 hover:scale-110"
+                                className="h-24 flex items-center justify-center flex-shrink-0 transition-all duration-300 hover:scale-110"
                                 title={company.name}
                               >
                                 <img 
                                   src={company.src} 
                                   alt={`${company.name} logo`} 
-                                  className="h-full w-auto object-contain"
+                                  className="h-full w-auto object-contain max-w-[200px]"
                                 />
                               </div>
                             ))}
@@ -472,13 +455,13 @@ const ProjectsSection = () => {
                             {project.companyLogos.map((company, idx) => (
                               <div 
                                 key={`dup-${idx}`} 
-                                className="h-12 flex items-center flex-shrink-0 transition-all duration-300 hover:scale-110"
+                                className="h-24 flex items-center justify-center flex-shrink-0 transition-all duration-300 hover:scale-110"
                                 title={company.name}
                               >
                                 <img 
                                   src={company.src} 
                                   alt={`${company.name} logo`} 
-                                  className="h-full w-auto object-contain"
+                                  className="h-full w-auto object-contain max-w-[200px]"
                                 />
                               </div>
                             ))}

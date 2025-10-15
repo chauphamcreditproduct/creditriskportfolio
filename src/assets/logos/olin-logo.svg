@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80">
+  <defs>
+    <style>
+      .olin-text { fill: #003087; font-family: Arial, sans-serif; font-weight: bold; font-size: 48px; }
+      .olin-bg { fill: #ffffff; }
+    </style>
+  </defs>
+  <rect class="olin-bg" width="200" height="80" rx="4"/>
+  <text class="olin-text" x="100" y="55" text-anchor="middle">OLIN</text>
+</svg>
