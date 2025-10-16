@@ -237,7 +237,7 @@
 }
 
 .animate-scroll-logos-smooth {
-  animation: scrollLogosSmooth 40s linear infinite;
+  animation: scrollLogosSmooth 20s linear infinite;
   will-change: transform;
 }
 

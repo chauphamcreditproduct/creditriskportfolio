@@ -15,13 +15,9 @@ import amexLogo from '@/assets/logos/amex-logo.svg';
 import jpmorganLogo from '@/assets/logos/jpmorgan-logo.svg';
 import citiLogo from '@/assets/logos/citi-logo.svg';
 import bofaLogo from '@/assets/logos/bofa-logo.svg';
-import wellsfargoLogo from '@/assets/logos/wellsfargo-logo.svg';
-import walmartLogo from '@/assets/logos/walmart-logo.svg';
-import targetLogo from '@/assets/logos/target-logo.svg';
-import costcoLogo from '@/assets/logos/costco-logo.svg';
-import olinLogo from '@/assets/logos/olin-logo.png';
+import olinLogo from '@/assets/logos/olin-logo.jpg';
 import oilGasImage from '@/assets/images/oil-gas-refinery.jpg';
-import walmartLogoPng from '@/assets/logos/walmart-logo.png';
+import walmartLogo from '@/assets/logos/walmart-logo.webp';
 
 interface Project {
   id: string;
@@ -96,11 +92,9 @@ const ProjectsSection = () => {
       date: '03/2025',
       stars: 0,
       companyLogos: [
+        { name: 'American Express', src: amexLogo },
         { name: 'JPMorgan', src: jpmorganLogo },
         { name: 'Citibank', src: citiLogo },
-        { name: 'Bank of America', src: bofaLogo },
-        { name: 'Wells Fargo', src: wellsfargoLogo },
-        { name: 'American Express', src: amexLogo },
         { name: 'Ramp', src: rampLogo },
         { name: 'Brex', src: brexLogo }
       ]
@@ -127,11 +121,7 @@ const ProjectsSection = () => {
       stars: 0,
       companyLogos: [
         { name: 'Klarna', src: klarnaLogo },
-        { name: 'Affirm', src: affirmLogo },
-        { name: 'Stripe', src: stripeLogo },
-        { name: 'Chime', src: chimeLogo },
-        { name: 'Ramp', src: rampLogo },
-        { name: 'Brex', src: brexLogo }
+        { name: 'Affirm', src: affirmLogo }
       ]
     },
     {
@@ -155,7 +145,7 @@ const ProjectsSection = () => {
       date: '03/2025',
       stars: 1,
       companyLogos: [
-        { name: 'Walmart', src: walmartLogoPng }
+        { name: 'Walmart', src: walmartLogo }
       ]
     },
   ];
@@ -438,7 +428,7 @@ const ProjectsSection = () => {
                       
                       {/* Scrolling Company Logos */}
                       {project.companyLogos && project.companyLogos.length > 0 && (
-                        <div className="w-full h-full flex items-center justify-center px-8 py-8 bg-gradient-to-br from-green-50/80 to-emerald-50/80 backdrop-blur-sm rounded-lg shadow-sm overflow-hidden">
+                        <div className="w-full h-full flex items-center justify-center px-8 py-8 bg-gradient-to-br from-green-50 to-emerald-100 backdrop-blur-sm rounded-lg shadow-sm overflow-hidden">
                           <div className="flex gap-16 items-center justify-center animate-scroll-logos-smooth w-full">
                             {/* Render multiple sets for seamless infinite scroll */}
                             {[...Array(4)].map((_, setIndex) => (
