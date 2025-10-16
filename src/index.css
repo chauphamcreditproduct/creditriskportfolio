@@ -218,6 +218,15 @@
   }
 }
 
+@keyframes scrollLogosSmooth {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-25%, 0, 0);
+  }
+}
+
 .animate-scroll-continuous {
   animation: scrollContinuous 20s linear infinite;
 }
@@ -227,6 +236,16 @@
   will-change: transform;
 }
 
-.animate-scroll-logos:hover {
+.animate-scroll-logos-smooth {
+  animation: scrollLogosSmooth 40s linear infinite;
+  will-change: transform;
+}
+
+.animate-scroll-logos:hover,
+.animate-scroll-logos-smooth:hover {
   animation-play-state: paused;
+}
+
+.logo-no-bg {
+  background: transparent;
 }

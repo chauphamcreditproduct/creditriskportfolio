@@ -438,35 +438,29 @@ const ProjectsSection = () => {
                       
                       {/* Scrolling Company Logos */}
                       {project.companyLogos && project.companyLogos.length > 0 && (
-                        <div className="w-full h-full flex items-center justify-center px-8 py-8 bg-white/95 backdrop-blur-sm rounded-lg shadow-sm overflow-hidden">
-                          <div className="flex gap-16 items-center justify-center animate-scroll-logos w-full">
-                            {/* First set */}
-                            {project.companyLogos.map((company, idx) => (
-                              <div 
-                                key={idx} 
-                                className="h-24 flex items-center justify-center flex-shrink-0 transition-all duration-300 hover:scale-110"
-                                title={company.name}
-                              >
-                                <img 
-                                  src={company.src} 
-                                  alt={`${company.name} logo`} 
-                                  className="h-full w-auto object-contain max-w-[200px]"
-                                />
-                              </div>
-                            ))}
-                            {/* Duplicate set for seamless loop */}
-                            {project.companyLogos.map((company, idx) => (
-                              <div 
-                                key={`dup-${idx}`} 
-                                className="h-24 flex items-center justify-center flex-shrink-0 transition-all duration-300 hover:scale-110"
-                                title={company.name}
-                              >
-                                <img 
-                                  src={company.src} 
-                                  alt={`${company.name} logo`} 
-                                  className="h-full w-auto object-contain max-w-[200px]"
-                                />
-                              </div>
+                        <div className="w-full h-full flex items-center justify-center px-8 py-8 bg-gradient-to-br from-green-50/80 to-emerald-50/80 backdrop-blur-sm rounded-lg shadow-sm overflow-hidden">
+                          <div className="flex gap-16 items-center justify-center animate-scroll-logos-smooth w-full">
+                            {/* Render multiple sets for seamless infinite scroll */}
+                            {[...Array(4)].map((_, setIndex) => (
+                              <React.Fragment key={`set-${setIndex}`}>
+                                {project.companyLogos!.map((company, idx) => (
+                                  <div 
+                                    key={`${setIndex}-${idx}`} 
+                                    className="h-28 flex items-center justify-center flex-shrink-0 transition-all duration-300 hover:scale-110"
+                                    title={company.name}
+                                  >
+                                    <img 
+                                      src={company.src} 
+                                      alt={`${company.name} logo`} 
+                                      className="h-full w-auto object-contain max-w-[240px] logo-no-bg"
+                                      style={{ 
+                                        filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))',
+                                        mixBlendMode: 'multiply'
+                                      }}
+                                    />
+                                  </div>
+                                ))}
+                              </React.Fragment>
                             ))}
                           </div>
                         </div>
