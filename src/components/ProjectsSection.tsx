@@ -19,8 +19,9 @@ import wellsfargoLogo from '@/assets/logos/wellsfargo-logo.svg';
 import walmartLogo from '@/assets/logos/walmart-logo.svg';
 import targetLogo from '@/assets/logos/target-logo.svg';
 import costcoLogo from '@/assets/logos/costco-logo.svg';
-import olinLogo from '@/assets/logos/olin-logo.svg';
-import oilGasImage from '@/assets/images/oil-gas.jpg';
+import olinLogo from '@/assets/logos/olin-logo.png';
+import oilGasImage from '@/assets/images/oil-gas-refinery.jpg';
+import walmartLogoPng from '@/assets/logos/walmart-logo.png';
 
 interface Project {
   id: string;
@@ -99,7 +100,9 @@ const ProjectsSection = () => {
         { name: 'Citibank', src: citiLogo },
         { name: 'Bank of America', src: bofaLogo },
         { name: 'Wells Fargo', src: wellsfargoLogo },
-        { name: 'American Express', src: amexLogo }
+        { name: 'American Express', src: amexLogo },
+        { name: 'Ramp', src: rampLogo },
+        { name: 'Brex', src: brexLogo }
       ]
     },
     {
@@ -152,7 +155,7 @@ const ProjectsSection = () => {
       date: '03/2025',
       stars: 1,
       companyLogos: [
-        { name: 'Walmart', src: walmartLogo }
+        { name: 'Walmart', src: walmartLogoPng }
       ]
     },
   ];

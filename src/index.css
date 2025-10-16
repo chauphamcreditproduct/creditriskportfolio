@@ -223,7 +223,8 @@
 }
 
 .animate-scroll-logos {
-  animation: scrollLogos 15s linear infinite;
+  animation: scrollLogos 30s linear infinite;
+  will-change: transform;
 }
 
 .animate-scroll-logos:hover {
