@@ -1,6 +1,6 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Code2, Database, BarChart3, Brain, Lightbulb, Users, Server, Shield, TrendingUp, AlertTriangle, DollarSign, LineChart, Target } from 'lucide-react';
+import { Code2, Database, BarChart3, Brain, Lightbulb, Users, Server, Shield, TrendingUp, AlertTriangle, DollarSign, LineChart, Target, FileCheck, Scale, Building2, Calculator, ClipboardCheck, BadgeCheck } from 'lucide-react';
 import pythonLogo from '@/assets/logos/python-logo.svg';
 import sqlLogo from '@/assets/logos/sql-logo.svg';
 import tableauLogo from '@/assets/logos/tableau-logo.png';
@@ -19,7 +19,13 @@ const AboutSection = () => {
     { name: 'Stress Testing', icon: AlertTriangle },
     { name: 'Dynamic Pricing', icon: DollarSign },
     { name: 'Loss Forecasting', icon: TrendingUp },
-    { name: 'Risk Governance', icon: Target }
+    { name: 'Risk Governance', icon: Target },
+    { name: 'Credit Underwriting', icon: FileCheck },
+    { name: 'Collateral Analysis', icon: Building2 },
+    { name: 'Credit Modeling', icon: Calculator },
+    { name: 'Regulatory Compliance', icon: Scale },
+    { name: 'Risk Assessment', icon: ClipboardCheck },
+    { name: 'Default Prediction', icon: BadgeCheck }
   ];
 
   const technicalSkills = [
