@@ -6,9 +6,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import klarnaLogo from '@/assets/logos/klarna-logo.png';
-import affirmLogo from '@/assets/logos/affirm-logo.png';
+import affirmLogo from '@/assets/logos/affirm-logo-new.png';
 import stripeLogo from '@/assets/logos/stripe-logo.svg';
-import rampLogo from '@/assets/logos/ramp-logo.png';
+import rampLogo from '@/assets/logos/ramp-logo-new.png';
 import brexLogo from '@/assets/logos/brex-logo.png';
 import chimeLogo from '@/assets/logos/chime-logo.png';
 import amexLogo from '@/assets/logos/amex-logo.svg';
