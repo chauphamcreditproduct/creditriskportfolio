@@ -94,6 +94,7 @@ const ProjectsSection = () => {
       date: '03/2025',
       stars: 0,
       companyLogos: [
+        { name: 'American Express', src: amexLogo },
         { name: 'JPMorgan', src: jpmorganLogo },
         { name: 'Citibank', src: citiLogo },
         { name: 'Ramp', src: rampLogo },
