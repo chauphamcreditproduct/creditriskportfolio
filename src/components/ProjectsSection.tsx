@@ -92,7 +92,6 @@ const ProjectsSection = () => {
       date: '03/2025',
       stars: 0,
       companyLogos: [
-        { name: 'American Express', src: amexLogo },
         { name: 'JPMorgan', src: jpmorganLogo },
         { name: 'Citibank', src: citiLogo },
         { name: 'Ramp', src: rampLogo },
@@ -428,7 +427,7 @@ const ProjectsSection = () => {
                       
                       {/* Scrolling Company Logos */}
                       {project.companyLogos && project.companyLogos.length > 0 && (
-                        <div className="w-full h-full flex items-center justify-center px-8 py-8 bg-gradient-to-br from-green-50 to-emerald-100 backdrop-blur-sm rounded-lg shadow-sm overflow-hidden">
+                        <div className="w-full h-full flex items-center justify-center px-8 py-8 bg-gradient-to-br from-green-100 to-emerald-200 backdrop-blur-sm rounded-lg shadow-sm overflow-hidden">
                           <div className="flex gap-16 items-center justify-center animate-scroll-logos-smooth w-full">
                             {/* Render multiple sets for seamless infinite scroll */}
                             {[...Array(4)].map((_, setIndex) => (
