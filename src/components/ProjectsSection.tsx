@@ -19,7 +19,7 @@ import olinLogo from '@/assets/logos/olin-logo.jpg';
 import oilGasImage from '@/assets/images/oil-gas-refinery.jpg';
 import walmartLogo from '@/assets/logos/walmart-logo.webp';
 import sofiLogo from '@/assets/logos/sofi-logo.svg';
-import currentLogo from '@/assets/logos/current-logo.svg';
+import currentLogo from '@/assets/logos/current-logo-new.png';
 
 interface Project {
   id: string;
