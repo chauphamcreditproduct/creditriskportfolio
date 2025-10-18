@@ -232,7 +232,7 @@
 }
 
 .animate-scroll-logos {
-  animation: scrollLogos 30s linear infinite;
+  animation: scrollLogos 12s linear infinite;
   will-change: transform;
 }
 

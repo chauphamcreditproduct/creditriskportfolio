@@ -18,6 +18,8 @@ import bofaLogo from '@/assets/logos/bofa-logo.svg';
 import olinLogo from '@/assets/logos/olin-logo.jpg';
 import oilGasImage from '@/assets/images/oil-gas-refinery.jpg';
 import walmartLogo from '@/assets/logos/walmart-logo.webp';
+import sofiLogo from '@/assets/logos/sofi-logo.svg';
+import currentLogo from '@/assets/logos/current-logo.svg';
 
 interface Project {
   id: string;
@@ -120,7 +122,9 @@ const ProjectsSection = () => {
       stars: 0,
       companyLogos: [
         { name: 'Klarna', src: klarnaLogo },
-        { name: 'Affirm', src: affirmLogo }
+        { name: 'Affirm', src: affirmLogo },
+        { name: 'SoFi', src: sofiLogo },
+        { name: 'Current', src: currentLogo }
       ]
     },
     {
@@ -427,10 +431,10 @@ const ProjectsSection = () => {
                       
                       {/* Scrolling Company Logos */}
                       {project.companyLogos && project.companyLogos.length > 0 && (
-                        <div className="w-full h-full flex items-center justify-center px-8 py-8 bg-gradient-to-br from-green-100 to-emerald-200 backdrop-blur-sm rounded-lg shadow-sm overflow-hidden">
-                          <div className="flex gap-16 items-center justify-center animate-scroll-logos-smooth w-full">
-                            {/* Render multiple sets for seamless infinite scroll */}
-                            {[...Array(4)].map((_, setIndex) => (
+                        <div className="w-full h-full flex items-center justify-center px-8 py-8 bg-gradient-to-br from-emerald-50 to-emerald-100 backdrop-blur-sm rounded-lg shadow-sm overflow-hidden">
+                          <div className="flex flex-nowrap gap-16 items-center justify-start animate-scroll-logos pointer-events-none min-w-max">
+                            {/* Render two sets for seamless infinite scroll */}
+                            {[...Array(2)].map((_, setIndex) => (
                               <React.Fragment key={`set-${setIndex}`}>
                                 {project.companyLogos!.map((company, idx) => (
                                   <div 
