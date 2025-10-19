@@ -136,7 +136,7 @@ const ProjectsSection = () => {
       category: 'Retail Analytics & Time Series Forecasting',
       technologies: ["Python", "AR Modeling", "Pandas", "Statistical Analysis", "Seaborn"],
       githubUrl: 'https://github.com/chauphamcreditproduct/Explore_Walmart_Sales_applying_Time_Series_Model',
-      slideUrl: 'https://docs.google.com/presentation/d/example-slides',
+      slideUrl: 'https://drive.google.com/file/d/1m18Pq5WLZQufe88POWZBwsbcE09vX04Q/view?usp=sharing',
       notebookUrl: 'https://nbviewer.org/github/chauphamcreditproduct/Explore_Walmart_Sales_applying_Time_Series_Model/blob/main/Explore_Walmart_Sales_applying_Time_Series_Model.ipynb',
       imageUrl: '/api/placeholder/400/250',
       icon: <Users className="w-6 h-6" />,
@@ -215,12 +215,12 @@ const ProjectsSection = () => {
 
       {/* Two Column Layout */}
       <div className="grid lg:grid-cols-2 gap-8">
-        {/* Slide Deck Section */}
+        {/* Project Report Section */}
         <Card className="overflow-hidden">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <FileText className="w-5 h-5" />
-              Slide Deck
+              Project Report
             </CardTitle>
           </CardHeader>
           <CardContent className="p-0">
@@ -240,7 +240,7 @@ const ProjectsSection = () => {
                     onClick={() => window.open(project.slideUrl, '_blank')}
                   >
                     <FileText className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
-                    Open Slides
+                    Open Report
                   </Button>
                   <Button
                     variant="outline"
