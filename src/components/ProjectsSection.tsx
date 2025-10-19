@@ -81,8 +81,8 @@ const ProjectsSection = () => {
       category: 'FinTech & Risk Analytics',
       technologies: ["Python", "Classification & Regression", "XGBoostRegressor"],
       githubUrl: 'https://github.com/chauphamcreditproduct/SMB_Dynamic_Credit_Line',
-      slideUrl: 'https://docs.google.com/presentation/d/example-slides',
-      notebookUrl: 'https://nbviewer.org/github/chauphamcreditproduct/SMB_Dynamic_Credit_Line/blob/main/SMB_Dynamic_Credit_Line.ipynb',
+      slideUrl: 'https://docs.google.com/presentation/d/1NqYbBzCOjIrtXCI4-QS84lgmHiph2wJ1_XRvd9G4QBo/edit?usp=sharing',
+      notebookUrl: 'https://nbviewer.org/urls/huggingface.co/datasets/chauminhphamvn/Dynamic_Credit_lIMIT_Model_FOR_SMB/resolve/main/SMB_Dynamic_Credit_Line.ipynb',
       imageUrl: '/api/placeholder/400/250',
       icon: <TrendingUp className="w-6 h-6" />,
       highlights: [
