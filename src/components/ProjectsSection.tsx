@@ -331,6 +331,307 @@ const ProjectsSection = () => {
         </Card>
       </div>
 
+      {/* Risk Framework Section - Only for NTC Project */}
+      {project.id === '3' && (
+        <Card className="mt-8">
+          <CardHeader>
+            <CardTitle className="text-2xl">Risk Framework (PD & NCL Thresholds)</CardTitle>
+            <CardDescription>
+              Comprehensive analysis of Net Credit Loss (NCL) rates across different customer segments to identify low-risk profiles
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid lg:grid-cols-2 gap-6">
+              {/* FICO x Asset Analysis */}
+              <div className="space-y-3">
+                <h3 className="font-semibold text-lg">FICO × Asset Band</h3>
+                <div className="overflow-x-auto rounded-lg border">
+                  <table className="w-full text-sm">
+                    <thead className="bg-muted/50">
+                      <tr>
+                        <th className="p-2 text-left font-medium">FICO Band</th>
+                        <th className="p-2 text-center font-medium">&lt;500</th>
+                        <th className="p-2 text-center font-medium">501-1000</th>
+                        <th className="p-2 text-center font-medium">1001-1500</th>
+                        <th className="p-2 text-center font-medium">1501-2000</th>
+                        <th className="p-2 text-center font-medium">2001-2500</th>
+                        <th className="p-2 text-center font-medium">&gt;2500</th>
+                        <th className="p-2 text-center font-medium bg-accent/20">Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {[
+                        { fico: '<520', values: ['29.41%', '22.73%', '15.79%', '18.75%', '14.29%', '15.00%', '19.44%'], colors: ['red', 'red', 'yellow', 'yellow', 'green', 'green', 'yellow'] },
+                        { fico: '520-569', values: ['18.18%', '17.95%', '5.17%', '18.00%', '11.11%', '19.61%', '14.75%'], colors: ['yellow', 'yellow', 'green', 'yellow', 'green', 'yellow', 'green'] },
+                        { fico: '570-599', values: ['11.76%', '15.00%', '25.00%', '22.22%', '14.81%', '18.52%', '18.37%'], colors: ['green', 'yellow', 'red', 'red', 'green', 'yellow', 'yellow'] },
+                        { fico: '600-639', values: ['10.00%', '19.35%', '28.95%', '12.50%', '16.22%', '8.11%', '16.10%'], colors: ['green', 'yellow', 'red', 'green', 'yellow', 'green', 'yellow'] },
+                        { fico: '640+', values: ['18.32%', '11.59%', '17.24%', '10.81%', '10.69%', '6.21%', '12.38%'], colors: ['yellow', 'green', 'yellow', 'green', 'green', 'green', 'green'] },
+                      ].map((row, idx) => (
+                        <tr key={idx} className={idx % 2 === 0 ? 'bg-muted/20' : ''}>
+                          <td className="p-2 font-medium">{row.fico}</td>
+                          {row.values.map((val, i) => (
+                            <td key={i} className={`p-2 text-center ${
+                              row.colors[i] === 'green' ? 'bg-green-500/20 text-green-700 dark:text-green-400 font-medium' :
+                              row.colors[i] === 'red' ? 'bg-red-500/20 text-red-700 dark:text-red-400 font-medium' :
+                              'text-muted-foreground'
+                            }`}>
+                              {val}
+                            </td>
+                          ))}
+                        </tr>
+                      ))}
+                      <tr className="border-t-2 bg-accent/10 font-semibold">
+                        <td className="p-2">Grand Total</td>
+                        <td className="p-2 text-center">17.57%</td>
+                        <td className="p-2 text-center">14.49%</td>
+                        <td className="p-2 text-center">16.83%</td>
+                        <td className="p-2 text-center">14.18%</td>
+                        <td className="p-2 text-center">12.09%</td>
+                        <td className="p-2 text-center">10.47%</td>
+                        <td className="p-2 text-center bg-accent/30">14.21%</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* FICO x DTI Analysis */}
+              <div className="space-y-3">
+                <h3 className="font-semibold text-lg">FICO × DTI Distribution</h3>
+                <div className="overflow-x-auto rounded-lg border">
+                  <table className="w-full text-sm">
+                    <thead className="bg-muted/50">
+                      <tr>
+                        <th className="p-2 text-left font-medium">FICO Band</th>
+                        <th className="p-2 text-center font-medium">&lt;1%</th>
+                        <th className="p-2 text-center font-medium">1-3%</th>
+                        <th className="p-2 text-center font-medium">3-5%</th>
+                        <th className="p-2 text-center font-medium">5-7%</th>
+                        <th className="p-2 text-center font-medium">7-10%</th>
+                        <th className="p-2 text-center font-medium bg-accent/20">Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {[
+                        { fico: '<520', values: ['12.50%', '24.07%', '25.00%', '0.00%', '0.00%', '19.44%'], colors: ['green', 'red', 'red', 'green', 'green', 'yellow'] },
+                        { fico: '520-569', values: ['20.21%', '8.33%', '0.00%', '33.33%', '0.00%', '14.75%'], colors: ['red', 'green', 'green', 'red', 'green', 'green'] },
+                        { fico: '570-599', values: ['16.67%', '20.48%', '0.00%', '0.00%', '0.00%', '18.37%'], colors: ['yellow', 'red', 'green', 'green', 'green', 'yellow'] },
+                        { fico: '600-639', values: ['18.72%', '12.87%', '0.00%', '50.00%', '28.57%', '16.10%'], colors: ['yellow', 'green', 'green', 'red', 'red', 'yellow'] },
+                        { fico: '640+', values: ['13.17%', '12.87%', '29.41%', '0.00%', '0.00%', '12.38%'], colors: ['green', 'green', 'red', 'green', 'green', 'green'] },
+                      ].map((row, idx) => (
+                        <tr key={idx} className={idx % 2 === 0 ? 'bg-muted/20' : ''}>
+                          <td className="p-2 font-medium">{row.fico}</td>
+                          {row.values.map((val, i) => (
+                            <td key={i} className={`p-2 text-center ${
+                              row.colors[i] === 'green' ? 'bg-green-500/20 text-green-700 dark:text-green-400 font-medium' :
+                              row.colors[i] === 'red' ? 'bg-red-500/20 text-red-700 dark:text-red-400 font-medium' :
+                              'text-muted-foreground'
+                            }`}>
+                              {val}
+                            </td>
+                          ))}
+                        </tr>
+                      ))}
+                      <tr className="border-t-2 bg-accent/10 font-semibold">
+                        <td className="p-2">Grand Total</td>
+                        <td className="p-2 text-center">9.94%</td>
+                        <td className="p-2 text-center">15.63%</td>
+                        <td className="p-2 text-center">14.94%</td>
+                        <td className="p-2 text-center">13.04%</td>
+                        <td className="p-2 text-center">0.00%</td>
+                        <td className="p-2 text-center bg-accent/30">14.21%</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* Asset x Loan Amount Analysis */}
+              <div className="space-y-3">
+                <h3 className="font-semibold text-lg">Asset × Loan Amount</h3>
+                <div className="overflow-x-auto rounded-lg border">
+                  <table className="w-full text-sm">
+                    <thead className="bg-muted/50">
+                      <tr>
+                        <th className="p-2 text-left font-medium">Asset Band</th>
+                        <th className="p-2 text-center font-medium">No debt</th>
+                        <th className="p-2 text-center font-medium">Low<br/>(1K-5K)</th>
+                        <th className="p-2 text-center font-medium">Moderate<br/>(5K-10K)</th>
+                        <th className="p-2 text-center font-medium">High<br/>(10K-15K)</th>
+                        <th className="p-2 text-center font-medium">Very High<br/>(&gt;15K)</th>
+                        <th className="p-2 text-center font-medium bg-accent/20">Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {[
+                        { asset: '<500', values: ['18.88%', '11.11%', '19.23%', '17.86%', '12.50%', '17.57%'], colors: ['yellow', 'green', 'yellow', 'yellow', 'green', 'yellow'] },
+                        { asset: '501-1000', values: ['13.55%', '20.59%', '11.11%', '10.00%', '23.81%', '14.49%'], colors: ['green', 'red', 'green', 'green', 'red', 'green'] },
+                        { asset: '1001-1500', values: ['18.95%', '9.52%', '14.29%', '17.95%', '8.33%', '16.83%'], colors: ['yellow', 'green', 'green', 'yellow', 'green', 'yellow'] },
+                        { asset: '1501-2000', values: ['14.38%', '16.67%', '16.00%', '9.52%', '16.13%', '14.18%'], colors: ['green', 'yellow', 'yellow', 'green', 'yellow', 'green'] },
+                        { asset: '2001-2500', values: ['8.28%', '11.11%', '23.08%', '15.00%', '12.90%', '12.09%'], colors: ['green', 'green', 'red', 'green', 'green', 'green'] },
+                        { asset: '>2500', values: ['10.75%', '19.05%', '13.16%', '7.41%', '0.00%', '10.47%'], colors: ['green', 'yellow', 'green', 'green', 'green', 'green'] },
+                      ].map((row, idx) => (
+                        <tr key={idx} className={idx % 2 === 0 ? 'bg-muted/20' : ''}>
+                          <td className="p-2 font-medium">{row.asset}</td>
+                          {row.values.map((val, i) => (
+                            <td key={i} className={`p-2 text-center ${
+                              row.colors[i] === 'green' ? 'bg-green-500/20 text-green-700 dark:text-green-400 font-medium' :
+                              row.colors[i] === 'red' ? 'bg-red-500/20 text-red-700 dark:text-red-400 font-medium' :
+                              'text-muted-foreground'
+                            }`}>
+                              {val}
+                            </td>
+                          ))}
+                        </tr>
+                      ))}
+                      <tr className="border-t-2 bg-accent/10 font-semibold">
+                        <td className="p-2">Grand Total</td>
+                        <td className="p-2 text-center">14.20%</td>
+                        <td className="p-2 text-center">15.44%</td>
+                        <td className="p-2 text-center">16.08%</td>
+                        <td className="p-2 text-center">13.11%</td>
+                        <td className="p-2 text-center">12.26%</td>
+                        <td className="p-2 text-center bg-accent/30">14.21%</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* FICO x Utilization Analysis */}
+              <div className="space-y-3">
+                <h3 className="font-semibold text-lg">FICO × Utilization</h3>
+                <div className="overflow-x-auto rounded-lg border">
+                  <table className="w-full text-sm">
+                    <thead className="bg-muted/50">
+                      <tr>
+                        <th className="p-2 text-left font-medium">FICO Band</th>
+                        <th className="p-2 text-center font-medium">Very Low<br/>(&lt;10%)</th>
+                        <th className="p-2 text-center font-medium">Low<br/>(10-30%)</th>
+                        <th className="p-2 text-center font-medium">Moderate<br/>(30-60%)</th>
+                        <th className="p-2 text-center font-medium">High<br/>(60-100%)</th>
+                        <th className="p-2 text-center font-medium bg-accent/20">Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {[
+                        { fico: '<520', values: ['9.09%', '14.29%', '31.58%', '16.67%', '19.44%'], colors: ['green', 'green', 'red', 'yellow', 'yellow'] },
+                        { fico: '520-569', values: ['8.33%', '13.93%', '20.00%', '0.00%', '14.75%'], colors: ['green', 'green', 'red', 'green', 'green'] },
+                        { fico: '570-599', values: ['9.38%', '20.37%', '22.22%', '14.29%', '18.37%'], colors: ['green', 'red', 'red', 'green', 'yellow'] },
+                        { fico: '600-639', values: ['11.11%', '16.30%', '15.49%', '50.00%', '16.10%'], colors: ['green', 'yellow', 'yellow', 'red', 'yellow'] },
+                        { fico: '640+', values: ['10.33%', '15.49%', '10.66%', '5.26%', '12.38%'], colors: ['green', 'yellow', 'green', 'green', 'green'] },
+                      ].map((row, idx) => (
+                        <tr key={idx} className={idx % 2 === 0 ? 'bg-muted/20' : ''}>
+                          <td className="p-2 font-medium">{row.fico}</td>
+                          {row.values.map((val, i) => (
+                            <td key={i} className={`p-2 text-center ${
+                              row.colors[i] === 'green' ? 'bg-green-500/20 text-green-700 dark:text-green-400 font-medium' :
+                              row.colors[i] === 'red' ? 'bg-red-500/20 text-red-700 dark:text-red-400 font-medium' :
+                              'text-muted-foreground'
+                            }`}>
+                              {val}
+                            </td>
+                          ))}
+                        </tr>
+                      ))}
+                      <tr className="border-t-2 bg-accent/10 font-semibold">
+                        <td className="p-2">Grand Total</td>
+                        <td className="p-2 text-center">9.94%</td>
+                        <td className="p-2 text-center">15.63%</td>
+                        <td className="p-2 text-center">14.94%</td>
+                        <td className="p-2 text-center">13.04%</td>
+                        <td className="p-2 text-center bg-accent/30">14.21%</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            {/* Legend */}
+            <div className="mt-6 flex items-center gap-6 justify-center text-sm">
+              <div className="flex items-center gap-2">
+                <div className="w-4 h-4 bg-green-500/20 border border-green-500/30 rounded"></div>
+                <span className="text-muted-foreground">Low Risk (&lt;15% NCL)</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-4 h-4 bg-red-500/20 border border-red-500/30 rounded"></div>
+                <span className="text-muted-foreground">High Risk (&gt;20% NCL)</span>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
+      {/* Recommendations Section - Only for NTC Project */}
+      {project.id === '3' && (
+        <Card className="mt-6 border-accent/50">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <TrendingUp className="w-5 h-5 text-green-600 dark:text-green-400" />
+              Underwriting Recommendations
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-4">
+                <h4 className="font-semibold text-green-700 dark:text-green-400 mb-2">✓ Approved Segments (Low Risk)</h4>
+                <ul className="space-y-2 text-sm">
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-600 dark:text-green-400 mt-0.5">•</span>
+                    <span><strong>FICO 640+ with Asset &gt;$2,500:</strong> Consistently shows NCL rates between 6-12%, well below the 15% threshold across all segments</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-600 dark:text-green-400 mt-0.5">•</span>
+                    <span><strong>FICO 520-639 with Low Utilization (&lt;30%):</strong> Demonstrates strong repayment behavior with NCL rates of 8-14%</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-600 dark:text-green-400 mt-0.5">•</span>
+                    <span><strong>FICO 600-639 with Assets $1,500-2,000:</strong> Shows controlled risk with NCL around 12.5%</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-4">
+                <h4 className="font-semibold text-red-700 dark:text-red-400 mb-2">✗ Declined Segments (High Risk)</h4>
+                <ul className="space-y-2 text-sm">
+                  <li className="flex items-start gap-2">
+                    <span className="text-red-600 dark:text-red-400 mt-0.5">•</span>
+                    <span><strong>FICO &lt;520 with Low Assets (&lt;$1,000):</strong> NCL rates exceeding 22-29%, indicating significant default risk</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-red-600 dark:text-red-400 mt-0.5">•</span>
+                    <span><strong>High Utilization (&gt;60%) across FICO 600-639:</strong> Shows 50% NCL, suggesting financial stress</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-red-600 dark:text-red-400 mt-0.5">•</span>
+                    <span><strong>FICO 570-639 with Assets $1,000-1,500:</strong> NCL rates of 25-29% indicate heightened risk in this segment</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="bg-accent/20 border border-accent/30 rounded-lg p-4">
+                <h4 className="font-semibold mb-2">💡 Key Insights</h4>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li className="flex items-start gap-2">
+                    <span className="mt-0.5">→</span>
+                    <span>Asset levels are a strong predictor: Higher assets consistently correlate with lower NCL rates across all FICO bands</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="mt-0.5">→</span>
+                    <span>Utilization is critical: Moderate to high utilization (30-100%) significantly increases default risk, especially for lower FICO scores</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="mt-0.5">→</span>
+                    <span>DTI distribution shows risk concentration in extreme bands (3-7% DTI) for certain FICO segments</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
       {/* Technologies Used */}
       <Card>
         <CardHeader>
