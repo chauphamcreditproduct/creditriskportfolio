@@ -574,56 +574,56 @@ const ProjectsSection = () => {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
+              <div className="prose dark:prose-invert max-w-none">
+                <p className="text-sm text-muted-foreground mb-4">
+                  Based on the analysis and the model's precision-focused strategy (threshold 0.7), we recommend approving NTC customers with the following profiles:
+                </p>
+              </div>
+
               <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-4">
-                <h4 className="font-semibold text-green-700 dark:text-green-400 mb-2">✓ Approved Segments (Low Risk)</h4>
+                <h4 className="font-semibold text-green-700 dark:text-green-400 mb-3">✓ Recommended Approval Profiles</h4>
                 <ul className="space-y-2 text-sm">
                   <li className="flex items-start gap-2">
                     <span className="text-green-600 dark:text-green-400 mt-0.5">•</span>
-                    <span><strong>FICO 640+ with Asset &gt;$2,500:</strong> Consistently shows NCL rates between 6-12%, well below the 15% threshold across all segments</span>
+                    <span><strong>FICO Score 600+ (preferably 640+):</strong> These customers (12.38% in 640+) are lower risk, especially with assets in the $501-1500 range.</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-green-600 dark:text-green-400 mt-0.5">•</span>
-                    <span><strong>FICO 520-639 with Low Utilization (&lt;30%):</strong> Demonstrates strong repayment behavior with NCL rates of 8-14%</span>
+                    <span><strong>Asset Band $501-1500:</strong> This range (14.49%-16.83%) indicates financial stability.</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-green-600 dark:text-green-400 mt-0.5">•</span>
-                    <span><strong>FICO 600-639 with Assets $1,500-2,000:</strong> Shows controlled risk with NCL around 12.5%</span>
+                    <span><strong>DTI &lt;3%:</strong> Customers with DTI &lt;1% (15.31%) or 1-3% (14.24%) in FICO 640+ or asset band $501-1500 are low-risk.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-600 dark:text-green-400 mt-0.5">•</span>
+                    <span><strong>Loan Amount &lt;10K:</strong> Approve customers with loans &lt;10K (14.20%), especially in FICO 640+ (13.11%) or asset band $501-1500 (18.88%).</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-600 dark:text-green-400 mt-0.5">•</span>
+                    <span><strong>Utilization &lt;30%:</strong> Very low (&lt;10%) or low (10-30%) utilization in FICO 640+ (15.45%) or asset band $501-1500 (16.47%) indicates responsible credit use.</span>
                   </li>
                 </ul>
               </div>
 
               <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-4">
-                <h4 className="font-semibold text-red-700 dark:text-red-400 mb-2">✗ Declined Segments (High Risk)</h4>
+                <h4 className="font-semibold text-red-700 dark:text-red-400 mb-3">✗ Profiles to Avoid</h4>
                 <ul className="space-y-2 text-sm">
                   <li className="flex items-start gap-2">
                     <span className="text-red-600 dark:text-red-400 mt-0.5">•</span>
-                    <span><strong>FICO &lt;520 with Low Assets (&lt;$1,000):</strong> NCL rates exceeding 22-29%, indicating significant default risk</span>
+                    <span><strong>FICO &lt;520:</strong> High risk (19.44%), especially with assets &lt;500 (29.41%) or high utilization (50.00%).</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-red-600 dark:text-red-400 mt-0.5">•</span>
-                    <span><strong>High Utilization (&gt;60%) across FICO 600-639:</strong> Shows 50% NCL, suggesting financial stress</span>
+                    <span><strong>High DTI (7-10%):</strong> Particularly in FICO &lt;520 or asset band &lt;500 (22.47%).</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-red-600 dark:text-red-400 mt-0.5">•</span>
-                    <span><strong>FICO 570-639 with Assets $1,000-1,500:</strong> NCL rates of 25-29% indicate heightened risk in this segment</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="bg-accent/20 border border-accent/30 rounded-lg p-4">
-                <h4 className="font-semibold mb-2">💡 Key Insights</h4>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li className="flex items-start gap-2">
-                    <span className="mt-0.5">→</span>
-                    <span>Asset levels are a strong predictor: Higher assets consistently correlate with lower NCL rates across all FICO bands</span>
+                    <span><strong>High Loan Amounts (&gt;10K-25K):</strong> Risky in FICO &lt;520 (24.14%) or asset band &lt;500 (15.73%).</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="mt-0.5">→</span>
-                    <span>Utilization is critical: Moderate to high utilization (30-100%) significantly increases default risk, especially for lower FICO scores</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="mt-0.5">→</span>
-                    <span>DTI distribution shows risk concentration in extreme bands (3-7% DTI) for certain FICO segments</span>
+                    <span className="text-red-600 dark:text-red-400 mt-0.5">•</span>
+                    <span><strong>High Utilization (60-100%):</strong> Avoid in FICO &lt;520 (50.00%) or asset band &lt;500 (17.57%).</span>
                   </li>
                 </ul>
               </div>
