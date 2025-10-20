@@ -228,9 +228,28 @@ const ProjectsSection = () => {
             {project.slideUrl ? (
               <div>
                 {project.slideUrl?.toLowerCase().endsWith('.pdf') ? (
-                  <object data={project.slideUrl} type="application/pdf" className="w-full h-[500px]">
-                    <div className="p-4 text-sm text-muted-foreground">PDF preview is not available. Use the buttons below to open or download.</div>
-                  </object>
+                  <div className="space-y-4">
+                    {/* PDF Viewer using iframe with PDF.js */}
+                    <iframe
+                      src={`https://docs.google.com/gview?url=${encodeURIComponent(window.location.origin + project.slideUrl)}&embedded=true`}
+                      className="w-full h-[500px] border-0"
+                      allowFullScreen
+                      onError={() => {
+                        // Fallback if Google Docs viewer fails
+                        console.log('Google Docs viewer failed, falling back to direct PDF');
+                      }}
+                    />
+                    
+                    {/* Alternative: Direct PDF embed as backup */}
+                    <noscript>
+                      <object data={project.slideUrl} type="application/pdf" className="w-full h-[500px]">
+                        <div className="p-4 text-sm text-muted-foreground bg-muted/20 rounded">
+                          <p className="mb-2">PDF preview không khả dụng trong trình duyệt này.</p>
+                          <p>Sử dụng các nút bên dưới để xem hoặc tải về file PDF.</p>
+                        </div>
+                      </object>
+                    </noscript>
+                  </div>
                 ) : (
                   <iframe
                     src={project.slideUrl.replace('/edit', '/embed')}
@@ -246,15 +265,22 @@ const ProjectsSection = () => {
                     onClick={() => window.open(project.slideUrl, '_blank')}
                   >
                     <FileText className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
-                    Open Report
+                    Xem Report
                   </Button>
                   <Button
                     variant="outline"
                     className="flex-1 border-accent/30 hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300 group"
-                    onClick={() => window.open(project.slideUrl?.toLowerCase().endsWith('.pdf') ? project.slideUrl : project.slideUrl?.replace('/edit', '/export/pdf'), '_blank')}
+                    onClick={() => {
+                      const link = document.createElement('a');
+                      link.href = project.slideUrl!;
+                      link.download = 'Walmart_Sales_Report.pdf';
+                      document.body.appendChild(link);
+                      link.click();
+                      document.body.removeChild(link);
+                    }}
                   >
                     <Download className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
-                    Download PDF
+                    Tải PDF
                   </Button>
                 </div>
               </div>
