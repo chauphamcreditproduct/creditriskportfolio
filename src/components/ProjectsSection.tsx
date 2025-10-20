@@ -227,11 +227,17 @@ const ProjectsSection = () => {
             {/* Embedded Slide Preview */}
             {project.slideUrl ? (
               <div>
-                <iframe
-                  src={project.slideUrl.replace('/edit', '/embed')}
-                  className="w-full h-[500px] border-0"
-                  allowFullScreen
-                />
+                {project.slideUrl?.toLowerCase().endsWith('.pdf') ? (
+                  <object data={project.slideUrl} type="application/pdf" className="w-full h-[500px]">
+                    <div className="p-4 text-sm text-muted-foreground">PDF preview is not available. Use the buttons below to open or download.</div>
+                  </object>
+                ) : (
+                  <iframe
+                    src={project.slideUrl.replace('/edit', '/embed')}
+                    className="w-full h-[500px] border-0"
+                    allowFullScreen
+                  />
+                )}
                 {/* Action Buttons */}
                 <div className="flex gap-3 p-4 bg-gradient-to-r from-accent-light to-secondary border-t">
                   <Button
@@ -245,7 +251,7 @@ const ProjectsSection = () => {
                   <Button
                     variant="outline"
                     className="flex-1 border-accent/30 hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300 group"
-                    onClick={() => window.open(project.slideUrl?.replace('/edit', '/export/pdf'), '_blank')}
+                    onClick={() => window.open(project.slideUrl?.toLowerCase().endsWith('.pdf') ? project.slideUrl : project.slideUrl?.replace('/edit', '/export/pdf'), '_blank')}
                   >
                     <Download className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
                     Download PDF
@@ -733,9 +739,8 @@ const ProjectsSection = () => {
                       
                       {/* Scrolling Company Logos */}
                       {project.companyLogos && project.companyLogos.length > 0 && (
-                        <div className="w-full h-full flex items-center justify-center px-8 py-8 bg-gradient-to-br from-emerald-50 to-emerald-100 backdrop-blur-sm rounded-lg shadow-sm overflow-hidden">
+                        <div className="w-full h-full flex items-center justify-center px-8 py-8 bg-gradient-to-br from-accent-light to-secondary backdrop-blur-sm rounded-lg shadow-sm overflow-hidden">
                           <div className="flex flex-nowrap gap-16 items-center justify-start animate-scroll-logos pointer-events-none min-w-max">
-                            {/* Render two sets for seamless infinite scroll */}
                             {[...Array(2)].map((_, setIndex) => (
                               <React.Fragment key={`set-${setIndex}`}>
                                 {project.companyLogos!.map((company, idx) => (
@@ -748,9 +753,8 @@ const ProjectsSection = () => {
                                       src={company.src} 
                                       alt={`${company.name} logo`} 
                                       className="h-full w-auto object-contain max-w-[240px] logo-no-bg"
-                                      style={{ 
-                                        filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))',
-                                        mixBlendMode: 'multiply'
+                                      onError={(e) => {
+                                        (e.currentTarget as HTMLImageElement).src = '/placeholder.svg';
                                       }}
                                     />
                                   </div>
