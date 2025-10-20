@@ -229,26 +229,15 @@ const ProjectsSection = () => {
               <div>
                 {project.slideUrl?.toLowerCase().endsWith('.pdf') ? (
                   <div className="space-y-4">
-                    {/* PDF Viewer using iframe with PDF.js */}
-                    <iframe
-                      src={`https://docs.google.com/gview?url=${encodeURIComponent(window.location.origin + project.slideUrl)}&embedded=true`}
-                      className="w-full h-[500px] border-0"
-                      allowFullScreen
-                      onError={() => {
-                        // Fallback if Google Docs viewer fails
-                        console.log('Google Docs viewer failed, falling back to direct PDF');
-                      }}
-                    />
-                    
-                    {/* Alternative: Direct PDF embed as backup */}
-                    <noscript>
-                      <object data={project.slideUrl} type="application/pdf" className="w-full h-[500px]">
-                        <div className="p-4 text-sm text-muted-foreground bg-muted/20 rounded">
-                          <p className="mb-2">PDF preview không khả dụng trong trình duyệt này.</p>
-                          <p>Sử dụng các nút bên dưới để xem hoặc tải về file PDF.</p>
-                        </div>
-                      </object>
-                    </noscript>
+                    {/* PDF Viewer using multiple fallback methods */}
+                    <div className="relative">
+                      <iframe
+                        src={`https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(window.location.origin + project.slideUrl)}`}
+                        className="w-full h-[500px] border-0 rounded"
+                        allowFullScreen
+                        title="PDF Viewer"
+                      />
+                    </div>
                   </div>
                 ) : (
                   <iframe
