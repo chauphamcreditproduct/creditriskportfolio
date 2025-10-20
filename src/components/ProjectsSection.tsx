@@ -136,7 +136,7 @@ const ProjectsSection = () => {
       category: 'Retail Analytics & Time Series Forecasting',
       technologies: ["Python", "AR Modeling", "Pandas", "Statistical Analysis", "Seaborn"],
       githubUrl: 'https://github.com/chauphamcreditproduct/Explore_Walmart_Sales_applying_Time_Series_Model',
-      slideUrl: 'https://drive.google.com/file/d/1m18Pq5WLZQufe88POWZBwsbcE09vX04Q/view?usp=sharing',
+      slideUrl: '/Walmart_Sales_Report.pdf',
       notebookUrl: 'https://huggingface.co/datasets/chauminhphamvn/123/blob/main/Explore_Walmart_Sales_applying_Time_Series_Model.ipynb',
       imageUrl: '/api/placeholder/400/250',
       icon: <Users className="w-6 h-6" />,
