@@ -137,7 +137,7 @@ const ProjectsSection = () => {
       technologies: ["Python", "AR Modeling", "Pandas", "Statistical Analysis", "Seaborn"],
       githubUrl: 'https://github.com/chauphamcreditproduct/Explore_Walmart_Sales_applying_Time_Series_Model',
       slideUrl: '/Walmart_Sales_Report.pdf',
-      notebookUrl: 'https://huggingface.co/datasets/chauminhphamvn/123/blob/main/Explore_Walmart_Sales_applying_Time_Series_Model.ipynb',
+      notebookUrl: 'https://nbviewer.org/urls/huggingface.co/datasets/chauminhphamvn/123/resolve/main/Explore_Walmart_Sales_applying_Time_Series_Model.ipynb',
       imageUrl: '/api/placeholder/400/250',
       icon: <Users className="w-6 h-6" />,
       highlights: [
