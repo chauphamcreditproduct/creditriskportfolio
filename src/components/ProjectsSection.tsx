@@ -229,15 +229,13 @@ const ProjectsSection = () => {
               <div>
                 {project.slideUrl?.toLowerCase().endsWith('.pdf') ? (
                   <div className="space-y-4">
-                    {/* PDF Viewer using multiple fallback methods */}
-                    <div className="relative">
-                      <iframe
-                        src={`https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(window.location.origin + project.slideUrl)}`}
-                        className="w-full h-[500px] border-0 rounded"
-                        allowFullScreen
-                        title="PDF Viewer"
-                      />
-                    </div>
+                    {/* Direct PDF embed to avoid cross-origin issues */}
+                    <object data={project.slideUrl} type="application/pdf" className="w-full h-[500px]">
+                      <div className="p-4 text-sm text-muted-foreground bg-muted/20 rounded">
+                        <p className="mb-2">PDF preview is not available in this browser.</p>
+                        <p>Please use the buttons below to open or download the PDF.</p>
+                      </div>
+                    </object>
                   </div>
                 ) : (
                   <iframe
@@ -254,7 +252,7 @@ const ProjectsSection = () => {
                     onClick={() => window.open(project.slideUrl, '_blank')}
                   >
                     <FileText className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
-                    Xem Report
+                    Open Report
                   </Button>
                   <Button
                     variant="outline"
@@ -269,7 +267,7 @@ const ProjectsSection = () => {
                     }}
                   >
                     <Download className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
-                    Tải PDF
+                    Download PDF
                   </Button>
                 </div>
               </div>
