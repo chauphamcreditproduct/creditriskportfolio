@@ -20,6 +20,7 @@ import oilGasImage from '@/assets/images/oil-gas-refinery.jpg';
 import walmartLogo from '@/assets/logos/walmart-logo.webp';
 import sofiLogo from '@/assets/logos/sofi-logo.svg';
 import currentLogo from '@/assets/logos/current-logo-new.png';
+import PdfViewer from '@/components/PdfViewer';
 
 interface Project {
   id: string;
@@ -229,13 +230,7 @@ const ProjectsSection = () => {
               <div>
                 {project.slideUrl?.toLowerCase().endsWith('.pdf') ? (
                   <div className="space-y-4">
-                    {/* Direct PDF embed to avoid cross-origin issues */}
-                    <object data={project.slideUrl} type="application/pdf" className="w-full h-[500px]">
-                      <div className="p-4 text-sm text-muted-foreground bg-muted/20 rounded">
-                        <p className="mb-2">PDF preview is not available in this browser.</p>
-                        <p>Please use the buttons below to open or download the PDF.</p>
-                      </div>
-                    </object>
+                    <PdfViewer fileUrl={project.slideUrl!} />
                   </div>
                 ) : (
                   <iframe
