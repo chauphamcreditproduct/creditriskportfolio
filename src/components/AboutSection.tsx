@@ -1,6 +1,12 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Code2, Database, BarChart3, Brain, Lightbulb, Users, Server, Shield, TrendingUp, AlertTriangle, DollarSign, LineChart, Target, FileCheck, Scale, Building2, Calculator, ClipboardCheck, BadgeCheck } from 'lucide-react';
+import storyMathematics from '@/assets/images/story-mathematics.jpg';
+import storyBanking from '@/assets/images/story-banking.jpg';
+import storyDataScience from '@/assets/images/story-datascience.jpg';
+import storyCreditModels from '@/assets/images/story-creditmodels.jpg';
+import storyBalance from '@/assets/images/story-balance.jpg';
 import pythonLogo from '@/assets/logos/python-logo.svg';
 import sqlLogo from '@/assets/logos/sql-logo.svg';
 import tableauLogo from '@/assets/logos/tableau-logo.png';
@@ -43,6 +49,39 @@ const AboutSection = () => {
     { name: 'Neural Network', icon: Brain, isLogo: false, src: null },
     { name: 'ERP', icon: Server, isLogo: false, src: null },
     { name: 'SAP', icon: null, isLogo: true, src: sapLogo }
+  ];
+
+  const storyMilestones = [
+    {
+      title: "Mathematics & Precision",
+      description: "Started in Mathematics, fascinated by how formulas explain the world",
+      image: storyMathematics,
+      fullText: "I started out in Mathematics, geeking out over precision and figuring out how complex formulas could explain the world. At some point between solving equations and analyzing data patterns, I realized I was way more excited about the stories numbers could tell about people's financial lives than the abstract theories themselves."
+    },
+    {
+      title: "First Banking Internship",
+      description: "Discovered credit risk at a bank in Vietnam",
+      image: storyBanking,
+      fullText: "My passion found its purpose during my first internship at a bank in Vietnam, where I saw firsthand how lending strategies are built. I was drawn to the high-stakes puzzle of credit risk—the challenge of using data to balance opportunity for the borrower with responsibility for the lender."
+    },
+    {
+      title: "Data Science Journey",
+      description: "Dove into Python and machine learning for risk management",
+      image: storyDataScience,
+      fullText: "This led me to dive into risk management and data science, using tools like Python and machine learning to tackle this real-world problem. I learned to transform raw data into actionable insights that could predict financial outcomes."
+    },
+    {
+      title: "Building Credit Models",
+      description: "Creating NTC scorecards and dynamic limit systems",
+      image: storyCreditModels,
+      fullText: "Now, I'm building credit risk models, from New-to-Credit scorecards for non-traditional customers to dynamic limit systems for small businesses. It feels like applied mathematics with a human impact upgrade. My projects are grounded in the realities of underwriting—asking the ultimate question, 'Will this person default?' and using everything from traditional bureau data to alternative cash flow signals to find a responsible answer."
+    },
+    {
+      title: "Life Balance",
+      description: "Balancing work with baking, films, and fitness",
+      image: storyBalance,
+      fullText: "I honestly believe curiosity makes the best insights and teamwork makes the best solutions. This mindset extends from my work into my personal passions, where I find a similar blend of precision and creativity. I apply the same focus needed to tune a machine learning model to baking—treating ingredients as my variables and the perfect cake as the optimal output. Balancing this with the mental escape of films and the physical challenge of the gym keeps me energized and consistently brings a fresh perspective back to my analytical work."
+    }
   ];
 
   const timeline = [
@@ -197,30 +236,66 @@ const AboutSection = () => {
         </div>
 
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-16 items-start">
-          {/* Left column - Personal story */}
+          {/* Left column - Personal story timeline with images */}
           <div className="space-y-6 sm:space-y-8 animate-fade-in">
-            <Card className="p-6 sm:p-8 hover-lift">
-              <CardContent className="p-0">
-                <div className="flex items-center mb-4 sm:mb-6">
-                  <Lightbulb className="h-6 w-6 sm:h-8 sm:w-8 text-accent mr-3 sm:mr-4 flex-shrink-0" />
-                  <h3 className="text-xl sm:text-2xl font-manrope font-semibold">My Story</h3>
+            <div className="flex items-center mb-4 sm:mb-6">
+              <Lightbulb className="h-6 w-6 sm:h-8 sm:w-8 text-accent mr-3 sm:mr-4 flex-shrink-0" />
+              <h3 className="text-xl sm:text-2xl font-manrope font-semibold">My Story</h3>
+            </div>
+            
+            <Dialog>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+                {storyMilestones.map((milestone, index) => (
+                  <DialogTrigger key={index} asChild>
+                    <Card className="overflow-hidden cursor-pointer hover-lift group">
+                      <div className="relative aspect-video">
+                        <img 
+                          src={milestone.image} 
+                          alt={milestone.title}
+                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent" />
+                        <div className="absolute bottom-2 left-2 right-2">
+                          <p className="text-xs font-semibold text-foreground line-clamp-2">
+                            {milestone.title}
+                          </p>
+                        </div>
+                      </div>
+                    </Card>
+                  </DialogTrigger>
+                ))}
+              </div>
+              
+              <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+                <DialogHeader>
+                  <DialogTitle className="text-2xl font-manrope font-bold mb-4">
+                    My Story: From Mathematics to Credit Risk
+                  </DialogTitle>
+                </DialogHeader>
+                <div className="space-y-6">
+                  {storyMilestones.map((milestone, index) => (
+                    <div key={index} className="space-y-3">
+                      <div className="relative aspect-video rounded-lg overflow-hidden">
+                        <img 
+                          src={milestone.image} 
+                          alt={milestone.title}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <h4 className="text-lg font-semibold text-foreground">
+                        {milestone.title}
+                      </h4>
+                      <p className="text-muted-foreground leading-relaxed">
+                        {milestone.fullText}
+                      </p>
+                      {index < storyMilestones.length - 1 && (
+                        <div className="h-px bg-border/50 my-4" />
+                      )}
+                    </div>
+                  ))}
                 </div>
-                <div className="space-y-3 sm:space-y-4 text-muted-foreground leading-relaxed text-sm sm:text-base">
-                  <p>
-                    I started out in Mathematics, geeking out over precision and figuring out how complex formulas could explain the world. At some point between solving equations and analyzing data patterns, I realized I was way more excited about the stories numbers could tell about people's financial lives than the abstract theories themselves.
-                  </p>
-                  <p>
-                    My passion found its purpose during my first internship at a bank in Vietnam, where I saw firsthand how lending strategies are built. I was drawn to the high-stakes puzzle of credit risk—the challenge of using data to balance opportunity for the borrower with responsibility for the lender. This led me to dive into risk management and data science, using tools like Python and machine learning to tackle this real-world problem.
-                  </p>
-                  <p>
-                    Now, I'm building credit risk models, from New-to-Credit scorecards for non-traditional customers to dynamic limit systems for small businesses. It feels like applied mathematics with a human impact upgrade. My projects are grounded in the realities of underwriting—asking the ultimate question, "Will this person default?" and using everything from traditional bureau data to alternative cash flow signals to find a responsible answer.
-                  </p>
-                  <p>
-                    I honestly believe curiosity makes the best insights and teamwork makes the best solutions. This mindset extends from my work into my personal passions, where I find a similar blend of precision and creativity. I apply the same focus needed to tune a machine learning model to baking—treating ingredients as my variables and the perfect cake as the optimal output. Balancing this with the mental escape of films and the physical challenge of the gym keeps me energized and consistently brings a fresh perspective back to my analytical work.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
+              </DialogContent>
+            </Dialog>
           </div>
 
           {/* Right column - Timeline */}
