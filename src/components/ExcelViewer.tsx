@@ -21,7 +21,7 @@ const ExcelViewer: React.FC<ExcelViewerProps> = ({ fileUrl }) => {
         const response = await fetch(fileUrl);
         const arrayBuffer = await response.arrayBuffer();
         const data = new Uint8Array(arrayBuffer);
-        const wb = XLSX.read(data, { type: 'array' });
+        const wb = XLSX.read(data, { type: 'array', cellStyles: true, cellDates: true });
         
         setWorkbook(wb);
         if (wb.SheetNames.length > 0) {
@@ -54,11 +54,87 @@ const ExcelViewer: React.FC<ExcelViewerProps> = ({ fileUrl }) => {
     );
   }
 
+  const formatCellValue = (cell: any, cellAddress: string, worksheet: XLSX.WorkSheet): string => {
+    if (cell === null || cell === undefined || cell === '') return '';
+    
+    const cellObj = worksheet[cellAddress];
+    if (!cellObj) return String(cell);
+
+    // Check if cell has a number format
+    const numFmt = cellObj.z || cellObj.w;
+    
+    // Handle percentage format
+    if (numFmt && numFmt.includes('%')) {
+      const numValue = typeof cell === 'number' ? cell : parseFloat(cell);
+      if (!isNaN(numValue)) {
+        return (numValue * 100).toFixed(2) + '%';
+      }
+    }
+    
+    // Handle scientific notation
+    if (typeof cell === 'number' && (Math.abs(cell) >= 1e10 || (Math.abs(cell) < 0.0001 && cell !== 0))) {
+      return cell.toExponential(2);
+    }
+    
+    // Handle number formatting with thousands separator
+    if (typeof cell === 'number') {
+      return cell.toLocaleString('en-US', { 
+        minimumFractionDigits: 2, 
+        maximumFractionDigits: 2 
+      });
+    }
+    
+    return cellObj.w || String(cell);
+  };
+
+  const getCellStyle = (cellAddress: string, worksheet: XLSX.WorkSheet) => {
+    const cellObj = worksheet[cellAddress];
+    if (!cellObj) return {};
+
+    const styles: React.CSSProperties = {};
+    
+    // Check for cell styling
+    if (cellObj.s) {
+      const cellStyle = cellObj.s;
+      
+      // Background color (yellow highlight)
+      if (cellStyle.fgColor && cellStyle.fgColor.rgb) {
+        const rgb = cellStyle.fgColor.rgb;
+        styles.backgroundColor = `#${rgb}`;
+      }
+      
+      // Font color for negative numbers
+      if (cellStyle.font && cellStyle.font.color && cellStyle.font.color.rgb) {
+        const rgb = cellStyle.font.color.rgb;
+        styles.color = `#${rgb}`;
+      }
+    }
+    
+    // Default: check if value is negative number and make it red
+    const value = cellObj.v;
+    if (typeof value === 'number' && value < 0 && !styles.color) {
+      styles.color = '#dc2626'; // red-600
+    }
+    
+    return styles;
+  };
+
   const renderSheet = (sheetName: string) => {
     const worksheet = workbook.Sheets[sheetName];
-    const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 }) as any[][];
+    const range = XLSX.utils.decode_range(worksheet['!ref'] || 'A1');
     
-    if (jsonData.length === 0) {
+    const rows: any[][] = [];
+    for (let R = range.s.r; R <= range.e.r; ++R) {
+      const row: any[] = [];
+      for (let C = range.s.c; C <= range.e.c; ++C) {
+        const cellAddress = XLSX.utils.encode_cell({ r: R, c: C });
+        const cell = worksheet[cellAddress];
+        row.push(cell ? cell.v : '');
+      }
+      rows.push(row);
+    }
+    
+    if (rows.length === 0) {
       return <div className="p-4 text-muted-foreground">Empty sheet</div>;
     }
 
@@ -66,19 +142,24 @@ const ExcelViewer: React.FC<ExcelViewerProps> = ({ fileUrl }) => {
       <div className="overflow-auto max-h-[450px]">
         <table className="w-full border-collapse text-sm">
           <tbody>
-            {jsonData.map((row, rowIndex) => (
+            {rows.map((row, rowIndex) => (
               <tr key={rowIndex} className={rowIndex === 0 ? 'bg-muted font-semibold sticky top-0 z-10' : 'hover:bg-muted/50'}>
                 {row.map((cell, cellIndex) => {
                   const isHeader = rowIndex === 0;
                   const Tag = isHeader ? 'th' : 'td';
+                  const cellAddress = XLSX.utils.encode_cell({ r: rowIndex + range.s.r, c: cellIndex + range.s.c });
+                  const cellStyle = getCellStyle(cellAddress, worksheet);
+                  const formattedValue = formatCellValue(cell, cellAddress, worksheet);
+                  
                   return (
                     <Tag
                       key={cellIndex}
                       className={`border border-border p-2 ${isHeader ? 'text-left' : ''} ${
                         typeof cell === 'number' ? 'text-right' : 'text-left'
                       }`}
+                      style={cellStyle}
                     >
-                      {cell !== null && cell !== undefined ? String(cell) : ''}
+                      {formattedValue}
                     </Tag>
                   );
                 })}
