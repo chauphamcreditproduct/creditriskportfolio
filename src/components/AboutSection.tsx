@@ -78,9 +78,9 @@ const AboutSection = () => {
     },
     {
       title: "Life Balance",
-      description: "Balancing work with baking, films, and fitness",
+      description: "Balancing work with baking and films",
       image: storyBalance,
-      fullText: "I honestly believe curiosity makes the best insights and teamwork makes the best solutions. This mindset extends from my work into my personal passions, where I find a similar blend of precision and creativity. I apply the same focus needed to tune a machine learning model to baking—treating ingredients as my variables and the perfect cake as the optimal output. Balancing this with the mental escape of films and the physical challenge of the gym keeps me energized and consistently brings a fresh perspective back to my analytical work."
+      fullText: "I honestly believe curiosity makes the best insights and teamwork makes the best solutions. This mindset extends from my work into my personal passions, where I find a similar blend of precision and creativity. I apply the same focus needed to tune a machine learning model to baking—treating ingredients as my variables and the perfect cake as the optimal output. Balancing this with the mental escape of films keeps me energized and consistently brings a fresh perspective back to my analytical work."
     }
   ];
 
@@ -244,20 +244,23 @@ const AboutSection = () => {
             </div>
             
             <Dialog>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+              <div className="space-y-4">
                 {storyMilestones.map((milestone, index) => (
                   <DialogTrigger key={index} asChild>
                     <Card className="overflow-hidden cursor-pointer hover-lift group">
-                      <div className="relative aspect-video">
+                      <div className="relative h-32 sm:h-40">
                         <img 
                           src={milestone.image} 
                           alt={milestone.title}
-                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent" />
-                        <div className="absolute bottom-2 left-2 right-2">
-                          <p className="text-xs font-semibold text-foreground line-clamp-2">
+                        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/60 to-transparent" />
+                        <div className="absolute inset-0 flex flex-col justify-center px-4 sm:px-6">
+                          <p className="text-sm sm:text-base font-semibold text-foreground mb-1">
                             {milestone.title}
+                          </p>
+                          <p className="text-xs sm:text-sm text-muted-foreground line-clamp-2">
+                            {milestone.description}
                           </p>
                         </div>
                       </div>
