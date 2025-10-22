@@ -21,6 +21,7 @@ import walmartLogo from '@/assets/logos/walmart-logo.webp';
 import sofiLogo from '@/assets/logos/sofi-logo.svg';
 import currentLogo from '@/assets/logos/current-logo-new.png';
 import PdfViewer from '@/components/PdfViewer';
+import ExcelViewer from '@/components/ExcelViewer';
 
 interface Project {
   id: string;
@@ -291,19 +292,9 @@ const ProjectsSection = () => {
             {project.notebookUrl ? (
               <div>
                 {project.notebookUrl?.toLowerCase().endsWith('.xlsx') ? (
-                  // Excel file preview
-                  <div className="h-[500px] flex items-center justify-center bg-muted/20 border-b">
-                    <div className="text-center space-y-4 p-8">
-                      <div className="w-20 h-20 mx-auto bg-green-500/10 rounded-lg flex items-center justify-center">
-                        <FileText className="w-10 h-10 text-green-600" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-lg mb-2">5-Year Financial Spread Model</h3>
-                        <p className="text-sm text-muted-foreground mb-4">
-                          Comprehensive financial analysis with 4 sheets including Income Statement, Cash Flow, Balance Sheet, and Debt Structure
-                        </p>
-                      </div>
-                    </div>
+                  // Excel file preview with interactive sheets
+                  <div className="h-[500px] border-b">
+                    <ExcelViewer fileUrl={project.notebookUrl} />
                   </div>
                 ) : (
                   // Jupyter notebook preview
