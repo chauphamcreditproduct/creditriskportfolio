@@ -283,38 +283,73 @@ const ProjectsSection = () => {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <BookOpen className="w-5 h-5" />
-              Colab Notebook
+              {project.notebookUrl?.toLowerCase().endsWith('.xlsx') ? 'Financial Model' : 'Colab Notebook'}
             </CardTitle>
           </CardHeader>
           <CardContent className="p-0">
             {/* Embedded Notebook Preview */}
             {project.notebookUrl ? (
               <div>
-                <iframe
-                  src={project.notebookUrl.includes('nbviewer.org') 
-                    ? project.notebookUrl 
-                    : project.notebookUrl.replace('https://github.com/', 'https://nbviewer.org/github/')}
-                  className="w-full h-[500px] border-0"
-                  allowFullScreen
-                />
+                {project.notebookUrl?.toLowerCase().endsWith('.xlsx') ? (
+                  // Excel file preview
+                  <div className="h-[500px] flex items-center justify-center bg-muted/20 border-b">
+                    <div className="text-center space-y-4 p-8">
+                      <div className="w-20 h-20 mx-auto bg-green-500/10 rounded-lg flex items-center justify-center">
+                        <FileText className="w-10 h-10 text-green-600" />
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-lg mb-2">5-Year Financial Spread Model</h3>
+                        <p className="text-sm text-muted-foreground mb-4">
+                          Comprehensive financial analysis with 4 sheets including Income Statement, Cash Flow, Balance Sheet, and Debt Structure
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  // Jupyter notebook preview
+                  <iframe
+                    src={project.notebookUrl.includes('nbviewer.org') 
+                      ? project.notebookUrl 
+                      : project.notebookUrl.replace('https://github.com/', 'https://nbviewer.org/github/')}
+                    className="w-full h-[500px] border-0"
+                    allowFullScreen
+                  />
+                )}
                 {/* Action Buttons */}
                 <div className="flex gap-3 p-4 bg-gradient-to-r from-accent-light to-secondary border-t">
-                  <Button
-                    variant="outline"
-                    className="flex-1 border-accent/30 hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300 group"
-                    onClick={() => window.open(project.githubUrl, '_blank')}
-                  >
-                    <Github className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
-                    View on GitHub
-                  </Button>
-                  <Button
-                    variant="outline"
-                    className="flex-1 border-accent/30 hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300 group"
-                    onClick={() => window.open(project.notebookUrl, '_blank')}
-                  >
-                    <Eye className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
-                    Static HTML
-                  </Button>
+                  {project.notebookUrl?.toLowerCase().endsWith('.xlsx') ? (
+                    // Excel download button
+                    <Button
+                      variant="outline"
+                      className="flex-1 border-accent/30 hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300 group"
+                      onClick={() => window.open(project.notebookUrl, '_blank')}
+                    >
+                      <Download className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
+                      Download Excel
+                    </Button>
+                  ) : (
+                    // Notebook buttons (only for non-Olin projects)
+                    project.id !== '1' && (
+                      <>
+                        <Button
+                          variant="outline"
+                          className="flex-1 border-accent/30 hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300 group"
+                          onClick={() => window.open(project.githubUrl, '_blank')}
+                        >
+                          <Github className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
+                          View on GitHub
+                        </Button>
+                        <Button
+                          variant="outline"
+                          className="flex-1 border-accent/30 hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300 group"
+                          onClick={() => window.open(project.notebookUrl, '_blank')}
+                        >
+                          <Eye className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
+                          Static HTML
+                        </Button>
+                      </>
+                    )
+                  )}
                 </div>
               </div>
             ) : (
