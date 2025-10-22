@@ -57,8 +57,8 @@ const ProjectsSection = () => {
       category: 'Machine Learning',
       technologies: ['Python', 'Scikit-learn', 'Pandas', 'Matplotlib', 'Seaborn'],
       githubUrl: 'https://github.com/ShreyaSolves/loan-default-prediction',
-      slideUrl: 'https://docs.google.com/presentation/d/17yg0-Xe2phUerTs52copVvn8EUKRxgQ2GTYkD29UKE0/edit?usp=sharing',
-      notebookUrl: 'https://nbviewer.org/github/chauphamcreditproduct/NTC_Consumer_Credit/blob/a2099b821a5dc64002686e0bf12b8d9f02d045b1/NTC_Consumer_Credit.ipynb',
+      slideUrl: '/Olin_Corporation_Report.pdf',
+      notebookUrl: '/Olin_5Year_Spread.xlsx',
       imageUrl: '/api/placeholder/400/250',
       icon: <TrendingUp className="w-6 h-6" />,
       highlights: [
