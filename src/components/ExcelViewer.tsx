@@ -60,6 +60,14 @@ const ExcelViewer: React.FC<ExcelViewerProps> = ({ fileUrl }) => {
     const cellObj = worksheet[cellAddress];
     if (!cellObj) return String(cell);
 
+    // Use the formatted value from Excel if available
+    const formattedText = cellObj.w;
+    
+    // Check if it has "x" suffix (like 1.5x)
+    if (formattedText && formattedText.includes('x') && !formattedText.includes('Excel')) {
+      return formattedText;
+    }
+
     // Check if cell has a number format
     const numFmt = cellObj.z || cellObj.w;
     
@@ -84,7 +92,7 @@ const ExcelViewer: React.FC<ExcelViewerProps> = ({ fileUrl }) => {
       });
     }
     
-    return cellObj.w || String(cell);
+    return formattedText || String(cell);
   };
 
   const getCellStyle = (cellAddress: string, worksheet: XLSX.WorkSheet) => {
@@ -124,9 +132,28 @@ const ExcelViewer: React.FC<ExcelViewerProps> = ({ fileUrl }) => {
     const range = XLSX.utils.decode_range(worksheet['!ref'] || 'A1');
     
     const rows: any[][] = [];
+    const colIndices: number[] = [];
+    
+    // First pass: identify non-empty columns
+    for (let C = range.s.c; C <= range.e.c; ++C) {
+      let hasContent = false;
+      for (let R = range.s.r; R <= range.e.r; ++R) {
+        const cellAddress = XLSX.utils.encode_cell({ r: R, c: C });
+        const cell = worksheet[cellAddress];
+        if (cell && cell.v !== null && cell.v !== undefined && cell.v !== '') {
+          hasContent = true;
+          break;
+        }
+      }
+      if (hasContent) {
+        colIndices.push(C);
+      }
+    }
+    
+    // Second pass: build rows with only non-empty columns
     for (let R = range.s.r; R <= range.e.r; ++R) {
       const row: any[] = [];
-      for (let C = range.s.c; C <= range.e.c; ++C) {
+      for (const C of colIndices) {
         const cellAddress = XLSX.utils.encode_cell({ r: R, c: C });
         const cell = worksheet[cellAddress];
         row.push(cell ? cell.v : '');
@@ -139,25 +166,26 @@ const ExcelViewer: React.FC<ExcelViewerProps> = ({ fileUrl }) => {
     }
 
     return (
-      <div className="overflow-auto max-h-[450px]">
-        <table className="w-full border-collapse text-sm">
+      <div className="overflow-auto max-h-[450px] bg-background">
+        <table className="w-full border-collapse text-sm font-sans">
           <tbody>
             {rows.map((row, rowIndex) => (
-              <tr key={rowIndex} className={rowIndex === 0 ? 'bg-muted font-semibold sticky top-0 z-10' : 'hover:bg-muted/50'}>
+              <tr key={rowIndex} className={rowIndex === 0 ? 'bg-primary text-primary-foreground font-semibold sticky top-0 z-10' : 'hover:bg-accent/50'}>
                 {row.map((cell, cellIndex) => {
                   const isHeader = rowIndex === 0;
                   const Tag = isHeader ? 'th' : 'td';
-                  const cellAddress = XLSX.utils.encode_cell({ r: rowIndex + range.s.r, c: cellIndex + range.s.c });
+                  const actualColIndex = colIndices[cellIndex];
+                  const cellAddress = XLSX.utils.encode_cell({ r: rowIndex + range.s.r, c: actualColIndex });
                   const cellStyle = getCellStyle(cellAddress, worksheet);
                   const formattedValue = formatCellValue(cell, cellAddress, worksheet);
                   
                   return (
                     <Tag
                       key={cellIndex}
-                      className={`border border-border p-2 ${isHeader ? 'text-left' : ''} ${
+                      className={`border border-border p-3 ${isHeader ? 'text-left' : ''} ${
                         typeof cell === 'number' ? 'text-right' : 'text-left'
                       }`}
-                      style={cellStyle}
+                      style={isHeader ? {} : cellStyle}
                     >
                       {formattedValue}
                     </Tag>
