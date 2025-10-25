@@ -138,7 +138,20 @@ const ExcelViewer: React.FC<ExcelViewerProps> = ({ fileUrl }) => {
         // Some XLSX themes include ARGB (e.g., FF001122) – take last 6 chars
         if (hex.length === 8) hex = hex.slice(2);
         if (hex.length === 6) {
-          styles.backgroundColor = `#${hex}`;
+          const bgColor = `#${hex}`;
+          styles.backgroundColor = bgColor;
+          
+          // Check if it's a very dark blue (like #002060 or similar)
+          const r = parseInt(hex.slice(0, 2), 16);
+          const g = parseInt(hex.slice(2, 4), 16);
+          const b = parseInt(hex.slice(4, 6), 16);
+          
+          // If it's dark blue header, ensure white text
+          if (r < 50 && g < 80 && b > 80) {
+            if (!styles.color) {
+              styles.color = '#FFFFFF';
+            }
+          }
         }
       }
       
@@ -211,10 +224,11 @@ const ExcelViewer: React.FC<ExcelViewerProps> = ({ fileUrl }) => {
                   const cellStyle = getCellStyle(cellAddress, worksheet);
                   const formattedValue = formatCellValue(cell, cellAddress, worksheet);
                   
-                  // Check if this is a section header (like "Income Statement", "Cash Flow Statement")
-                  const isSectionHeader = typeof cell === 'string' && 
-                    (cell.includes('Statement') || cell.includes('Sheet')) &&
-                    cellIndex === 0;
+                  // Check if this is a section header (like "Income Statement", "Cash Flow Statement", etc.)
+                  const isSectionHeader = typeof cell === 'string' && cellIndex === 0 &&
+                    (cell.includes('Statement') || cell.includes('Sheet') || 
+                     cell.includes('Ratios') || cell.includes('Calculation') ||
+                     cell.includes('Sources') || cell.includes('Uses') || cell.includes('Liquidity'));
                   
                   // Determine alignment
                   const isNumber = typeof cell === 'number' && !(cell >= 2000 && cell <= 2050);
@@ -230,8 +244,10 @@ const ExcelViewer: React.FC<ExcelViewerProps> = ({ fileUrl }) => {
                   return (
                     <Tag
                       key={cellIndex}
-                      className={`border border-border px-4 py-3 ${alignment}`}
-                      style={isHeader ? {} : cellStyle}
+                      className={`border border-border px-4 py-3 ${alignment} ${
+                        isSectionHeader ? 'border-t-2 border-t-primary pt-6' : ''
+                      }`}
+                      style={cellStyle}
                     >
                       {formattedValue}
                     </Tag>
