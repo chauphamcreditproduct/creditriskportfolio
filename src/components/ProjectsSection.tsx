@@ -55,7 +55,7 @@ const ProjectsSection = () => {
       title: 'Corporate Credit & Liquidity Assessment – Olin Corporation',
       description: "A predictive analytics model that forecasts leverage and coverage ratios for commodity chemical companies, quantifying default risk through economic cycles.",
       longDescription: "This credit underwriting memo analyzes Olin Corporation to recommend a definitive rating. While Olin benefits from leading market scale and a conservative financial policy, its high exposure to cyclical end-markets and recent profitability decline drive a speculative-grade assessment. However, robust liquidity, manageable debt maturities, and a 100% calculated recovery rate for senior secured debt provide a substantial margin of safety for lenders.",
-      category: 'Machine Learning',
+      category: 'Applied Analytics & Reporting',
       technologies: [
         "Financial Statement Analysis", "Ratio Analysis & Credit Metrics",
         "EBITDA Analysis", "Margin Analysis", "Free Cash Flow Analysis",
@@ -98,7 +98,7 @@ const ProjectsSection = () => {
       title: 'Dynamic Credit Limit Model for SMB',
       description: 'Dynamic credit limit optimization system for small businesses using machine learning to automate risk-adjusted lending decisions.',
       longDescription: 'End-to-end machine learning solution for dynamic credit line management in small business lending. This project implements a dual-model approach combining XGBoost classification and regression to automatically determine when and how much to adjust credit limits, enabling fintech-style adaptive financing while optimizing risk and capital allocation.',
-      category: 'FinTech & Risk Analytics',
+      category: 'Data Science/Machine Learning',
       technologies: [
         "Python", "Pandas", "NumPy", "Scikit-learn", "XGBoost", "Random Forest", "Decision Trees",
         "Matplotlib", "Seaborn", "Tableau", "Google Colab", "Jupyter Notebooks",
@@ -151,7 +151,7 @@ const ProjectsSection = () => {
       title: 'New-To-Credit Underwriting Model & Strategy',
       description: 'Predictive modeling and risk strategy for assessing creditworthiness of new-to-credit customers using machine learning.',
       longDescription: 'Comprehensive credit risk modeling for New-To-Credit (NTC) customers using Python and machine learning. This project develops a high-precision underwriting strategy to predict charge-off likelihood, enabling financial institutions to expand credit access while proactively managing risk through advanced data analysis and model optimization.',
-      category: 'Risk Analytics & Machine Learning',
+      category: 'Data Science/Machine Learning',
       technologies: [
         "Python", "Pandas", "Scikit-learn", "XGBoost", "Random Forest",
         "Matplotlib", "Seaborn", "Tableau", "Google Colab", "Jupyter Notebooks",
@@ -192,7 +192,7 @@ const ProjectsSection = () => {
       title: 'Walmart Sales Forecasting & Holiday Impact Analysis',
       description: 'Time series analysis of Walmart holiday sales patterns using autoregressive modeling to quantify seasonal impacts and optimize retail strategy.',
       longDescription: "Comprehensive retail analytics project examining Walmart's weekly sales data to quantify holiday effects and seasonal patterns. Using autoregressive (AR) modeling and statistical analysis, this research identifies significant sales spikes during key holidays like Black Friday and Christmas, providing data-driven insights for inventory planning, staffing optimization, and promotional strategies across 45 stores.",
-      category: 'Retail Analytics & Time Series Forecasting',
+      category: 'Data Analysis & Business Intelligence',
       technologies: [
         "Python", "Pandas", "NumPy", "Matplotlib", "Seaborn", "Jupyter Notebooks",
         "CSV Data Handling", "Data Merging/Joining", "Date Parsing", 
@@ -229,20 +229,16 @@ const ProjectsSection = () => {
 
   const categories = [
     { id: 'all', label: 'All', count: projects.length },
-    { id: 'Machine Learning', label: 'Data Science/Machine Learning', count: projects.filter(p => p.category === 'Machine Learning').length },
-    { id: 'Analytics', label: 'Data Analysis & Business Intelligence', count: projects.filter(p => p.category === 'Analytics').length },
-    { id: 'Statistics', label: 'Applied Analytics & Reporting', count: projects.filter(p => p.category === 'Statistics' || p.category === 'Finance').length }
+    { id: 'Data Science/Machine Learning', label: 'Data Science/Machine Learning', count: projects.filter(p => p.category === 'Data Science/Machine Learning').length },
+    { id: 'Data Analysis & Business Intelligence', label: 'Data Analysis & Business Intelligence', count: projects.filter(p => p.category === 'Data Analysis & Business Intelligence').length },
+    { id: 'Applied Analytics & Reporting', label: 'Applied Analytics & Reporting', count: projects.filter(p => p.category === 'Applied Analytics & Reporting').length }
   ];
 
   useEffect(() => {
     let filtered = projects;
 
     if (selectedCategory !== 'all') {
-      if (selectedCategory === 'Statistics') {
-        filtered = filtered.filter(project => project.category === 'Statistics' || project.category === 'Finance');
-      } else {
-        filtered = filtered.filter(project => project.category === selectedCategory);
-      }
+      filtered = filtered.filter(project => project.category === selectedCategory);
     }
 
     if (searchTerm) {
