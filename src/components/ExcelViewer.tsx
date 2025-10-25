@@ -79,6 +79,11 @@ const ExcelViewer: React.FC<ExcelViewerProps> = ({ fileUrl }) => {
       }
     }
     
+    // Handle year format (4-digit numbers between 2000-2050)
+    if (typeof cell === 'number' && cell >= 2000 && cell <= 2050 && Number.isInteger(cell)) {
+      return cell.toString();
+    }
+    
     // Handle scientific notation
     if (typeof cell === 'number' && (Math.abs(cell) >= 1e10 || (Math.abs(cell) < 0.0001 && cell !== 0))) {
       return cell.toExponential(2);
@@ -170,7 +175,7 @@ const ExcelViewer: React.FC<ExcelViewerProps> = ({ fileUrl }) => {
         <table className="w-full border-collapse text-sm font-sans">
           <tbody>
             {rows.map((row, rowIndex) => (
-              <tr key={rowIndex} className={rowIndex === 0 ? 'bg-primary text-primary-foreground font-semibold sticky top-0 z-10' : 'hover:bg-accent/50'}>
+              <tr key={rowIndex} className={rowIndex === 0 ? 'bg-primary text-primary-foreground font-bold sticky top-0 z-10' : 'hover:bg-accent/50'}>
                 {row.map((cell, cellIndex) => {
                   const isHeader = rowIndex === 0;
                   const Tag = isHeader ? 'th' : 'td';
@@ -179,12 +184,14 @@ const ExcelViewer: React.FC<ExcelViewerProps> = ({ fileUrl }) => {
                   const cellStyle = getCellStyle(cellAddress, worksheet);
                   const formattedValue = formatCellValue(cell, cellAddress, worksheet);
                   
+                  // Determine alignment
+                  const isNumber = typeof cell === 'number' && !(cell >= 2000 && cell <= 2050);
+                  const alignment = isHeader ? 'text-center' : (isNumber ? 'text-right' : 'text-left');
+                  
                   return (
                     <Tag
                       key={cellIndex}
-                      className={`border border-border p-3 ${isHeader ? 'text-left' : ''} ${
-                        typeof cell === 'number' ? 'text-right' : 'text-left'
-                      }`}
+                      className={`border border-border px-4 py-3 ${alignment}`}
                       style={isHeader ? {} : cellStyle}
                     >
                       {formattedValue}
