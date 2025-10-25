@@ -57,7 +57,6 @@ const ProjectsSection = () => {
       longDescription: 'This project leverages machine learning to predict loan defaults, helping financial institutions minimize risk and improve credit allocation. By analyzing historical applicant and loan data, the model classifies borrowers as likely defaulters or non-defaulters while identifying key factors associated with default risk. The study also compares model performance to determine which approach best balances accuracy and recall, with a focus on reliably detecting true defaulters.',
       category: 'Machine Learning',
       technologies: [
-        "Python", "Pandas", "Matplotlib", "Seaborn", "Scikit-learn",
         "Financial Statement Analysis", "Ratio Analysis & Credit Metrics",
         "EBITDA Analysis", "Margin Analysis", "Free Cash Flow Analysis",
         "Capital Structure Analysis", "Enterprise Value Calculation",
