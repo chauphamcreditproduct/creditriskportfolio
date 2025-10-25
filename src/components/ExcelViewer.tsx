@@ -60,9 +60,14 @@ const ExcelViewer: React.FC<ExcelViewerProps> = ({ fileUrl }) => {
     const cellObj = worksheet[cellAddress];
     if (!cellObj) return String(cell);
 
-    // Replace "Company Name" with "Olin Corp"
-    if (typeof cell === 'string' && cell === 'Company Name') {
-      return 'Olin Corp';
+    // Replace "Company Name" with "Olin Corp" 
+    if (typeof cell === 'string') {
+      if (cell === 'Company Name') {
+        return 'Olin Corp';
+      }
+      if (cell.includes('Company Name')) {
+        return cell.replace('Company Name', 'Olin Corp');
+      }
     }
 
     // Use the formatted value from Excel if available
@@ -237,12 +242,13 @@ const ExcelViewer: React.FC<ExcelViewerProps> = ({ fileUrl }) => {
                   
                   // Determine alignment
                   const isNumber = typeof cell === 'number' && !(cell >= 2000 && cell <= 2050);
+                  const isNA = formattedValue === 'N/A';
                   let alignment = 'text-left';
                   if (isHeader) {
                     alignment = 'text-center';
                   } else if (isSectionHeader) {
                     alignment = 'text-left';
-                  } else if (isNumber) {
+                  } else if (isNumber || isNA) {
                     alignment = 'text-right';
                   }
                   
