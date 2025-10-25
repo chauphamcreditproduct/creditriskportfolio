@@ -35,6 +35,7 @@ interface Project {
   imageUrl?: string;
   slideUrl?: string;
   notebookUrl?: string;
+  recoveryAnalysisUrl?: string;
   icon: React.ReactNode;
   highlights: string[];
   date: string;
@@ -78,6 +79,7 @@ const ProjectsSection = () => {
       githubUrl: 'https://github.com/ShreyaSolves/loan-default-prediction',
       slideUrl: '/Olin_Corporation_Report.pdf',
       notebookUrl: '/Olin_5Year_Spread.xlsx',
+      recoveryAnalysisUrl: '/Recovery_Analysis_Olin.xlsx',
       imageUrl: '/api/placeholder/400/250',
       icon: <TrendingUp className="w-6 h-6" />,
       highlights: [
@@ -360,55 +362,109 @@ const ProjectsSection = () => {
               <div>
                 {project.notebookUrl?.toLowerCase().endsWith('.xlsx') ? (
                   // Excel file preview with interactive sheets
-                  <div className="h-[500px] border-b">
-                    <ExcelViewer fileUrl={project.notebookUrl} />
-                  </div>
-                ) : (
-                  // Jupyter notebook preview
-                  <iframe
-                    src={project.notebookUrl.includes('nbviewer.org') 
-                      ? project.notebookUrl 
-                      : project.notebookUrl.replace('https://github.com/', 'https://nbviewer.org/github/')}
-                    className="w-full h-[500px] border-0"
-                    allowFullScreen
-                  />
-                )}
-                {/* Action Buttons */}
-                <div className="flex gap-3 p-4 bg-gradient-to-r from-accent-light to-secondary border-t">
-                  {project.notebookUrl?.toLowerCase().endsWith('.xlsx') ? (
-                    // Excel download button
-                    <Button
-                      variant="outline"
-                      className="flex-1 border-accent/30 hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300 group"
-                      onClick={() => window.open(project.notebookUrl, '_blank')}
-                    >
-                      <Download className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
-                      Download Excel
-                    </Button>
-                  ) : (
-                    // Notebook buttons (only for non-Olin projects)
-                    project.id !== '1' && (
-                      <>
-                        <Button
-                          variant="outline"
-                          className="flex-1 border-accent/30 hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300 group"
-                          onClick={() => window.open(project.githubUrl, '_blank')}
-                        >
-                          <Github className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
-                          View on GitHub
-                        </Button>
+                  project.id === '1' && project.recoveryAnalysisUrl ? (
+                    // For Olin project with multiple Excel files - use tabs
+                    <div>
+                      <Tabs defaultValue="financial-model" className="w-full">
+                        <TabsList className="w-full justify-start border-b rounded-none bg-muted/30 h-auto p-1">
+                          <TabsTrigger
+                            value="financial-model"
+                            className="data-[state=active]:bg-background data-[state=active]:shadow-sm px-6 py-2"
+                          >
+                            5-Year Financial Model
+                          </TabsTrigger>
+                          <TabsTrigger
+                            value="recovery-analysis"
+                            className="data-[state=active]:bg-background data-[state=active]:shadow-sm px-6 py-2"
+                          >
+                            Recovery Analysis
+                          </TabsTrigger>
+                        </TabsList>
+                        <TabsContent value="financial-model" className="mt-0">
+                          <div className="h-[500px]">
+                            <ExcelViewer fileUrl={project.notebookUrl} />
+                          </div>
+                        </TabsContent>
+                        <TabsContent value="recovery-analysis" className="mt-0">
+                          <div className="h-[500px]">
+                            <ExcelViewer fileUrl={project.recoveryAnalysisUrl} />
+                          </div>
+                        </TabsContent>
+                      </Tabs>
+                      {/* Action Buttons */}
+                      <div className="flex gap-3 p-4 bg-gradient-to-r from-accent-light to-secondary border-t">
                         <Button
                           variant="outline"
                           className="flex-1 border-accent/30 hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300 group"
                           onClick={() => window.open(project.notebookUrl, '_blank')}
                         >
-                          <Eye className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
-                          Static HTML
+                          <Download className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
+                          Download 5-Year Model
                         </Button>
-                      </>
-                    )
-                  )}
-                </div>
+                        <Button
+                          variant="outline"
+                          className="flex-1 border-accent/30 hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300 group"
+                          onClick={() => window.open(project.recoveryAnalysisUrl, '_blank')}
+                        >
+                          <Download className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
+                          Download Recovery Analysis
+                        </Button>
+                      </div>
+                    </div>
+                  ) : (
+                    // Single Excel file for other projects
+                    <div>
+                      <div className="h-[500px] border-b">
+                        <ExcelViewer fileUrl={project.notebookUrl} />
+                      </div>
+                      <div className="flex gap-3 p-4 bg-gradient-to-r from-accent-light to-secondary border-t">
+                        <Button
+                          variant="outline"
+                          className="flex-1 border-accent/30 hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300 group"
+                          onClick={() => window.open(project.notebookUrl, '_blank')}
+                        >
+                          <Download className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
+                          Download Excel
+                        </Button>
+                      </div>
+                    </div>
+                  )
+                ) : (
+                  // Jupyter notebook preview
+                  <div>
+                    <iframe
+                      src={project.notebookUrl.includes('nbviewer.org') 
+                        ? project.notebookUrl 
+                        : project.notebookUrl.replace('https://github.com/', 'https://nbviewer.org/github/')}
+                      className="w-full h-[500px] border-0"
+                      allowFullScreen
+                    />
+                    {/* Action Buttons */}
+                    <div className="flex gap-3 p-4 bg-gradient-to-r from-accent-light to-secondary border-t">
+                      {/* Notebook buttons (only for non-Olin projects) */}
+                      {project.id !== '1' && (
+                        <>
+                          <Button
+                            variant="outline"
+                            className="flex-1 border-accent/30 hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300 group"
+                            onClick={() => window.open(project.githubUrl, '_blank')}
+                          >
+                            <Github className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
+                            View on GitHub
+                          </Button>
+                          <Button
+                            variant="outline"
+                            className="flex-1 border-accent/30 hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300 group"
+                            onClick={() => window.open(project.notebookUrl, '_blank')}
+                          >
+                            <Eye className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
+                            Static HTML
+                          </Button>
+                        </>
+                      )}
+                    </div>
+                  </div>
+                )}
               </div>
             ) : (
               <div className="aspect-video bg-muted rounded-lg p-4 border m-4">
