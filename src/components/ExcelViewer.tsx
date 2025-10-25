@@ -91,10 +91,22 @@ const ExcelViewer: React.FC<ExcelViewerProps> = ({ fileUrl }) => {
     
     // Handle number formatting with thousands separator
     if (typeof cell === 'number') {
-      return cell.toLocaleString('en-US', { 
-        minimumFractionDigits: 2, 
-        maximumFractionDigits: 2 
+      const absValue = Math.abs(cell);
+      const formatted = absValue.toLocaleString('en-US', { 
+        minimumFractionDigits: 1, 
+        maximumFractionDigits: 1 
       });
+      
+      // Check if original format includes dollar sign
+      const hasDollarSign = (formattedText && formattedText.includes('$')) || 
+                           (numFmt && numFmt.includes('$'));
+      
+      // Format negative numbers with parentheses like Excel
+      if (cell < 0) {
+        return hasDollarSign ? `($${formatted})` : `(${formatted})`;
+      } else {
+        return hasDollarSign ? `$${formatted}` : formatted;
+      }
     }
     
     return formattedText || String(cell);
@@ -109,6 +121,16 @@ const ExcelViewer: React.FC<ExcelViewerProps> = ({ fileUrl }) => {
     // Check for cell styling
     if (cellObj.s) {
       const cellStyle = cellObj.s;
+      
+      // Check for italic font
+      if (cellStyle.font && cellStyle.font.italic) {
+        styles.fontStyle = 'italic';
+      }
+      
+      // Check for bold font
+      if (cellStyle.font && cellStyle.font.bold) {
+        styles.fontWeight = 'bold';
+      }
       
       // Background color (Excel fill)
       if (cellStyle.fgColor && cellStyle.fgColor.rgb) {
@@ -203,9 +225,21 @@ const ExcelViewer: React.FC<ExcelViewerProps> = ({ fileUrl }) => {
                   const cellStyle = getCellStyle(cellAddress, worksheet);
                   const formattedValue = formatCellValue(cell, cellAddress, worksheet);
                   
+                  // Check if this is a section header (like "Income Statement", "Cash Flow Statement")
+                  const isSectionHeader = typeof cell === 'string' && 
+                    (cell.includes('Statement') || cell.includes('Sheet')) &&
+                    cellIndex === 0;
+                  
                   // Determine alignment
                   const isNumber = typeof cell === 'number' && !(cell >= 2000 && cell <= 2050);
-                  const alignment = isHeader ? 'text-center' : (isNumber ? 'text-right' : 'text-left');
+                  let alignment = 'text-left';
+                  if (isHeader) {
+                    alignment = 'text-center';
+                  } else if (isSectionHeader) {
+                    alignment = 'text-left';
+                  } else if (isNumber) {
+                    alignment = 'text-right';
+                  }
                   
                   return (
                     <Tag
