@@ -81,7 +81,16 @@ const ProjectsSection = () => {
       description: 'Dynamic credit limit optimization system for small businesses using machine learning to automate risk-adjusted lending decisions.',
       longDescription: 'End-to-end machine learning solution for dynamic credit line management in small business lending. This project implements a dual-model approach combining XGBoost classification and regression to automatically determine when and how much to adjust credit limits, enabling fintech-style adaptive financing while optimizing risk and capital allocation.',
       category: 'FinTech & Risk Analytics',
-      technologies: ["Python", "Classification & Regression", "XGBoostRegressor"],
+      technologies: [
+        "Python", "Pandas", "NumPy", "Scikit-learn", "XGBoost", "Random Forest", "Decision Trees",
+        "Matplotlib", "Seaborn", "Google Colab", "Jupyter Notebooks",
+        "Regression Models", "Classification Models", "Feature Engineering",
+        "Classification Metrics", "Regression Metrics", "Data Cleaning",
+        "Missing Data Handling", "Data Validation", "Data Processing",
+        "Outlier Detection", "Exploratory Data Analysis (EDA)",
+        "Correlation Analysis", "Statistical Analysis",
+        "Machine Learning Pipelines", "Model Validation"
+      ],
       githubUrl: 'https://github.com/chauphamcreditproduct/SMB_Dynamic_Credit_Line',
       slideUrl: 'https://docs.google.com/presentation/d/1NqYbBzCOjIrtXCI4-QS84lgmHiph2wJ1_XRvd9G4QBo/edit?usp=sharing',
       notebookUrl: 'https://nbviewer.org/urls/huggingface.co/datasets/chauminhphamvn/Dynamic_Credit_lIMIT_Model_FOR_SMB/resolve/main/SMB_Dynamic_Credit_Line.ipynb',
