@@ -60,6 +60,11 @@ const ExcelViewer: React.FC<ExcelViewerProps> = ({ fileUrl }) => {
     const cellObj = worksheet[cellAddress];
     if (!cellObj) return String(cell);
 
+    // Replace "Company Name" with "Olin Corp"
+    if (typeof cell === 'string' && cell === 'Company Name') {
+      return 'Olin Corp';
+    }
+
     // Use the formatted value from Excel if available
     const formattedText = cellObj.w;
     
