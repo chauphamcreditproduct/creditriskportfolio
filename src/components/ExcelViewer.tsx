@@ -175,7 +175,7 @@ const ExcelViewer: React.FC<ExcelViewerProps> = ({ fileUrl }) => {
         <table className="w-full border-collapse text-sm font-sans">
           <tbody>
             {rows.map((row, rowIndex) => (
-              <tr key={rowIndex} className={rowIndex === 0 ? 'bg-accent/20 text-foreground font-bold sticky top-0 z-10 border-b-2 border-accent' : 'hover:bg-accent/50'}>
+              <tr key={rowIndex} className={rowIndex === 0 ? 'bg-accent text-accent-foreground font-bold sticky top-0 z-10' : 'hover:bg-accent/5'}>
                 {row.map((cell, cellIndex) => {
                   const isHeader = rowIndex === 0;
                   const Tag = isHeader ? 'th' : 'td';
