@@ -139,24 +139,10 @@ const ExcelViewer: React.FC<ExcelViewerProps> = ({ fileUrl }) => {
         if (hex.length === 8) hex = hex.slice(2);
         if (hex.length === 6) {
           styles.backgroundColor = `#${hex}`;
-          // Auto-contrast: if background is dark, force light text for readability
-          const r = parseInt(hex.slice(0, 2), 16) / 255;
-          const g = parseInt(hex.slice(2, 4), 16) / 255;
-          const b = parseInt(hex.slice(4, 6), 16) / 255;
-          const toLinear = (c: number) => (c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4));
-          const L = 0.2126 * toLinear(r) + 0.7152 * toLinear(g) + 0.0722 * toLinear(b);
-          if (L < 0.15) {
-            // Extremely dark fill from Excel -> map to theme-friendly header bg
-            styles.backgroundColor = 'hsl(var(--secondary))';
-            styles.color = 'hsl(var(--secondary-foreground))';
-          } else if (!styles.color && L < 0.5) {
-            // Dark background -> force light text for readability
-            styles.color = 'hsl(0 0% 100%)';
-          }
         }
       }
       
-      // Font color from Excel (overrides auto-contrast)
+      // Font color from Excel - preserve exactly
       if (cellStyle.font && cellStyle.font.color && cellStyle.font.color.rgb) {
         let rgb = cellStyle.font.color.rgb;
         if (rgb.length === 8) rgb = rgb.slice(2);
@@ -164,7 +150,7 @@ const ExcelViewer: React.FC<ExcelViewerProps> = ({ fileUrl }) => {
       }
     }
     
-    // Default: check if value is negative number and make it red
+    // Default: check if value is negative number and make it red (only if no color set from Excel)
     const value = cellObj.v;
     if (typeof value === 'number' && value < 0 && !styles.color) {
       styles.color = '#dc2626'; // red-600
