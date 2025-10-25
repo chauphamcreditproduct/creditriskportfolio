@@ -53,7 +53,7 @@ const ProjectsSection = () => {
     {
       id: '1',
       title: 'Corporate Credit & Liquidity Assessment – Olin Corporation',
-      description: 'Machine learning model to predict loan defaults for financial institutions',
+      description: "A predictive analytics model that forecasts leverage and coverage ratios for commodity chemical companies, quantifying default risk through economic cycles.",
       longDescription: "This credit underwriting memo analyzes Olin Corporation to recommend a definitive rating. While Olin benefits from leading market scale and a conservative financial policy, its high exposure to cyclical end-markets and recent profitability decline drive a speculative-grade assessment. However, robust liquidity, manageable debt maturities, and a 100% calculated recovery rate for senior secured debt provide a substantial margin of safety for lenders.",
       category: 'Machine Learning',
       technologies: [
