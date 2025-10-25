@@ -243,10 +243,10 @@ const AboutSection = () => {
               <h3 className="text-xl sm:text-2xl font-manrope font-semibold">My Story</h3>
             </div>
             
-            <Dialog>
-              <div className="space-y-4">
-                {storyMilestones.map((milestone, index) => (
-                  <DialogTrigger key={index} asChild>
+            <div className="space-y-4">
+              {storyMilestones.map((milestone, index) => (
+                <Dialog key={index}>
+                  <DialogTrigger asChild>
                     <Card className="overflow-hidden cursor-pointer hover-lift group">
                       <div className="relative h-32 sm:h-40">
                         <img 
@@ -266,18 +266,14 @@ const AboutSection = () => {
                       </div>
                     </Card>
                   </DialogTrigger>
-                ))}
-              </div>
-              
-              <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
-                <DialogHeader>
-                  <DialogTitle className="text-2xl font-manrope font-bold mb-4">
-                    My Story: From Mathematics to Credit Risk
-                  </DialogTitle>
-                </DialogHeader>
-                <div className="space-y-6">
-                  {storyMilestones.map((milestone, index) => (
-                    <div key={index} className="space-y-3">
+                  
+                  <DialogContent className="max-w-3xl">
+                    <DialogHeader>
+                      <DialogTitle className="text-2xl font-manrope font-bold mb-4">
+                        {milestone.title}
+                      </DialogTitle>
+                    </DialogHeader>
+                    <div className="space-y-4">
                       <div className="relative aspect-video rounded-lg overflow-hidden">
                         <img 
                           src={milestone.image} 
@@ -285,20 +281,14 @@ const AboutSection = () => {
                           className="w-full h-full object-cover"
                         />
                       </div>
-                      <h4 className="text-lg font-semibold text-foreground">
-                        {milestone.title}
-                      </h4>
                       <p className="text-muted-foreground leading-relaxed">
                         {milestone.fullText}
                       </p>
-                      {index < storyMilestones.length - 1 && (
-                        <div className="h-px bg-border/50 my-4" />
-                      )}
                     </div>
-                  ))}
-                </div>
-              </DialogContent>
-            </Dialog>
+                  </DialogContent>
+                </Dialog>
+              ))}
+            </div>
           </div>
 
           {/* Right column - Timeline */}
