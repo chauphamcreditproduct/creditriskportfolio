@@ -110,15 +110,34 @@ const ExcelViewer: React.FC<ExcelViewerProps> = ({ fileUrl }) => {
     if (cellObj.s) {
       const cellStyle = cellObj.s;
       
-      // Background color (yellow highlight)
+      // Background color (Excel fill)
       if (cellStyle.fgColor && cellStyle.fgColor.rgb) {
-        const rgb = cellStyle.fgColor.rgb;
-        styles.backgroundColor = `#${rgb}`;
+        let hex = cellStyle.fgColor.rgb;
+        // Some XLSX themes include ARGB (e.g., FF001122) – take last 6 chars
+        if (hex.length === 8) hex = hex.slice(2);
+        if (hex.length === 6) {
+          styles.backgroundColor = `#${hex}`;
+          // Auto-contrast: if background is dark, force light text for readability
+          const r = parseInt(hex.slice(0, 2), 16) / 255;
+          const g = parseInt(hex.slice(2, 4), 16) / 255;
+          const b = parseInt(hex.slice(4, 6), 16) / 255;
+          const toLinear = (c: number) => (c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4));
+          const L = 0.2126 * toLinear(r) + 0.7152 * toLinear(g) + 0.0722 * toLinear(b);
+          if (L < 0.15) {
+            // Extremely dark fill from Excel -> map to theme-friendly header bg
+            styles.backgroundColor = 'hsl(var(--secondary))';
+            styles.color = 'hsl(var(--secondary-foreground))';
+          } else if (!styles.color && L < 0.5) {
+            // Dark background -> force light text for readability
+            styles.color = 'hsl(0 0% 100%)';
+          }
+        }
       }
       
-      // Font color for negative numbers
+      // Font color from Excel (overrides auto-contrast)
       if (cellStyle.font && cellStyle.font.color && cellStyle.font.color.rgb) {
-        const rgb = cellStyle.font.color.rgb;
+        let rgb = cellStyle.font.color.rgb;
+        if (rgb.length === 8) rgb = rgb.slice(2);
         styles.color = `#${rgb}`;
       }
     }
