@@ -208,10 +208,16 @@ const ExcelViewer: React.FC<ExcelViewerProps> = ({ fileUrl }) => {
     // Second pass: build rows with only non-empty columns
     for (let R = range.s.r; R <= range.e.r; ++R) {
       const row: any[] = [];
-      for (const C of colIndices) {
+      for (let i = 0; i < colIndices.length; i++) {
+        const C = colIndices[i];
         const cellAddress = XLSX.utils.encode_cell({ r: R, c: C });
         const cell = worksheet[cellAddress];
         row.push(cell ? cell.v : '');
+        
+        // Add empty column after the second column for Recovery Analysis sheet
+        if (i === 1 && fileUrl.includes('Recovery_Analysis')) {
+          row.push('');
+        }
       }
       rows.push(row);
     }
@@ -229,10 +235,27 @@ const ExcelViewer: React.FC<ExcelViewerProps> = ({ fileUrl }) => {
                 {row.map((cell, cellIndex) => {
                   const isHeader = rowIndex === 0;
                   const Tag = isHeader ? 'th' : 'td';
-                  const actualColIndex = colIndices[cellIndex];
-                  const cellAddress = XLSX.utils.encode_cell({ r: rowIndex + range.s.r, c: actualColIndex });
-                  const cellStyle = getCellStyle(cellAddress, worksheet);
-                  const formattedValue = formatCellValue(cell, cellAddress, worksheet);
+                  
+                  // Handle the inserted empty column for Recovery Analysis
+                  const isInsertedEmptyCol = fileUrl.includes('Recovery_Analysis') && cellIndex === 2;
+                  let actualColIndex: number;
+                  let cellAddress: string;
+                  
+                  if (fileUrl.includes('Recovery_Analysis') && cellIndex > 2) {
+                    // Adjust index for columns after the inserted empty column
+                    actualColIndex = colIndices[cellIndex - 1];
+                  } else if (isInsertedEmptyCol) {
+                    // For the inserted empty column, use the previous column's address
+                    actualColIndex = colIndices[1];
+                  } else {
+                    actualColIndex = colIndices[cellIndex];
+                  }
+                  
+                  cellAddress = XLSX.utils.encode_cell({ r: rowIndex + range.s.r, c: actualColIndex });
+                  
+                  // For inserted empty column, don't apply styles or formatting
+                  const cellStyle = isInsertedEmptyCol ? { minWidth: '20px' } : getCellStyle(cellAddress, worksheet);
+                  const formattedValue = isInsertedEmptyCol ? '' : formatCellValue(cell, cellAddress, worksheet);
                   
                   // Check if this is a section header (like "Income Statement", "Cash Flow Statement", etc.)
                   const isSectionHeader = typeof cell === 'string' && cellIndex === 0 &&
@@ -257,7 +280,7 @@ const ExcelViewer: React.FC<ExcelViewerProps> = ({ fileUrl }) => {
                       key={cellIndex}
                       className={`border border-border px-4 py-3 ${alignment} ${
                         isSectionHeader ? 'border-t-2 border-t-primary pt-6' : ''
-                      }`}
+                      } ${isInsertedEmptyCol ? 'bg-muted/20' : ''}`}
                       style={cellStyle}
                     >
                       {formattedValue}
